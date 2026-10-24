@@ -15,6 +15,7 @@ import CostCalculator from "../components/CostCalculator.astro";
 const DOCS = "https://abap2ui5.github.io/docs/";
 const PLAYGROUND = "https://abap2ui5.github.io/playground/";
 const GITHUB = "https://github.com/abap2UI5/abap2UI5";
+const GITHUB_PAGE = "https://github.com/abap2UI5/test-docs";
 const base = import.meta.env.BASE_URL;
 
 /* What it solves - the processes, not one problem. The same ground the
@@ -63,13 +64,15 @@ const ai = [
   ["check", "Checked before anyone looks", "The abap2UI5 linter tests every class the AI writes, and the AI fixes what it broke before a developer reviews it."],
   ["chat", "AI inside your apps, too", "A chat or a summarize-this-data panel in an existing app, with a local model first or the provider of your choice."],
 ];
+/* abap2UI5 against a platform that stores apps as configuration - the
+ * commercial UI5 builders and low-code tools work that way. */
 const keep = [
-  ["What an app is", "An ABAP class"],
-  ["Where a change is made", "In the development system, in ADT or SE80"],
-  ["How a change travels", "A transport, like any class"],
-  ["How a change is reviewed", "As a code diff: in abapGit, a pull request or the transport"],
-  ["What a debugger shows", "Your code"],
-  ["What happens if the framework goes away", "The classes stay; they are plain ABAP in your system"],
+  ["What an app is", "An ABAP class", "Entries in the tool's tables, read by its runtime"],
+  ["Where a change is made", "In the development system, in ADT or SE80", "Wherever the tool's designer is open, possibly production"],
+  ["How a change travels", "A transport, like any class", "The tool's own export, or a customizing transport"],
+  ["How a change is reviewed", "As a code diff: in abapGit, a pull request or the transport", "In the tool's designer, if it shows a history at all"],
+  ["What a debugger shows", "Your code", "The tool's runtime interpreting your configuration"],
+  ["What happens if the tool goes away", "The classes stay; they are plain ABAP in your system", "The apps go with it"],
 ];
 const strings = [
   ["No license, now or later", "MIT. No license key, no subscription, no fee per user, per app or per system - and nothing to renew."],
@@ -103,15 +106,29 @@ const companies = [
   ["Nuve Platform", "https://www.nuveplatform.com", "Integration", "On-demand SAP systems with automated abap2UI5 setups"],
   ["Logali Group", "https://logaligroup.com", "Training", "Webinars and certifications for abap2UI5"],
 ];
+/* Every talk, article and video, newest first - the full list, which used
+ * to be the manual's References page. */
 const references = [
-  ["2026", "UI5 in ABAP Cloud, without RAP or Fiori Elements", "Decabase Blog", "https://blog.decabase.com/ui5-in-abap-cloud-without-rap-or-fiori-elements-4e8a70d961c3"],
-  ["2026", "Fiori-type apps built 100% with ABAP", "Logali Group", "https://logaligroup.com/magia-en-el-servidor-local-apps-tipo-fiori-creadas-100-con-codigo-abap/"],
-  ["2025", "Featured on SAP Developer News", "YouTube", "https://www.youtube.com/watch?v=vKrpkDe2mkU&list=PL6RpkC85SLQAVBSQXN9522_1jNvPavBgg&t=90s"],
+  ["2026", "Field Service Management Mobile Logging using abap2UI5", "Decabase Blog", "https://blog.decabase.com/field-service-management-mobile-logging-using-abap2ui5-2c18e4ed455d"],
+  ["2026", "UI5 in ABAP Cloud (without RAP or Fiori Elements)", "Decabase Blog", "https://blog.decabase.com/ui5-in-abap-cloud-without-rap-or-fiori-elements-4e8a70d961c3"],
+  ["2026", "Fiori-type Apps built 100% with ABAP", "Logali Group", "https://logaligroup.com/magia-en-el-servidor-local-apps-tipo-fiori-creadas-100-con-codigo-abap/"],
   ["2025", "Webinar on Launchpad Integration", "YouTube", "https://www.youtube.com/watch?v=t5g3F3PHsbw&list=PLLpkZ_86h4quGSfsjohDHt9CrpjXdeA1P"],
-  ["2024", "Featured on SAP Developer News", "YouTube", "https://youtu.be/7n16u-Rx8IY?t=7"],
+  ["2025", "Featured on SAP Developer News", "YouTube", "https://www.youtube.com/watch?v=vKrpkDe2mkU&list=PL6RpkC85SLQAVBSQXN9522_1jNvPavBgg&t=90s"],
+  ["2024", "Automated Deployment of abap2UI5", "Nuve Platform", "https://www.nuveplatform.com/blog/deploy-abap2ui5"],
+  ["2024", "Webinar on creating UI5 interfaces from ABAP using abap2UI5", "YouTube", "https://www.youtube.com/watch?v=N2OAdxf7Lng"],
+  ["2024", "Highlighted in the Boring Enterprise Nerdletter", "YouTube", "https://www.youtube.com/watch?v=I81z6W_BTIA&t=1010s"],
   ["2024", "Webinar on developing UI5 apps with abap2UI5", "YouTube", "https://www.youtube.com/watch?v=0izPA2xrPPI"],
+  ["2024", "Featured on SAP Developer News", "YouTube", "https://youtu.be/7n16u-Rx8IY?t=7"],
+  ["2024", "Cust&Code Videos featuring abap2UI5", "YouTube", "https://www.youtube.com/watch?v=SD1vIt_ty0k"],
+  ["2024", "Running abap2UI5 Backend in Browser", "LinkedIn", "https://www.linkedin.com/pulse/running-abap2ui5-backend-browser-lars-hvam-petersen-l8zff/?trackingId=4mhMb1v%2FSoa8SmDSiuCEpg%3D%3D"],
+  ["2024", "Highlighted in the Boring Enterprise Nerdcast", "YouTube", "https://youtu.be/svDZKFBvqR8?t=1050"],
+  ["2023", "Featured on SAP Developer News", "YouTube", "https://www.youtube.com/watch?v=CfH9L03WUCg&t=350s"],
+  ["2023", "Join the Advent of Code 2023 with abap2UI5", "SAP Community", "https://blogs.sap.com/2023/11/27/preparing-for-advent-of-code-2023/"],
   ["2023", "Showcased at SAP TechEd 2023", "YouTube", "https://www.youtube.com/watch?v=kLbF0ooStZs&t=3052s"],
   ["2023", "Part of the SAP Developer Code Challenge", "SAP Community", "https://groups.community.sap.com/t5/application-development/sap-developer-code-challenge-open-source-abap-week-2/m-p/260727#M1372"],
+  ["2023", "Highlighted in the Boring Enterprise Nerdletter", "YouTube", "https://www.youtube.com/watch?v=G62exySitCo&list=PLlxj8-g1r2GlVYXVQnnV5izKwKtEn6KIp&t=1008s"],
+  ["2023", "Featured on SAP Developer News", "YouTube", "https://www.youtube.com/watch?v=6BDK55xYttM"],
+  ["2023", "See abap2UI5 on ABAP Open Source Projects", "dotabap.org", "https://dotabap.org/"],
 ];
 const addons = [
   ["selection-screen", "Selection screens and variants"],
@@ -134,7 +151,7 @@ const doors = [
   ["play", "Ten minutes, nothing installed", "Open the playground and change a running app, or browse the sample catalog for the screen closest to yours.", `${PLAYGROUND}samples/`, "Playground"],
   ["code", "One afternoon, one developer", "Send them the Quickstart — abapGit pull, ICF node, first app. The tutorial takes the same app to transport and unit tests.", `${DOCS}get_started/quickstart`, "Quickstart"],
   ["chat", "One question", "Ask it in the Slack channel or as a GitHub issue, where the people who run it in production answer.", "https://abapgit.slack.com/join/shared_invite/zt-46tqufaht-QlrxTzlDqlx85CWbeUnOqg#/shared-invite/email", "Community"],
-  ["partner", "A partner", "The companies on Who Uses abap2UI5? offer implementation, workshops and support agreements.", `${DOCS}resources/who_uses`, "Partners"],
+  ["partner", "A partner", "The companies under Who runs it offer implementation, workshops and support agreements.", "#who-runs-it", "Partners"],
 ];
 ---
 <Page
@@ -232,8 +249,9 @@ const doors = [
       <h2 id="h-keep">An abap2UI5 app is ABAP code, and governs itself like it</h2>
       <p class="intro">The decision everything else follows from: one ABAP class per app, no generated artifacts, no tables that describe a screen.</p>
       <div class="table">
-        <table class="two">
-          <tbody>{keep.map(([k, a]) => <tr><th scope="row">{k}</th><td>{a}</td></tr>)}</tbody>
+        <table>
+          <thead><tr><th scope="col"></th><th scope="col" class="us">abap2UI5</th><th scope="col">A tool that stores apps as configuration</th></tr></thead>
+          <tbody>{keep.map(([k, a, b]) => <tr><th scope="row">{k}</th><td class="us">{a}</td><td>{b}</td></tr>)}</tbody>
         </table>
       </div>
       <p class="intro">So abap2UI5 needs no rule of its own. Every rule that already applies to ABAP — naming conventions, code review, ATC, the four-eyes principle on transports — applies to an app without any change. A system closed for repository changes is closed for abap2UI5 apps.</p>
@@ -343,7 +361,7 @@ const doors = [
       <ul class="logos">{companies.map(([name, href, tag, text]) => <li><a href={href}>{name}</a><small>{tag}</small><span>{text}</span></li>)}</ul>
       <h3 class="refs-title">Talks, articles and videos</h3>
       <ul class="refs">{references.map(([year, title, where, href]) => <li><time>{year}</time><a href={href}>{title}</a><small>{where}</small></li>)}</ul>
-      <p class="more">→ <a href={`${DOCS}resources/who_uses`}>Who Uses abap2UI5?</a> and <a href={`${DOCS}resources/references`}>References</a> have the full lists - both are open for your own row.</p>
+      <p class="more">→ Running abap2UI5, or written about it? <a href={`${GITHUB_PAGE}/edit/main/src/pages/index.astro`}>Add your row</a>, or write to <a href="mailto:contact@abap2UI5.org">contact@abap2UI5.org</a>.</p>
     </div>
   </section>
 
