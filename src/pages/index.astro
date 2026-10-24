@@ -50,6 +50,18 @@ const compare = [
   ["Extra infrastructure", "None - one endpoint on your SAP system", "Fiori frontend server and deployment", "Frontend deployment (BSP, BTP or web server)", "The vendor's add-on, server or cloud tenant"],
   ["Lock-in", "None - apps are plain ABAP classes in your system", "SAP's programming model", "Low", "Apps live in the vendor's runtime and repository"],
   ["Source code", "Open, every line, on GitHub", "Closed", "UI5 open, your app yours", "Closed"],
+  ["Built with AI", "One class an AI writes whole - AI Studio, Claude Code and Copilot plugins, free", "Many artifacts for an AI to generate and keep in sync", "Two codebases, frontend and service", "The vendor's own AI, at the vendor's price"],
+];
+/* Why AI and abap2UI5 fit: one class is one file an assistant can write
+ * whole, check without a system and hand over for review. Every claim is in
+ * the framework README's "Build with AI" and "AI Assistants". */
+const ai = [
+  ["spark", "One app, one file", "An AI writes the whole app - one ABAP class. No OData service, no frontend project, no deployment to generate and keep in sync."],
+  ["play", "From a sentence to an app", "The AI Studio builds an app from a description, right in the browser: written, run and fixed against the real framework, ready for abapGit. Nothing to install."],
+  ["code", "In the tools your team uses", "Plugins for Claude Code and GitHub Copilot, skills for any agent and an MCP server that validates, runs and screenshots apps - without an SAP system."],
+  ["list", "Learns from 700+ samples", "Hundreds of working apps and documentation written for AI make the result right the first time, not the third."],
+  ["check", "Checked before anyone looks", "The abap2UI5 linter tests every class the AI writes, and the AI fixes what it broke before a developer reviews it."],
+  ["chat", "AI inside your apps, too", "A chat or a summarize-this-data panel in an existing app, with a local model first or the provider of your choice."],
 ];
 const keep = [
   ["What an app is", "An ABAP class"],
@@ -191,7 +203,20 @@ const doors = [
     </div>
   </section>
 
-  <section class="section" id="what-you-keep" aria-labelledby="h-keep">
+  <section class="section" id="ai" aria-labelledby="h-ai">
+    <div class="wrap">
+      <p class="kicker">AI</p>
+      <h2 id="h-ai">The UI5 framework made for AI</h2>
+      <p class="intro">An AI assistant is only as good as what it has to produce. With abap2UI5 that is one ABAP class - the simplest target there is for an AI, and the easiest result for your team to check. Your developers describe the screen; the AI writes it; your rules review and transport it like any other code.</p>
+      <div class="cards three">
+        {ai.map(([icon, h, t]) => <div class="card"><Icon name={icon} /><h3>{h}</h3><p>{t}</p></div>)}
+      </div>
+      <p class="callout"><b>No AI lock-in either.</b> Use Claude, ChatGPT, Copilot or a local model - with your own key, at your own price. Commercial platforms sell their AI as an add-on to their license; abap2UI5's costs nothing.</p>
+      <p class="more">→ Try the <a href={`${PLAYGROUND}ai/`}>AI Studio</a>, or read <a href={`${DOCS}get_started/ai`}>Developing with AI</a>.</p>
+    </div>
+  </section>
+
+  <section class="section alt" id="what-you-keep" aria-labelledby="h-keep">
     <div class="wrap">
       <p class="kicker">What you keep</p>
       <h2 id="h-keep">An abap2UI5 app is ABAP code, and governs itself like it</h2>
