@@ -1,9 +1,7 @@
 # Build, test and publish the page to GitHub Pages at
 # https://abap2ui5.github.io/test-docs/.
 #
-# On a pull request it builds and tests only. On main it also deploys; the
-# weekly run picks up the counted figures from the framework README
-# (src/lib/facts.mjs), which change without a commit here.
+# On a pull request it builds and tests only. On main it also deploys.
 #
 # Needs Settings → Pages → Source: "GitHub Actions" once.
 name: pages
@@ -12,8 +10,6 @@ on:
   push:
     branches: [main]
   pull_request:
-  schedule:
-    - cron: "17 6 * * 1"
   workflow_dispatch:
 
 permissions:

@@ -1,4 +1,4 @@
-// Evaluate abap2UI5 - one static page, published by GitHub Pages at
+// abap2UI5 for decision makers - one static page, published by GitHub Pages at
 // https://abap2ui5.github.io/test-docs/ (.github/workflows/pages.yml).
 //
 // Static output only: no client component, no island. The page's one script

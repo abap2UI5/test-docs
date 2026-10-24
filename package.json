@@ -1,8 +1,8 @@
 {
-  "name": "abap2ui5-evaluate",
+  "name": "abap2ui5-decision-makers",
   "version": "1.0.0",
   "private": true,
-  "description": "Evaluate abap2UI5 - the page for the people who approve it",
+  "description": "abap2UI5 for decision makers",
   "license": "MIT",
   "type": "module",
   "engines": {
