@@ -45,5 +45,9 @@ npm run check    # build + test, what CI runs
   "evaluate" or "problem" in the visible text - `test/site.test.mjs` checks the latter.
 - **Toolchain:** Node 22 (`.nvmrc`, `engines`), every dependency pinned
   exactly (astro 7.3.8), actions pinned to commits.
+- **The one place for decision makers.** The manual (abap2UI5/docs) is for
+  developers and links here; what used to be its Evaluate page, cost
+  calculator, Who Uses and References lists lives on this page only, and its
+  old addresses redirect here. Do not copy a developer topic in, link it.
 - The site is written for people. Links into the manual are absolute
   (`https://abap2ui5.github.io/docs/...`).
