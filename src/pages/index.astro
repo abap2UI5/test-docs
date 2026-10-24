@@ -292,7 +292,7 @@ const doors = [
 
   <section class="section alt" id="the-objections" aria-labelledby="h-obj">
     <div class="wrap">
-      <p class="kicker">Questions</p>
+      <p class="kicker">FAQ</p>
       <h2 id="h-obj">What decision makers ask, answered</h2>
       <div class="faq">
         {objections.map(([q, a], i) => <details open={i === 0}><summary>{q}</summary><p set:html={a} /></details>)}
