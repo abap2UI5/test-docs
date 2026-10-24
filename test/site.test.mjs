@@ -6,7 +6,6 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { factsIn, splitFact } from "../src/lib/facts.mjs";
 
 const DIST = path.join(import.meta.dirname, "..", "dist");
 const BASE = "/test-docs/";
@@ -55,9 +54,8 @@ test("the canonical address is the published one", () => {
   assert.match(html, /<link rel="canonical" href="https:\/\/abap2ui5\.github\.io\/test-docs\/">/);
 });
 
-test("the figures are read from the README block, never typed", () => {
-  const readme = "<!-- facts:start --><sub>1,530 ABAP unit tests · 92 JS unit specs · 25 workflows · ABAP 7.02 → Cloud — counted from this repository by npm run facts</sub><!-- facts:end -->";
-  assert.deepEqual(factsIn(readme), ["1,530 ABAP unit tests", "92 JS unit specs"]);
-  assert.deepEqual(splitFact("1,530 ABAP unit tests"), { value: "1,530", label: "ABAP unit tests" });
-  assert.deepEqual(factsIn("no block here"), []);
+test("the page speaks to decision makers, not reviewers", () => {
+  // the ids stay addresses; the words a reader sees never say "evaluate" or "problem"
+  const visible = html.replace(/<head>[\s\S]*?<\/head>/, "").replace(/<[^>]+>/g, " ");
+  assert.doesNotMatch(visible, /evaluat|problem/i);
 });

@@ -1,10 +1,10 @@
-# Evaluate abap2UI5
+# abap2UI5 for decision makers
 
-The page for the people who approve abap2UI5 rather than build with it — IT
-management, architecture boards, product owners, SAP Basis and internal audit:
-the problem it answers, when to use it and when RAP, what your organization
-keeps, where it runs, what it costs, the objections a review board raises, and
-how to evaluate it on one real screen in a week.
+The page that presents abap2UI5 to IT management, product owners and
+architecture boards: what you can build with it, why it beats every other way
+to build UI5 apps on SAP — commercial platforms included — what your
+organization keeps, where it runs, what it costs, and how to start with one
+real screen.
 
 **→ https://abap2ui5.github.io/test-docs/**
 
@@ -22,8 +22,7 @@ npm run dev       # http://localhost:4321/test-docs/
 npm run check     # build + tests, what CI runs
 ```
 
-Edit the text in `src/pages/index.astro`. The counted figures under the hero
-are read at build time from the framework README and are never typed here.
+Edit the text in `src/pages/index.astro`.
 
 ## License
 
