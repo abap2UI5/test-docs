@@ -21,14 +21,14 @@ const base = import.meta.env.BASE_URL;
  * commercial SAP app platforms sell (warehouse, maintenance, shop floor,
  * approvals), at no license fee. */
 const useCases = [
-  ["box", "Warehouse & logistics", "Goods receipt, picking, stock transfers and inventory counts on scanners, handhelds and tablets - in the browser, with the barcode scanner and camera of the device."],
-  ["wrench", "Maintenance & service", "Work orders, notifications and checklists for technicians, on the desktop in the workshop or on the phone at the machine."],
-  ["factory", "Production & shop floor", "Confirmations, quality inspections and the special processes the standard never covered - right where the work happens."],
-  ["check", "Approvals & workflows", "Purchase requisitions, invoices, leave and master-data requests: approve in one click, in the launchpad, in Teams or on the phone."],
-  ["gauge", "Cockpits & dashboards", "KPIs, charts and monitors for one team or one process, live from SAP - no data warehouse, no extra BI tool."],
-  ["form", "Paper & Excel replaced", "Forms, checklists and spreadsheets that live outside SAP become apps that write straight into it."],
-  ["list", "SAP GUI modernized", "Reports, ALV lists and transactions turn into browser apps one at a time, with the logic behind them unchanged."],
-  ["phone", "Mobile, without an app store", "Every app runs on iOS and Android in the browser or the mobile shell - nothing to install, nothing to distribute."],
+  ["box", "Warehouse & logistics", "Goods receipt, picking, stock transfers and inventory counts on scanners, handhelds and tablets - in the browser, with the barcode scanner and camera of the device.", "z2ui5_cl_smp_app_530", "A scan field for the warehouse: every scan lands in the list, no tap needed"],
+  ["wrench", "Maintenance & service", "Work orders, notifications and checklists for technicians, on the desktop in the workshop or on the phone at the machine.", "z2ui5_cl_smpc_app_089", "An object page: header, status and sections, as a work order would show them"],
+  ["factory", "Production & shop floor", "Confirmations, quality inspections, shift plans and the special processes the standard never covered - right where the work happens.", "z2ui5_cl_smpc_app_108", "A planning calendar, as a shift or capacity plan would use it"],
+  ["check", "Approvals & workflows", "Purchase requisitions, invoices, leave and master-data requests: approve in one click, in the launchpad, in Teams or on the phone.", "z2ui5_cl_smpc_app_291", "A notification inbox with priorities and actions"],
+  ["gauge", "Cockpits & dashboards", "KPIs, charts and monitors for one team or one process, live from SAP - no data warehouse, no extra BI tool.", "z2ui5_cl_smpc_app_517", "Launchpad tiles with KPIs, trends and figures"],
+  ["form", "Paper & Excel replaced", "Forms, checklists and spreadsheets that live outside SAP become apps that write straight into it.", "z2ui5_cl_smpc_app_329", "A form with an edit switch, instead of a paper form"],
+  ["list", "SAP GUI modernized", "Reports, ALV lists and transactions turn into browser apps one at a time, with the logic behind them unchanged.", "z2ui5_cl_smp_app_070", "An ALV-style table with search, sort, filter and row actions"],
+  ["phone", "Mobile, without an app store", "Every app runs on iOS and Android in the browser or the mobile shell - nothing to install, nothing to distribute.", "z2ui5_cl_smpc_app_024", "A feed app on a phone"],
 ];
 const useIt = [
   ["The team is ABAP.", "No JavaScript, no UI5 tooling, no Business Application Studio to set up. An app is one class, written, debugged, transported and unit-tested like every other class."],
@@ -167,7 +167,13 @@ const doors = [
       <h2 id="h-problem">One framework for every process that needs a screen</h2>
       <p class="intro">From the warehouse floor to the management cockpit: whatever runs in SAP today on paper, in Excel or in SAP GUI becomes a modern app - built in your own system, by your own team.</p>
       <div class="cards four">
-        {useCases.map(([icon, h, t]) => <div class="card"><Icon name={icon} /><h3>{h}</h3><p>{t}</p></div>)}
+        {useCases.map(([icon, h, t, cls, alt]) => (
+          <div class="card shot">
+            <a class="shot-img" href={`${PLAYGROUND}samples/${cls}/`}><img src={`${base}apps/${cls}.webp`} alt={alt} width="800" height="500" loading="lazy"></a>
+            <Icon name={icon} /><h3>{h}</h3><p>{t}</p>
+            <a class="shot-link" href={`${PLAYGROUND}samples/${cls}/`}>See the example app</a>
+          </div>
+        ))}
       </div>
       <p class="more">→ Browse the <a href={`${PLAYGROUND}samples/`}>sample catalog</a> for the screen closest to yours, or read <a href={`${DOCS}get_started/about`}>In a Nutshell</a> for how it works.</p>
     </div>
@@ -208,6 +214,10 @@ const doors = [
       <p class="kicker">AI</p>
       <h2 id="h-ai">The UI5 framework made for AI</h2>
       <p class="intro">An AI assistant is only as good as what it has to produce. With abap2UI5 that is one ABAP class - the simplest target there is for an AI, and the easiest result for your team to check. Your developers describe the screen; the AI writes it; your rules review and transport it like any other code.</p>
+      <div class="ai-split">
+        <a class="shot-img ai-shot" href={`${PLAYGROUND}samples/z2ui5_cl_smp_app_540/`}><img src={`${base}apps/z2ui5_cl_smp_app_540.webp`} alt="A chat assistant in an abap2UI5 app, with suggested questions" width="800" height="500" loading="lazy"></a>
+        <p>Example: <a href={`${PLAYGROUND}samples/z2ui5_cl_smp_app_540/`}>a chat assistant</a> inside an abap2UI5 app - one class, with a built-in rule-based answerer that one method turns into a real AI call.</p>
+      </div>
       <div class="cards three">
         {ai.map(([icon, h, t]) => <div class="card"><Icon name={icon} /><h3>{h}</h3><p>{t}</p></div>)}
       </div>

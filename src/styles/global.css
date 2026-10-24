@@ -203,6 +203,20 @@ code { font-family: var(--mono); font-size: .9em; }
 @media (max-width: 1060px) { .cards.four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .cards.four { grid-template-columns: minmax(0, 1fr); } }
 .cards.stack { margin-top: 0; grid-template-columns: minmax(0, 1fr); }
+/* a card led by a screenshot of a running sample app */
+.card.shot { display: flex; flex-direction: column; padding: 0 0 22px; overflow: hidden; }
+.card.shot > :not(.shot-img) { margin-left: 22px; margin-right: 22px; }
+.card.shot .icon { margin-top: 18px; }
+.shot-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-alt); border-bottom: 1px solid var(--line); }
+.shot-img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform .25s; }
+.shot-img:hover img { transform: scale(1.03); }
+.ai-split { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 28px; align-items: center; margin-top: 36px; }
+.ai-split p { margin: 0; color: var(--muted); }
+.ai-shot { border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+@media (max-width: 860px) { .ai-split { grid-template-columns: minmax(0, 1fr); } }
+.shot-link { margin-top: auto; padding-top: 14px; font-size: 14px; font-weight: 600; text-decoration: none; }
+.shot-link::after { content: " →"; }
+@media (prefers-reduced-motion: reduce) { .shot-img img { transition: none; } .shot-img:hover img { transform: none; } }
 .icon { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; background: var(--brand-soft); color: var(--brand); }
 .icon svg { width: 21px; height: 21px; }
 
