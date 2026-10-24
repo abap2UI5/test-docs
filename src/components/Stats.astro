@@ -1,0 +1,17 @@
+---
+/* The size of the thing, under the hero. The counts are read at build time
+ * from the framework README (src/lib/facts.mjs), never typed; the last two
+ * tiles are the release spans and the license, which are the project's
+ * claims rather than counts. Without the README the counts are left out and
+ * the two claims stay. */
+import { readFacts } from "../lib/facts.mjs";
+const facts = await readFacts();
+---
+<div class="stats wrap" aria-label="abap2UI5 in figures">
+  <ul>
+    {facts.map((f) => <li><b>{f.value}</b><span>{f.label}</span></li>)}
+    <li><b>7.02 → Cloud</b><span>one source for every ABAP release</span></li>
+    <li><b>MIT</b><span>no license fee, no per-user cost</span></li>
+  </ul>
+  {facts.length > 0 && <p>Counted from the framework repository at build time.</p>}
+</div>

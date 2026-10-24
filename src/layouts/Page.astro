@@ -1,0 +1,82 @@
+---
+/* The document around the page: head, the header with the sections, the foot.
+ *
+ * THE POLICY. GitHub Pages sets no headers of ours, so the Content-Security-
+ * Policy is a <meta>. The page runs one script, the cost calculator's
+ * public/calc.js, as a file from this origin - script-src is 'self', no inline
+ * script, no handler attribute, nothing from anywhere else - and everything
+ * else is this origin too. test/site.test.mjs holds the page to it. */
+import "../styles/global.css";
+
+interface Props { title: string; description: string }
+const { title, description } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const canonical = new URL(base, Astro.site).href;
+const CSP = [
+  "default-src 'self'",
+  "script-src 'self'",
+  "style-src 'self'",
+  "img-src 'self'",
+  "font-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'none'",
+].join("; ");
+const sections = [
+  ["the-problem-it-answers", "Problem"],
+  ["when-to-use-it-and-when-not", "Fit"],
+  ["what-you-keep", "Governance"],
+  ["no-strings-attached", "No strings"],
+  ["where-it-runs", "Platform"],
+  ["what-it-costs", "Cost"],
+  ["the-objections", "Objections"],
+  ["how-to-evaluate-it-in-a-week", "One week"],
+];
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content={CSP}>
+<title>{title}</title>
+<meta name="description" content={description}>
+<link rel="canonical" href={canonical}>
+<meta property="og:type" content="website">
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:url" content={canonical}>
+<meta property="og:image" content={new URL(`${base}walkthrough-preview.webp`, Astro.site).href}>
+<meta name="theme-color" content="#0b1220">
+<link rel="icon" href={`${base}favicon.png`}>
+<link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`}>
+<link rel="preload" href={`${base}fonts/inter-roman-latin.woff2`} as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href={base}><img src={`${base}logo.png`} alt="" width="28" height="28"> abap2UI5 <span>Evaluate</span></a>
+    <nav class="nav" aria-label="Sections">
+      {sections.map(([id, text]) => <a href={`#${id}`}>{text}</a>)}
+    </nav>
+    <a class="btn btn-primary" href="https://abap2ui5.github.io/playground/">Try it</a>
+  </div>
+</header>
+<main id="main">
+  <slot />
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <span>abap2UI5 · MIT licensed · built in the open</span>
+    <nav aria-label="More">
+      <a href="https://abap2ui5.github.io/docs/">Documentation</a>
+      <a href="https://abap2ui5.github.io/playground/samples/">Samples</a>
+      <a href="https://abap2ui5.github.io/playground/">Playground</a>
+      <a href="https://github.com/abap2UI5/abap2UI5">GitHub</a>
+      <a href="https://github.com/abap2UI5/test-docs">Edit this page</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
