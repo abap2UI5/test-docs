@@ -42,7 +42,7 @@ npm run check    # build + test, what CI runs
 - **Nothing from another origin.** No CDN, no web font service, no analytics;
   the font and the images are in `public/`.
 - **Written for managers.** No technical counts (tests, specs, gates) and no
-  "evaluate" in the visible text - `test/site.test.mjs` checks the latter.
+  "evaluate" or "problem" in the visible text - `test/site.test.mjs` checks the latter.
 - **Toolchain:** Node 22 (`.nvmrc`, `engines`), every dependency pinned
   exactly (astro 7.3.8), actions pinned to commits.
 - The site is written for people. Links into the manual are absolute

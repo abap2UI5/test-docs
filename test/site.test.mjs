@@ -55,7 +55,7 @@ test("the canonical address is the published one", () => {
 });
 
 test("the page speaks to decision makers, not reviewers", () => {
-  // the ids stay addresses; the words a reader sees never say "evaluate"
+  // the ids stay addresses; the words a reader sees never say "evaluate" or "problem"
   const visible = html.replace(/<head>[\s\S]*?<\/head>/, "").replace(/<[^>]+>/g, " ");
-  assert.doesNotMatch(visible, /evaluat/i);
+  assert.doesNotMatch(visible, /evaluat|problem/i);
 });
