@@ -96,13 +96,11 @@ code { font-family: var(--mono); font-size: .9em; }
 .top .wrap { display: flex; align-items: center; gap: 24px; height: 60px; }
 .mark { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 700; letter-spacing: -.01em; white-space: nowrap; }
 .mark img { width: 28px; height: 28px; }
-.mark span { color: var(--muted); font-weight: 500; }
 .nav { display: flex; gap: 4px; margin-left: auto; }
 .nav a { padding: 6px 10px; border-radius: 8px; color: var(--muted); font-size: 14px; font-weight: 500; text-decoration: none; }
 .nav a:hover { color: var(--ink); background: var(--bg-alt); }
 .top .btn { padding: 0 14px; line-height: 36px; font-size: 14px; }
 @media (max-width: 1060px) { .nav { display: none; } .top .btn { margin-left: auto; } }
-@media (max-width: 420px) { .mark span { display: none; } }
 
 /* ---- buttons ------------------------------------------------------------ */
 .btn {
