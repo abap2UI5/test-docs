@@ -81,6 +81,7 @@ const rivals = ["RAP + Fiori Elements", "Freestyle UI5 + OData", "Commercial UI5
 const compare = [
   ["License cost", "None: MIT, for any number of users, systems and apps", "Part of the SAP license", "Part of the SAP license", "Subscription or per-user fees, renewed every year"],
   ["Who builds the apps", "The ABAP team you already have", "ABAP plus CDS, RAP and annotation specialists", "JavaScript / UI5 developers", "Developers trained on the vendor's tool"],
+  ["Time to productivity", "An afternoon: an ABAP developer learns UI5's controls from the examples, not a new language", "Weeks: CDS, RAP, annotations, Business Application Studio", "Months: JavaScript, UI5 tooling, Git, npm", "The vendor's training"],
   ["First screen", "Minutes", "Days: model, service, project, deployment", "Days to weeks", "After the platform is installed and licensed"],
   ["Freedom of the UI", "Every UI5 control, any layout", "SAP's floorplans and their extension points", "Every UI5 control", "What the vendor's designer offers"],
   ["Older SAP releases", "NetWeaver 7.02 up to ABAP Cloud, one source", "7.5x and later", "Yes, with OData effort per release", "Depends on the vendor's add-on"],
@@ -92,7 +93,7 @@ const compare = [
   ["Support", "Slack and GitHub issues, open to anyone at any time; more by mail, planned together. No SLA in a contract", "SAP support", "SAP support for UI5; your app is yours", "The vendor's SLA, in the contract", "even"],
 ];
 const useIt = [
-  ["The team is ABAP.", "No JavaScript, no UI5 tooling, no Business Application Studio. An app is one class, written, debugged, transported and tested like every other class."],
+  ["The team is ABAP.", "No JavaScript, no UI5 tooling, no Business Application Studio, no training project before the S/4HANA project. An app is one class, written, debugged, transported and tested like every other class. What your developers still learn: UI5's controls and their properties, from the examples, not a new language."],
   ["The system is older than RAP.", "NetWeaver 7.02 to 7.4x have no RAP and a Fiori stack that is expensive to add. An app written there today moves to S/4HANA unchanged."],
   ["The screen is yours, not SAP's.", "Tools, cockpits, monitors, admin consoles, anything that used to be a report or a module pool. Where a Fiori Elements template becomes the thing you fight, abap2UI5 is the shorter path."],
   ["Your Fiori apps and your logic stay.", "abap2UI5 apps are tiles in the same launchpad. A report, a BAPI, a function module: an app calls it as it is."],
@@ -132,7 +133,7 @@ const cost = [
 const strings = [
   ["Nothing to sign up for", "The examples run in the browser with no account. The framework is an abapGit pull; there is no trial period and no demo to book."],
   ["No extra platform", "No BTP subscription, no middleware, no server of its own. One service endpoint on the system you already run."],
-  ["Free to leave", "The apps stay ordinary classes. A build renamed into your own namespace is one workflow run, and the source is yours to fork."],
+  ["Free to leave", "The apps stay ordinary classes, and the skill your team invests in is ABAP, the one it keeps whatever the next UI technology is. A build renamed into your own namespace is one workflow run, and the source is yours to fork."],
   ["Built in the open", "Every issue, every release and the backlog are public on GitHub."],
 ];
 
@@ -151,6 +152,7 @@ const objections = [
   ["Every click is a request to SAP. Is that fast enough?", `A request carries only what changed and is served by the ABAP stack that already serves everything else. For worklists, forms and cockpits it is the same round trip a SAP GUI screen makes, in a browser. It is not built for an app that holds its state offline (<a href="${DOCS}configuration/performance">Performance</a>).`],
   ["Our clean-core guideline names RAP. Where does this leave us?", "Side by side. abap2UI5 passes the ABAP Cloud checks and modifies nothing in the standard, so it is clean core in the technical sense, but it is not SAP's programming model. The usual outcome is a scope: standard transactional screens in RAP, the tools around them in abap2UI5, both in one launchpad."],
   ["Why should we trust it over a product we pay for?", "Because you can check everything a vendor asks you to believe. The source is open, every test is public, and an app is a class in your own system that keeps running whatever happens to the project. What you do not get is an SLA in a contract; what you get is the code, and a maintainer you can reach."],
+  ["Our users are fast in SAP GUI. Will they accept it?", "The reason users go back to SAP GUI is a Fiori app that is slower than the transaction it replaced. An abap2UI5 screen makes one request per click, served by the ABAP stack that already serves the transaction, so the keyboard-driven worklist stays as quick as it was. And nothing is replaced in one go: one screen at a time, the GUI stays until the last one, and the logic behind both is the same code."],
   ["Is anybody actually running this in production?", `Two companies say so on this page, and every release is tested against Standard ABAP and ABAP Cloud, downported to NetWeaver 7.02 and run in the browser on the oldest and the newest supported UI5 release (<a href="${GITHUB}/blob/main/docs/verified-on.md">verified on</a>).`],
 ];
 
@@ -211,7 +213,7 @@ const give = [
           </div>
         ))}
       </div>
-      <p class="more">→ Browse the <a href={`${PLAYGROUND}samples/`}>example apps</a> for the screen closest to yours, or read <a href={`${DOCS}get_started/about`}>In a Nutshell</a> for how it works.</p>
+      <p class="more">→ Browse the <a href={`${PLAYGROUND}samples/`}>example apps</a> for the screen closest to yours: 130 learning samples and 680 control examples, each one running in the browser, maintained with the framework rather than left to go stale. Or read <a href={`${DOCS}get_started/about`}>In a Nutshell</a> for how it works.</p>
     </div>
   </section>
 
