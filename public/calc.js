@@ -28,7 +28,7 @@ if (root) {
     });
     const picked = [...root.querySelectorAll("input[name=calc-release]:checked")].map((i) => i.dataset.choice);
     echo("release", picked.length ? picked.join(", ") : "no system at all");
-    echo("support", root.querySelector("input[name=calc-support]:checked")?.dataset.choice || "No support");
+    echo("support", root.querySelector("input[name=calc-support]:checked")?.dataset.choice || "In the open");
     const zero = new Intl.NumberFormat("en-US", { style: "currency", currency: currency.value, maximumFractionDigits: 0 }).format(0);
     root.querySelectorAll("[data-amount]").forEach((el) => { el.textContent = zero; });
   };

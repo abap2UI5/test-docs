@@ -73,7 +73,8 @@ test("the comparison names where abap2UI5 is not ahead, and the support it has",
   // the rows a reader would otherwise find missing: an even row carries no tick
   assert.ok((html.match(/class="us even"/g) || []).length >= 3, "even rows in the comparison");
   assert.match(visible, /Where something else fits better/);
-  assert.match(visible, /best effort/);
+  assert.match(visible, /issue or (a |send a )?pull request/);
+  assert.doesNotMatch(visible, /best effort|no support/i);
 });
 
 test("every cell of a comparison names its column, for the one-card-per-row layout", () => {

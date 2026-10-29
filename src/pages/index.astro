@@ -89,7 +89,7 @@ const compare = [
   ["Source code", "Open, every line, on GitHub", "Closed", "UI5 open, your app yours", "Closed"],
   ["Standard transactional apps", "Possible, but hand-built; the standard route is RAP", "Its home ground: list report and object page from annotations", "Hand-built", "From the vendor's templates", "even"],
   ["Offline", "Not built for it: an app needs its connection to SAP", "Offline with extra tooling", "Possible, with effort", "Depends on the vendor", "even"],
-  ["Support", "Community, best effort; no vendor SLA on offer today", "SAP support", "SAP support for UI5; your app is yours", "The vendor's SLA, in the contract", "even"],
+  ["Support", "In the open: an issue or a pull request on GitHub, any time; more by mail on request. No SLA in a contract", "SAP support", "SAP support for UI5; your app is yours", "The vendor's SLA, in the contract", "even"],
 ];
 const useIt = [
   ["The team is ABAP.", "No JavaScript, no UI5 tooling, no Business Application Studio. An app is one class, written, debugged, transported and tested like every other class."],
@@ -101,7 +101,7 @@ const notIt = [
   ["You want the SAP standard transactional app.", "A list report with an object page on S/4HANA, from a released CDS model: RAP and Fiori Elements are the shorter path, and the one SAP supports."],
   ["The app must work offline.", "Every click is one request to the SAP system. A device that works without a network is not what it is for; live data on a connected screen is."],
   ["Your guideline mandates SAP's programming model.", "abap2UI5 is clean core in the technical sense, but it is not RAP. The usual outcome is a scope, not a replacement."],
-  ["You need a vendor with an SLA.", "Support is the community's, on a best-effort basis. Nobody offers a support contract for the framework today; training and certification are available."],
+  ["Your rules need an SLA on paper.", "Support happens in the open: anyone can open an issue or send a pull request on GitHub at any time, and that is where answers come fastest. If you need more than that, write to the maintainers; what is not on offer is an SLA in a contract."],
 ];
 
 /* Governance: an app is an ABAP class, against a tool that stores apps as
@@ -125,7 +125,7 @@ const governance = [
 const cost = [
   ["Framework license", "MIT, commercial use included, for any number of users, systems and apps", "0"],
   ["Platform, runtime, hosting", "One service on the SAP system you already run; the UI5 your system already ships", "0"],
-  ["Support", "GitHub issues and Slack, open to everybody, best effort", "0"],
+  ["Support", "GitHub issues, pull requests and Slack, open to everybody, any time", "0"],
   ["Developer time", "An ABAP developer writes the screen, as for any class; this is the bill", "your rate"],
   ["Training and consulting", "Webinars, certification, app development by a consultancy, if you want them", "optional"],
 ];
@@ -146,11 +146,11 @@ const ai = [
 
 const objections = [
   ["It is an open-source project. What if the maintainers stop?", `The installed version keeps running, the source is in your system in full, readable and changeable, and the apps stay ordinary ABAP classes. Nothing is called at runtime that is not in your system, apart from the UI5 library, which your system ships. A build renamed into your own namespace is one workflow run (<a href="${DOCS}advanced/renaming">Namespaces, Renaming</a>).`],
-  ["Who do we call when something breaks?", `Your developer, for the app, as for any class in the system; the community, for the framework, on <a href="${GITHUB}/issues">GitHub</a> and in <a href="${SLACK}">Slack</a>, on a best-effort basis. Nobody offers a support contract for the framework today (<a href="${GITHUB}/blob/main/SUPPORT.md">Support</a>); Logali Group offers training and certification. Security reports are acknowledged within three business days (<a href="${DOCS}configuration/security">Security</a>).`],
+  ["Who do we call when something breaks?", `Your developer, for the app, as for any class in the system. For the framework, open an <a href="${GITHUB}/issues">issue</a> or send a pull request on GitHub, or ask in <a href="${SLACK}">Slack</a>: anyone can, at any time, and in the open is where it gets answered fastest and where everybody sees the answer. If your organization needs more, closer cooperation or a support arrangement, write to <a href="mailto:${MAIL}">${MAIL}</a> (<a href="${GITHUB}/blob/main/SUPPORT.md">Support</a>). Security reports are acknowledged within three business days (<a href="${DOCS}configuration/security">Security</a>).`],
   ["Is this another UI5 wrapper that will not survive the next UI5 release?", `The frontend is UI5 itself, not a copy of it, and every change is run in the browser on the oldest supported release and on UI5 2.x. Releases are tagged and listed (<a href="${DOCS}resources/changelog">Release Notes</a>); what is on its way out is announced and tracked until removal (<a href="${DOCS}resources/deprecations">Deprecations</a>).`],
   ["Every click is a request to SAP. Is that fast enough?", `A request carries only what changed and is served by the ABAP stack that already serves everything else. For worklists, forms and cockpits it is the same round trip a SAP GUI screen makes, in a browser. It is not built for an app that holds its state offline (<a href="${DOCS}configuration/performance">Performance</a>).`],
   ["Our clean-core guideline names RAP. Where does this leave us?", "Side by side. abap2UI5 passes the ABAP Cloud checks and modifies nothing in the standard, so it is clean core in the technical sense, but it is not SAP's programming model. The usual outcome is a scope: standard transactional screens in RAP, the tools around them in abap2UI5, both in one launchpad."],
-  ["Why should we trust it over a product we pay for?", "Because you can check everything a vendor asks you to believe. The source is open, every test is public, and an app is a class in your own system that keeps running whatever happens to the project. What you give up is a contract with an SLA; what you keep is the code."],
+  ["Why should we trust it over a product we pay for?", "Because you can check everything a vendor asks you to believe. The source is open, every test is public, and an app is a class in your own system that keeps running whatever happens to the project. What you do not get is an SLA in a contract; what you get is the code, and a maintainer you can reach."],
   ["Is anybody actually running this in production?", `Two companies say so on this page, and every release is tested against Standard ABAP and ABAP Cloud, downported to NetWeaver 7.02 and run in the browser on the oldest and the newest supported UI5 release (<a href="${GITHUB}/blob/main/docs/verified-on.md">verified on</a>).`],
 ];
 
