@@ -194,12 +194,6 @@ code { font-family: var(--mono); font-size: .9em; }
 .card p { margin: 0; font-size: 15px; color: var(--muted); }
 .card h3.first { margin-top: 0; }
 .card p.after { margin-top: 14px; }
-.cards.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-@media (max-width: 1060px) { .cards.five { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .cards.five { grid-template-columns: minmax(0, 1fr); } }
-.cards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-@media (max-width: 1060px) { .cards.three { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .cards.three { grid-template-columns: minmax(0, 1fr); } }
 .cards.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 1060px) { .cards.four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .cards.four { grid-template-columns: minmax(0, 1fr); } }
@@ -393,6 +387,17 @@ code { font-family: var(--mono); font-size: .9em; }
 .strings b { display: block; color: var(--ink); font-size: 16px; line-height: 1.35; }
 .strings span { display: block; margin-top: 6px; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
 .strings span a { font-weight: 600; }
+
+/* plain lists with a mark: governance and AI, no boxes */
+.plain { display: grid; gap: 0 48px; margin: 36px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.plain.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.plain.three { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 40px; }
+@media (max-width: 860px) { .plain.two, .plain.three { grid-template-columns: minmax(0, 1fr); gap: 0; } }
+.plain li { display: flex; gap: 14px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.plain .icon { flex: none; width: 34px; height: 34px; border-radius: 9px; }
+.plain .icon svg { width: 18px; height: 18px; }
+.plain li > div > b { display: block; color: var(--ink); font-size: 16px; line-height: 1.35; }
+.plain li > div > span { display: block; margin-top: 4px; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
 
 /* the foot */
 .foot { padding: 36px 0 44px; background: var(--bg-alt); color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }

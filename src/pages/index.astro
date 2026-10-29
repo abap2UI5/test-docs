@@ -263,9 +263,9 @@ const community = [
           <tbody>{keep.map(([k, a, b]) => <tr><th scope="row">{k}</th><td class="us" data-th="abap2UI5">{a}</td><td data-th="A tool that stores apps as configuration">{b}</td></tr>)}</tbody>
         </table>
       </div>
-      <div class="cards five">
-        {governance.map(([icon, h, t]) => <div class="card"><Icon name={icon} /><h3>{h}</h3><p>{t}</p></div>)}
-      </div>
+      <ul class="plain two">
+        {governance.map(([icon, h, t]) => <li><Icon name={icon} /><div><b>{h}</b><span>{t}</span></div></li>)}
+      </ul>
       <p class="callout"><b>No shadow IT.</b> No click-together designer bypasses your development process: every app is a class, under the rules you already have.</p>
       <p class="more">→ <a href={`${DOCS}configuration/security`}>Security</a>, <a href={`${DOCS}configuration/authorization`}>Authorization</a>, and the <a href={`${GITHUB}/blob/main/docs/security.md`}>security model</a> a security review starts from.</p>
     </div>
@@ -328,9 +328,9 @@ const community = [
       <p class="kicker">AI</p>
       <h2 id="h-ai">One class is the easiest thing for an AI to write and for your team to check</h2>
       <p class="intro">Your developers describe the screen; the AI writes one ABAP class; your rules review and transport it like any other code. No service, frontend project or deployment to keep in sync.</p>
-      <div class="cards three">
-        {ai.map(([icon, h, t]) => <div class="card"><Icon name={icon} /><h3>{h}</h3><p>{t}</p></div>)}
-      </div>
+      <ul class="plain three">
+        {ai.map(([icon, h, t]) => <li><Icon name={icon} /><div><b>{h}</b><span>{t}</span></div></li>)}
+      </ul>
       <p class="callout"><b>No AI lock-in either.</b> Claude, ChatGPT, Copilot or a local model, with your own key. The plugins and the AI Studio cost nothing.</p>
       <p class="more">→ Try the <a href={`${PLAYGROUND}ai/`}>AI Studio</a>, or read <a href={`${DOCS}get_started/ai`}>Developing with AI</a>.</p>
     </div>
