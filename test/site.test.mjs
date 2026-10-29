@@ -8,7 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const DIST = path.join(import.meta.dirname, "..", "dist");
-const BASE = "/test-docs/";
+const BASE = "/why/";
 const html = fs.readFileSync(path.join(DIST, "index.html"), "utf8");
 
 test("the eight section ids are the addresses the redirect and the README link to", () => {
@@ -25,7 +25,7 @@ test("the page runs one script, as a file from this origin, and its policy says 
   // the cost calculator's public/calc.js - and no inline script beside it
   const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
   assert.equal(scripts.length, 1, "one <script>");
-  assert.match(scripts[0][1], /src="\/test-docs\/calc\.js"/);
+  assert.match(scripts[0][1], /src="\/why\/calc\.js"/);
   assert.equal(scripts[0][2].trim(), "", "the script is a file, not inline");
   assert.ok(fs.existsSync(path.join(DIST, "calc.js")));
   assert.doesNotMatch(html, /\son[a-z]+=/i, "an inline event handler");
@@ -51,7 +51,7 @@ test("everything the page loads is in dist/, under the base it is published at",
 });
 
 test("the canonical address is the published one", () => {
-  assert.match(html, /<link rel="canonical" href="https:\/\/abap2ui5\.github\.io\/test-docs\/">/);
+  assert.match(html, /<link rel="canonical" href="https:\/\/abap2ui5\.github\.io\/why\/">/);
 });
 
 const visible = html.replace(/<head>[\s\S]*?<\/head>/, "").replace(/<[^>]+>/g, " ");
@@ -73,7 +73,9 @@ test("the comparison names where abap2UI5 is not ahead, and the support it has",
   // the rows a reader would otherwise find missing: an even row carries no tick
   assert.ok((html.match(/class="us even"/g) || []).length >= 3, "even rows in the comparison");
   assert.match(visible, /Where something else fits better/);
-  assert.match(visible, /best effort/);
+  assert.match(visible, /Slack/);
+  assert.ok((visible.match(/Slack/g) || []).length >= 4, "Slack named where support is");
+  assert.doesNotMatch(visible, /best effort|no support/i);
 });
 
 test("every cell of a comparison names its column, for the one-card-per-row layout", () => {

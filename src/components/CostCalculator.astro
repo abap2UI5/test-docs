@@ -4,7 +4,7 @@
  * and the page says why on each one.
  *
  * It works without its script: the sheet is in the page with the default
- * values, and /test-docs/calc.js (public/calc.js, a file of its own because the
+ * values, and /why/calc.js (public/calc.js, a file of its own because the
  * policy allows scripts from this origin only, never inline) makes the sliders
  * speak, hides the sheet until Calculate and echoes the choices into it. */
 const DOCS = "https://abap2ui5.github.io/docs/";
@@ -37,7 +37,7 @@ const lines = [
   ["Platform", ": the same class runs on every one of them, from 7.02 up", "release"],
   ["Runtime", ", every one of them served by your own ABAP stack", "roundtrips"],
   ["Frontend hosting", "the UI5 your system already ships, and no frontend deployment", null],
-  ["Support", ": GitHub issues and Slack are open to everybody either way", "support"],
+  ["Support", ": Slack and GitHub issues are open to anyone at any time; more by mail, planned together", "support"],
   ["Upgrades", " of releases, each one an abapGit pull", "term"],
 ];
 ---
@@ -55,7 +55,7 @@ const lines = [
     ))}
     <fieldset class="calc-row calc-choices">
       <legend>Support</legend>
-      <span><label><input type="radio" name="calc-support" value="none" data-choice="No support"> No support</label><label><input type="radio" name="calc-support" value="community" data-choice="Community support" checked> Community support</label></span>
+      <span><label><input type="radio" name="calc-support" value="community" data-choice="In the open" checked> In the open: Slack, GitHub issues, pull requests</label><label><input type="radio" name="calc-support" value="mail" data-choice="In the open, plus the maintainers by mail"> Plus the maintainers by mail</label></span>
     </fieldset>
     {sliders.slice(5).map(([id, text, stops, at, unit]) => (
       <div class="calc-row"><label for={`calc-${id}`}>{text}</label><input id={`calc-${id}`} type="range" min="0" max={String((stops as string).split("|").length - 1)} value={String(at)} data-stops={stops} data-unit={unit} data-key={id}><output for={`calc-${id}`} data-out={id}>{echo[id as string]}</output></div>
@@ -67,7 +67,7 @@ const lines = [
     <div class="calc-sheet">
       {lines.map(([what, note, key]) => (
         <div class="calc-line">
-          <span class="calc-what">{what}<small>{key ? <><span data-echo={key}>{key === "release" ? "S/4HANA on-premise" : key === "support" ? "Community support" : echo[key as string]}</span>{note}</> : note}</small></span>
+          <span class="calc-what">{what}<small>{key ? <><span data-echo={key}>{key === "release" ? "S/4HANA on-premise" : key === "support" ? "In the open" : echo[key as string]}</span>{note}</> : note}</small></span>
           <span class="calc-amount" data-amount>€0</span>
         </div>
       ))}

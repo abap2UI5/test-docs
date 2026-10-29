@@ -5,7 +5,7 @@ architecture boards: what you can build with it, who runs it, where it is the
 shorter path to a UI5 app on SAP and where it is not, what your organization
 keeps, where it runs, what it costs, and how to start with one real screen.
 
-**→ https://abap2ui5.github.io/test-docs/**
+**→ https://abap2ui5.github.io/why/**
 
 A standalone site, independent of the
 [documentation](https://abap2ui5.github.io/docs/) and the
@@ -17,7 +17,7 @@ page; its one script is the cost calculator's.
 
 ```bash
 npm ci
-npm run dev       # http://localhost:4321/test-docs/
+npm run dev       # http://localhost:4321/why/
 npm run check     # build + tests, what CI runs
 ```
 

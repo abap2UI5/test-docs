@@ -3,7 +3,7 @@
 abap2UI5 for decision makers: one static page that presents abap2UI5 to IT
 management and product owners - what it can build, who runs it, where it is
 the shorter path to a UI5 app on SAP and where it is not, what it costs -
-published at https://abap2ui5.github.io/test-docs/ by GitHub Pages. A
+published at https://abap2ui5.github.io/why/ by GitHub Pages. A
 standalone site — its own repository, build and deployment — and nothing in
 it depends on abap2UI5/docs or abap2UI5/playground at build time.
 
@@ -24,7 +24,7 @@ it depends on abap2UI5/docs or abap2UI5/playground at build time.
 
 ```bash
 npm ci
-npm run dev      # dev server, http://localhost:4321/test-docs/
+npm run dev      # dev server, http://localhost:4321/why/
 npm run build    # dist/
 npm test         # the tests, against dist/ - build first
 npm run check    # build + test, what CI runs
@@ -49,9 +49,11 @@ npm run check    # build + test, what CI runs
 - **Short, honest, in this order.** A reader gives the page a few minutes:
   the visible text outside `<details>` stays under 2,600 words (the test holds
   it). The comparison names where abap2UI5 is *not* ahead (rows marked `even`,
-  the "Where something else fits better" box) and the support it has (community,
-  best effort, no vendor SLA on offer - `SUPPORT.md` in the framework is the
-  source). Proof ("Who runs it") comes before the comparison, cost before AI.
+  the "Where something else fits better" box) and the support it has: in the
+  open first - anyone can open an issue or send a pull request on GitHub at any
+  time - and more by mail to contact@abap2UI5.org on request; what is not on
+  offer is an SLA in a contract (`SUPPORT.md` in the framework is the source).
+  Never "no support": the open channel is the support, and the better one. Proof ("Who runs it") comes before the comparison, cost before AI.
   No superlatives ("better than every", "made for"); a claim a reader cannot
   check is cut, not softened. Add-ons, Basis steps and other developer topics
   are links into the manual, not sections.

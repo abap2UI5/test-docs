@@ -1,5 +1,5 @@
 # Build, test and publish the page to GitHub Pages at
-# https://abap2ui5.github.io/test-docs/.
+# https://abap2ui5.github.io/why/.
 #
 # On a pull request it builds and tests only. On main it also deploys.
 #
