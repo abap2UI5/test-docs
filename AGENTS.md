@@ -13,8 +13,7 @@ it depends on abap2UI5/docs or abap2UI5/playground at build time.
 | --- | --- |
 | `src/pages/index.astro` | The page: the text of every section, as data at the top and markup below |
 | `src/layouts/Page.astro` | The document: head, the Content-Security-Policy, the header with the section links, the foot |
-| `src/components/` | `Stats` (the headline tiles under the hero), `CostCalculator` (the sheet, folded under What it costs), `Icon` (inline marks) |
-| `public/calc.js` | The cost calculator in the browser - the page's one script; the calculator reads correctly without it |
+| `src/components/` | `Stats` (the headline tiles under the hero), `Icon` (inline marks) |
 | `src/styles/global.css` | The one stylesheet; light and dark follow the system |
 | `public/` | Font (Inter, self-hosted), logo, icons, `apps/` (one screenshot per example app; the hero shows one of them) |
 | `test/site.test.mjs` | `node:test` over the built `dist/index.html` |
@@ -36,10 +35,10 @@ npm run check    # build + test, what CI runs
   with its `#fragment`, and the framework's README links `#what-you-keep` and
   `#when-to-use-it-and-when-not`. Reword a heading freely; keep the `id`.
   `test/site.test.mjs` names all eight.
-- **One script, as a file.** The policy is `script-src 'self'`: `public/calc.js`
-  and nothing inline, no `on…=` handler. Everything else works without it - the
-  FAQ is `<details>`, the header is anchors, the calculator's sheet is in the
-  page. No inline `style=""` either (`style-src 'self'`) — a class in `global.css`.
+- **No script.** The policy is `script-src 'self'` and the page ships none:
+  no inline script, no `on…=` handler. The FAQ and the folded references are
+  `<details>`, the header is anchors. No inline `style=""` either
+  (`style-src 'self'`) — a class in `global.css`.
 - **Nothing from another origin.** No CDN, no web font service, no analytics;
   the font and the images are in `public/`.
 - **Written for managers.** No technical counts (tests, specs, gates) and no
@@ -63,8 +62,8 @@ npm run check    # build + test, what CI runs
 - **Toolchain:** Node 22 (`.nvmrc`, `engines`), every dependency pinned
   exactly (astro 7.3.8), actions pinned to commits.
 - **The one place for decision makers.** The manual (abap2UI5/docs) is for
-  developers and links here; what used to be its Evaluate page, cost
-  calculator, Who Uses and References lists lives on this page only, and its
-  old addresses redirect here. Do not copy a developer topic in, link it.
+  developers and links here; what used to be its Evaluate page, Who Uses and
+  References lists lives on this page only, and its old addresses redirect
+  here (the cost calculator's address lands on What it costs). Do not copy a developer topic in, link it.
 - The site is written for people. Links into the manual are absolute
   (`https://abap2ui5.github.io/docs/...`).

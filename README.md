@@ -11,7 +11,7 @@ A standalone site, independent of the
 [documentation](https://abap2ui5.github.io/docs/) and the
 [playground](https://abap2ui5.github.io/playground/): its own repository,
 build and deployment. Built with [Astro](https://astro.build) into one static
-page; its one script is the cost calculator's.
+page, without a script.
 
 ## Run it
 

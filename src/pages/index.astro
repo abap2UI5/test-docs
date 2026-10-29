@@ -14,7 +14,6 @@
 import Page from "../layouts/Page.astro";
 import Stats from "../components/Stats.astro";
 import Icon from "../components/Icon.astro";
-import CostCalculator from "../components/CostCalculator.astro";
 
 const DOCS = "https://abap2ui5.github.io/docs/";
 const PLAYGROUND = "https://abap2ui5.github.io/playground/";
@@ -292,11 +291,6 @@ const community = [
         </div>
       </div>
       <ul class="strings" id="no-strings-attached">{strings.map(([b, t]) => <li><b>{b}</b><span>{t}</span></li>)}</ul>
-      <details class="calc-details">
-        <summary>Work it out for your landscape</summary>
-        <p class="intro">Set the sliders to your landscape, tick your systems, pick a currency, press Calculate. It stays zero; the sheet says why on each line.</p>
-        <CostCalculator />
-      </details>
       <p class="more">→ More on the <a href={`${DOCS}resources/license`}>License</a> and <a href={`${GITHUB}/blob/main/SUPPORT.md`}>Support</a>.</p>
     </div>
   </section>
