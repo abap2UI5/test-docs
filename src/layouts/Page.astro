@@ -5,7 +5,11 @@
  * Policy is a <meta>. The page runs one script, the cost calculator's
  * public/calc.js, as a file from this origin - script-src is 'self', no inline
  * script, no handler attribute, nothing from anywhere else - and everything
- * else is this origin too. test/site.test.mjs holds the page to it. */
+ * else is this origin too. test/site.test.mjs holds the page to it.
+ *
+ * THE HEADER. The section links stay on every width: on a narrow screen they
+ * become a second row that scrolls sideways, so a reader on a phone has a
+ * table of contents rather than only a button. */
 import "../styles/global.css";
 
 interface Props { title: string; description: string }
@@ -24,15 +28,15 @@ const CSP = [
 ].join("; ");
 const sections = [
   ["the-problem-it-answers", "Use cases"],
-  ["when-to-use-it-and-when-not", "Comparison"],
-  ["ai", "AI"],
+  ["who-runs-it", "Who runs it"],
+  ["when-to-use-it-and-when-not", "Where it fits"],
   ["what-you-keep", "Governance"],
-  ["no-strings-attached", "No strings"],
-  ["where-it-runs", "Platform"],
   ["what-it-costs", "Cost"],
   ["the-objections", "FAQ"],
   ["how-to-evaluate-it-in-a-week", "Get started"],
 ];
+// the build date, so a reader knows how old the figures on the page are
+const updated = new Date().toISOString().slice(0, 10);
 ---
 <!doctype html>
 <html lang="en">
@@ -47,7 +51,7 @@ const sections = [
 <meta property="og:title" content={title}>
 <meta property="og:description" content={description}>
 <meta property="og:url" content={canonical}>
-<meta property="og:image" content={new URL(`${base}walkthrough-preview.webp`, Astro.site).href}>
+<meta property="og:image" content={new URL(`${base}apps/z2ui5_cl_smp_app_070.webp`, Astro.site).href}>
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href={`${base}favicon.png`}>
 <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`}>
@@ -58,10 +62,10 @@ const sections = [
 <header class="top">
   <div class="wrap">
     <a class="mark" href={base}><img src={`${base}logo.png`} alt="" width="28" height="28"> abap2UI5</a>
+    <a class="btn btn-primary" href="https://abap2ui5.github.io/playground/samples/">Examples</a>
     <nav class="nav" aria-label="Sections">
       {sections.map(([id, text]) => <a href={`#${id}`}>{text}</a>)}
     </nav>
-    <a class="btn btn-primary" href="https://abap2ui5.github.io/playground/">Try it</a>
   </div>
 </header>
 <main id="main">
@@ -69,7 +73,7 @@ const sections = [
 </main>
 <footer class="foot">
   <div class="wrap">
-    <span>abap2UI5 · MIT licensed · built in the open</span>
+    <span>abap2UI5 · MIT licensed · built in the open · page updated <time datetime={updated}>{updated}</time> · <a href="mailto:contact@abap2UI5.org">contact@abap2UI5.org</a></span>
     <nav aria-label="More">
       <a href="https://abap2ui5.github.io/docs/">Documentation</a>
       <a href="https://abap2ui5.github.io/playground/samples/">Samples</a>

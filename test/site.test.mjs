@@ -54,8 +54,28 @@ test("the canonical address is the published one", () => {
   assert.match(html, /<link rel="canonical" href="https:\/\/abap2ui5\.github\.io\/test-docs\/">/);
 });
 
+const visible = html.replace(/<head>[\s\S]*?<\/head>/, "").replace(/<[^>]+>/g, " ");
+
 test("the page speaks to decision makers, not reviewers", () => {
   // the ids stay addresses; the words a reader sees never say "evaluate" or "problem"
-  const visible = html.replace(/<head>[\s\S]*?<\/head>/, "").replace(/<[^>]+>/g, " ");
   assert.doesNotMatch(visible, /evaluat|problem/i);
+});
+
+test("the page can be read in a few minutes", () => {
+  // a decision maker gives it two or three minutes; what does not fit goes
+  // into the manual as a link, or folds under a <details>
+  const open = html.replace(/<head>[\s\S]*?<\/head>/, "").replace(/<details[\s\S]*?<\/details>/g, "").replace(/<[^>]+>/g, " ");
+  const words = open.trim().split(/\s+/).length;
+  assert.ok(words <= 2600, `${words} words on the page`);
+});
+
+test("the comparison names where abap2UI5 is not ahead, and the support it has", () => {
+  // the rows a reader would otherwise find missing: an even row carries no tick
+  assert.ok((html.match(/class="us even"/g) || []).length >= 3, "even rows in the comparison");
+  assert.match(visible, /Where something else fits better/);
+  assert.match(visible, /best effort/);
+});
+
+test("every cell of a comparison names its column, for the one-card-per-row layout", () => {
+  for (const m of html.matchAll(/<td(?![^>]*data-th=)[^>]*>/g)) assert.fail(`a <td> without data-th: ${m[0]}`);
 });
