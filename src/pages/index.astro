@@ -170,10 +170,15 @@ const doors = [
   ["chat", "A question, any time", "Write in the Slack channel, where the people who run it in production answer, or open a GitHub issue. Anyone, any time.", SLACK, "Slack"],
   ["partner", "More than a question", `A workshop, closer cooperation, a support arrangement: write to ${MAIL} and plan it together.`, `mailto:${MAIL}`, "Mail"],
 ];
-const give = [
-  ["Add your company.", `One row under <a href="#who-runs-it">Who runs it</a> is what answers <i>is anybody actually running this?</i> for the next reader.`],
-  ["Report what broke.", `An <a href="${GITHUB}/issues">issue</a> with a class that reproduces the bug is half of the fix already.`],
-  ["Sponsor the work.", `<a href="${DOCS}resources/sponsor">The contributors</a>, and the open-source projects it stands on.`],
+/* The community: open source, in the open, and what a reader can give back.
+ * Every item is a thing to do, with the place to do it. */
+const community = [
+  ["Open source, and it stays that way", `MIT licensed since the first commit, every line on <a href="${GITHUB}">GitHub</a>, forks welcome. No company owns it that could close it, change the license or put the next release behind a login.`],
+  ["We help each other", `Questions go to <a href="${SLACK}">Slack</a> and <a href="${GITHUB}/issues">GitHub</a>, answers stay public. Every question makes the documentation and the examples better for the next person, so ask yours in the open.`],
+  ["Built on abapGit and abaplint", `The installation, the tests and every release stand on <a href="https://abapgit.org">abapGit</a> and <a href="https://abaplint.org">abaplint</a>. If abap2UI5 saves you money, consider <a href="https://abapgit.org/sponsor.html">supporting the people behind them</a> too.`],
+  ["Add-ons: share yours", `Selection screens, table maintenance, popups, a launchpad KPI: the building blocks live as <a href="https://github.com/abap2UI5-addons">add-ons</a> in the open. The screen you solved for your plant is probably somebody else's next week.`],
+  ["Say what you build", `A post on <a href="https://www.linkedin.com/company/abap2ui5">LinkedIn</a> with #abap2UI5, a talk at your user group, a row under <a href="#who-runs-it">Who runs it</a>: that is how the next decision maker learns it exists.`],
+  ["Sponsor the work", `Those zeros are written in somebody's evenings. <a href="${DOCS}resources/sponsor">Sponsoring the contributors</a> is the way to say the release you pull next month matters to you.`],
 ];
 ---
 <Page
@@ -222,8 +227,11 @@ const give = [
     <div class="wrap">
       <p class="kicker">Who runs it</p>
       <h2 id="h-who">In production, in the open, since 2023</h2>
-      <p class="intro">Two companies run it in production and say so here; one offers training and certification for it. The project is public down to every change, so every figure below can be checked.</p>
-      <ul class="logos">{companies.map(([name, href, tag, text]) => <li><a href={href}>{name}</a><small>{tag}</small><span>{text}</span></li>)}</ul>
+      <p class="intro">Two companies run it in production and say so here; one offers training and certification for it. We know of many more installations than this list shows, and the list is meant to grow. The project is public down to every change, so every figure below can be checked.</p>
+      <ul class="logos">
+        {companies.map(([name, href, tag, text]) => <li><a href={href}>{name}</a><small>{tag}</small><span>{text}</span></li>)}
+        <li class="join"><a href={`${GITHUB_PAGE}/edit/main/src/pages/index.astro`}>Your company here</a><small>Add a row</small><span>Running abap2UI5? Add one row by pull request, or send it to <a href={`mailto:${MAIL}`}>{MAIL}</a>. The next reader is looking for exactly your industry.</span></li>
+      </ul>
       <ul class="facts">{facts.map(([b, t]) => <li><b>{b}</b><span>{t}</span></li>)}</ul>
       <h3 class="refs-title">Talks, articles and videos</h3>
       <ul class="refs">{references.map(([year, title, where, href]) => <li><time>{year}</time><a href={href}>{title}</a><small>{where}</small></li>)}</ul>
@@ -377,11 +385,12 @@ const give = [
     </div>
   </section>
 
-  <section class="section give" aria-labelledby="h-give">
+  <section class="section alt" id="community" aria-labelledby="h-community">
     <div class="wrap">
-      <h2 id="h-give" class="give-title">Free to use is not the same as free to make</h2>
-      <p class="give-text">Those zeros are written in somebody's evenings. If abap2UI5 saves your project time or money, three things pay it back:</p>
-      <ul class="give-list">{give.map(([b, t]) => <li><b>{b}</b> <span set:html={t} /></li>)}</ul>
+      <p class="kicker">Join the community</p>
+      <h2 id="h-community">Open source, in the open, and better with every question</h2>
+      <p class="intro">abap2UI5 is open source and stays open source. People help each other in public, because transparency is the best way for a project like this to grow. Here is what it runs on, and what you can give back.</p>
+      <ul class="strings community">{community.map(([b, t]) => <li><b>{b}</b><span set:html={t} /></li>)}</ul>
     </div>
   </section>
 </Page>

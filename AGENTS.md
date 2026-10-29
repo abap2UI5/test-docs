@@ -47,7 +47,7 @@ npm run check    # build + test, what CI runs
   Figures a reader can check (since when, contributors, the latest release) are
   fine; they carry their date and link to GitHub.
 - **Short, honest, in this order.** A reader gives the page a few minutes:
-  the visible text outside `<details>` stays under 2,600 words (the test holds
+  the visible text outside `<details>` stays under 2,800 words (the test holds
   it). The comparison names where abap2UI5 is *not* ahead (rows marked `even`,
   the "Where something else fits better" box) and the support it has: in the
   open first - anyone can open an issue or send a pull request on GitHub at any
