@@ -295,8 +295,8 @@ code { font-family: var(--mono); font-size: .9em; }
 .steps-basis li::before { content: counter(b); position: absolute; left: 0; top: 9px; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--brand-soft); color: var(--brand); font-weight: 700; font-size: 13px; }
 
 /* the cost */
-.price { padding: 32px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); }
-.price .big { display: block; font-size: 64px; line-height: 1; font-weight: 800; letter-spacing: -.04em; color: var(--brand); }
+.price { padding: 28px 32px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); }
+.price .big { display: block; font-size: 56px; line-height: 1; font-weight: 800; letter-spacing: -.04em; color: var(--brand); }
 .price .big small { font-size: 20px; font-weight: 600; color: var(--muted); letter-spacing: 0; }
 .price ul { margin: 22px 0 0; padding: 0; list-style: none; }
 .price li { padding: 9px 0 9px 28px; position: relative; border-top: 1px solid var(--line); color: var(--text); }
@@ -309,8 +309,7 @@ code { font-family: var(--mono); font-size: .9em; }
 .sheet-what small { display: block; margin-top: 2px; font-weight: 400; font-size: 13px; color: var(--muted); }
 .sheet-amount { flex: none; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
 .sheet-amount.zero { color: var(--good); }
-.sheet-note { margin: 0; padding: 14px 0 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
-.strings { margin-top: 32px; }
+.sheet-note { margin: 0; padding: 14px 0 12px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--muted); }
 
 /* the objections */
 .faq { margin-top: 36px; border-top: 1px solid var(--line); }
@@ -385,20 +384,15 @@ code { font-family: var(--mono); font-size: .9em; }
 .door small { display: block; margin-top: 12px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand); }
 @media (prefers-reduced-motion: reduce) { .door, .btn { transition: none; } .door:hover { transform: none; } }
 
-/* no strings attached: four facts under the cost */
-.strings { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 40px 0 0; padding: 0; list-style: none; }
-@media (max-width: 1000px) { .strings { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .strings { grid-template-columns: minmax(0, 1fr); } }
-.strings li { padding: 22px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--card); }
-.strings b { display: flex; gap: 10px; align-items: baseline; color: var(--ink); font-size: 16px; line-height: 1.35; }
-.strings b::before { content: "✓"; flex: none; color: var(--good); font-weight: 800; }
-.strings span { display: block; margin-top: 8px; font-size: 14px; line-height: 1.55; color: var(--muted); }
-
-/* the community: six things to do, three per row */
-.strings.community { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-@media (max-width: 1000px) { .strings.community { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .strings.community { grid-template-columns: minmax(0, 1fr); } }
-.strings.community span a { font-weight: 600; }
+/* no strings attached, and the community: plain lists, two columns, a rule
+ * between the items - no boxes, so the page gets quieter the further it goes */
+.strings { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; margin: 40px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+@media (max-width: 760px) { .strings { grid-template-columns: minmax(0, 1fr); gap: 0; } }
+.strings li { padding: 18px 0 18px 30px; position: relative; border-bottom: 1px solid var(--line); }
+.strings li::before { content: "✓"; position: absolute; left: 0; top: 19px; color: var(--good); font-weight: 800; }
+.strings b { display: block; color: var(--ink); font-size: 16px; line-height: 1.35; }
+.strings span { display: block; margin-top: 6px; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+.strings span a { font-weight: 600; }
 
 /* the foot */
 .foot { padding: 36px 0 44px; background: var(--bg-alt); color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
