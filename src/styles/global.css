@@ -214,8 +214,10 @@ code { font-family: var(--mono); font-size: .9em; }
 .card.shot { display: flex; flex-direction: column; padding: 0 0 22px; overflow: hidden; }
 .card.shot > :not(.shot-img) { margin-left: 22px; margin-right: 22px; }
 .card.shot .icon { margin-top: 18px; }
-.shot-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-alt); border-bottom: 1px solid var(--line); }
-.shot-img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform .25s; }
+/* each screenshot is cropped to its content (public/apps), so the box shows
+ * the top of a filled screen, never the empty canvas below a short one */
+.shot-img { display: block; aspect-ratio: 2 / 1; overflow: hidden; background: var(--bg-alt); border-bottom: 1px solid var(--line); }
+.shot-img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .25s; }
 .shot-img:hover img { transform: scale(1.03); }
 .ai-split { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 28px; align-items: center; margin-top: 36px; }
 .ai-split p { margin: 0; color: var(--muted); }
