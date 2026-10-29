@@ -41,8 +41,7 @@ const useCases = [
 const companies = [
   ["Emineo", "https://emineo.ch/", "In production", "Apps for warehouse management and production, on desktop and mobile devices"],
   ["Swiss Krono", "https://www.swisskrono.com/", "In production", "Apps for warehouse management, on mobile devices"],
-  ["Nuve Platform", "https://www.nuveplatform.com", "Partner", "On-demand SAP systems with abap2UI5 set up automatically"],
-  ["Logali Group", "https://logaligroup.com", "Partner", "Webinars and certifications for abap2UI5"],
+  ["Logali Group", "https://logaligroup.com", "Training", "Webinars and certifications for abap2UI5"],
 ];
 const facts = [
   ["Since January 2023", "open source on GitHub, MIT licensed"],
@@ -61,7 +60,6 @@ const references = [
 const moreReferences = [
   ["2026", "UI5 in ABAP Cloud (without RAP or Fiori Elements)", "Decabase Blog", "https://blog.decabase.com/ui5-in-abap-cloud-without-rap-or-fiori-elements-4e8a70d961c3"],
   ["2025", "Webinar on Launchpad Integration", "YouTube", "https://www.youtube.com/watch?v=t5g3F3PHsbw&list=PLLpkZ_86h4quGSfsjohDHt9CrpjXdeA1P"],
-  ["2024", "Automated Deployment of abap2UI5", "Nuve Platform", "https://www.nuveplatform.com/blog/deploy-abap2ui5"],
   ["2024", "Webinar on creating UI5 interfaces from ABAP using abap2UI5", "YouTube", "https://www.youtube.com/watch?v=N2OAdxf7Lng"],
   ["2024", "Highlighted in the Boring Enterprise Nerdletter", "YouTube", "https://www.youtube.com/watch?v=I81z6W_BTIA&t=1010s"],
   ["2024", "Webinar on developing UI5 apps with abap2UI5", "YouTube", "https://www.youtube.com/watch?v=0izPA2xrPPI"],
@@ -103,7 +101,7 @@ const notIt = [
   ["You want the SAP standard transactional app.", "A list report with an object page on S/4HANA, from a released CDS model: RAP and Fiori Elements are the shorter path, and the one SAP supports."],
   ["The app must work offline or in real time.", "Every click is one request to the SAP system. A collaborative editor or a device that works without a network is not what it is for."],
   ["Your guideline mandates SAP's programming model.", "abap2UI5 is clean core in the technical sense, but it is not RAP. The usual outcome is a scope, not a replacement."],
-  ["You need a vendor with an SLA.", "Support is the community's, on a best-effort basis. Nobody offers a support contract for the framework today; partners offer setup and training."],
+  ["You need a vendor with an SLA.", "Support is the community's, on a best-effort basis. Nobody offers a support contract for the framework today; training and certification are available."],
 ];
 
 /* Governance: an app is an ABAP class, against a tool that stores apps as
@@ -129,7 +127,7 @@ const cost = [
   ["Platform, runtime, hosting", "One service on the SAP system you already run; the UI5 your system already ships", "0"],
   ["Support", "GitHub issues and Slack, open to everybody, best effort", "0"],
   ["Developer time", "An ABAP developer writes the screen, as for any class; this is the bill", "your rate"],
-  ["Partner services", "Setup, training, app development, if you want them", "optional"],
+  ["Training and consulting", "Webinars, certification, app development by a consultancy, if you want them", "optional"],
 ];
 const strings = [
   ["Nothing to sign up for", "The examples run in the browser with no account. The framework is an abapGit pull; there is no trial period and no demo to book."],
@@ -148,7 +146,7 @@ const ai = [
 
 const objections = [
   ["It is an open-source project. What if the maintainers stop?", `The installed version keeps running, the source is in your system in full, readable and changeable, and the apps stay ordinary ABAP classes. Nothing is called at runtime that is not in your system, apart from the UI5 library, which your system ships. A build renamed into your own namespace is one workflow run (<a href="${DOCS}advanced/renaming">Namespaces, Renaming</a>).`],
-  ["Who do we call when something breaks?", `Your developer, for the app, as for any class in the system; the community, for the framework, on <a href="${GITHUB}/issues">GitHub</a> and in <a href="${SLACK}">Slack</a>, on a best-effort basis. Nobody offers a support contract for the framework today (<a href="${GITHUB}/blob/main/SUPPORT.md">Support</a>); the partners above offer setup, training and development. Security reports are acknowledged within three business days (<a href="${DOCS}configuration/security">Security</a>).`],
+  ["Who do we call when something breaks?", `Your developer, for the app, as for any class in the system; the community, for the framework, on <a href="${GITHUB}/issues">GitHub</a> and in <a href="${SLACK}">Slack</a>, on a best-effort basis. Nobody offers a support contract for the framework today (<a href="${GITHUB}/blob/main/SUPPORT.md">Support</a>); Logali Group offers training and certification. Security reports are acknowledged within three business days (<a href="${DOCS}configuration/security">Security</a>).`],
   ["Is this another UI5 wrapper that will not survive the next UI5 release?", `The frontend is UI5 itself, not a copy of it, and every change is run in the browser on the oldest supported release and on UI5 2.x. Releases are tagged and listed (<a href="${DOCS}resources/changelog">Release Notes</a>); what is on its way out is announced and tracked until removal (<a href="${DOCS}resources/deprecations">Deprecations</a>).`],
   ["Every click is a request to SAP. Is that fast enough?", `A request carries only what changed and is served by the ABAP stack that already serves everything else. For worklists, forms and cockpits it is the same round trip a SAP GUI screen makes, in a browser. It is not built for a real-time collaborative editor or an app that holds its state offline (<a href="${DOCS}configuration/performance">Performance</a>).`],
   ["Our clean-core guideline names RAP. Where does this leave us?", "Side by side. abap2UI5 passes the ABAP Cloud checks and modifies nothing in the standard, so it is clean core in the technical sense, but it is not SAP's programming model. The usual outcome is a scope: standard transactional screens in RAP, the tools around them in abap2UI5, both in one launchpad."],
@@ -220,7 +218,7 @@ const give = [
     <div class="wrap">
       <p class="kicker">Who runs it</p>
       <h2 id="h-who">In production, in the open, since 2023</h2>
-      <p class="intro">Two companies run it in production and say so here; two build their business on it. The project itself is public down to every change, so the figures below are not ours to make up.</p>
+      <p class="intro">Two companies run it in production and say so here; one offers training and certification for it. The project itself is public down to every change, so the figures below are not ours to make up.</p>
       <ul class="logos">{companies.map(([name, href, tag, text]) => <li><a href={href}>{name}</a><small>{tag}</small><span>{text}</span></li>)}</ul>
       <ul class="facts">{facts.map(([b, t]) => <li><b>{b}</b><span>{t}</span></li>)}</ul>
       <h3 class="refs-title">Talks, articles and videos</h3>
