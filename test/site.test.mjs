@@ -73,7 +73,8 @@ test("the comparison names where abap2UI5 is not ahead, and the support it has",
   // the rows a reader would otherwise find missing: an even row carries no tick
   assert.ok((html.match(/class="us even"/g) || []).length >= 3, "even rows in the comparison");
   assert.match(visible, /Where something else fits better/);
-  assert.match(visible, /issue or (a |send a )?pull request/);
+  assert.match(visible, /Slack/);
+  assert.ok((visible.match(/Slack/g) || []).length >= 4, "Slack named where support is");
   assert.doesNotMatch(visible, /best effort|no support/i);
 });
 
