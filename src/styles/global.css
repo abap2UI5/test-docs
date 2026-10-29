@@ -139,8 +139,6 @@ code { font-family: var(--mono); font-size: .9em; }
 .hero .lede { margin: 22px 0 0; max-width: 560px; font-size: 19px; line-height: 1.6; color: var(--muted); }
 .hero .lede b { color: var(--ink); }
 .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-.hero .note { margin: 16px 0 0; font-size: 14px; color: var(--muted); }
-.hero .note::before { content: "✓"; margin-right: 8px; color: var(--good); font-weight: 700; }
 /* the screenshot in a window frame, tilted towards the reader */
 .window {
   margin: 0; border-radius: 14px; overflow: hidden;
