@@ -88,7 +88,7 @@ const compare = [
   ["Lock-in", "None: apps are plain ABAP classes in your system", "SAP's programming model", "Low", "Apps live in the vendor's runtime and repository"],
   ["Source code", "Open, every line, on GitHub", "Closed", "UI5 open, your app yours", "Closed"],
   ["Standard transactional apps", "Possible, but hand-built; the standard route is RAP", "Its home ground: list report and object page from annotations", "Hand-built", "From the vendor's templates", "even"],
-  ["Offline & real-time", "Not built for it: every click is a request to SAP", "Offline with extra tooling", "Possible, with effort", "Depends on the vendor", "even"],
+  ["Offline", "Not built for it: an app needs its connection to SAP", "Offline with extra tooling", "Possible, with effort", "Depends on the vendor", "even"],
   ["Support", "Community, best effort; no vendor SLA on offer today", "SAP support", "SAP support for UI5; your app is yours", "The vendor's SLA, in the contract", "even"],
 ];
 const useIt = [
@@ -99,7 +99,7 @@ const useIt = [
 ];
 const notIt = [
   ["You want the SAP standard transactional app.", "A list report with an object page on S/4HANA, from a released CDS model: RAP and Fiori Elements are the shorter path, and the one SAP supports."],
-  ["The app must work offline or in real time.", "Every click is one request to the SAP system. A collaborative editor or a device that works without a network is not what it is for."],
+  ["The app must work offline.", "Every click is one request to the SAP system. A device that works without a network is not what it is for; live data on a connected screen is."],
   ["Your guideline mandates SAP's programming model.", "abap2UI5 is clean core in the technical sense, but it is not RAP. The usual outcome is a scope, not a replacement."],
   ["You need a vendor with an SLA.", "Support is the community's, on a best-effort basis. Nobody offers a support contract for the framework today; training and certification are available."],
 ];
@@ -148,7 +148,7 @@ const objections = [
   ["It is an open-source project. What if the maintainers stop?", `The installed version keeps running, the source is in your system in full, readable and changeable, and the apps stay ordinary ABAP classes. Nothing is called at runtime that is not in your system, apart from the UI5 library, which your system ships. A build renamed into your own namespace is one workflow run (<a href="${DOCS}advanced/renaming">Namespaces, Renaming</a>).`],
   ["Who do we call when something breaks?", `Your developer, for the app, as for any class in the system; the community, for the framework, on <a href="${GITHUB}/issues">GitHub</a> and in <a href="${SLACK}">Slack</a>, on a best-effort basis. Nobody offers a support contract for the framework today (<a href="${GITHUB}/blob/main/SUPPORT.md">Support</a>); Logali Group offers training and certification. Security reports are acknowledged within three business days (<a href="${DOCS}configuration/security">Security</a>).`],
   ["Is this another UI5 wrapper that will not survive the next UI5 release?", `The frontend is UI5 itself, not a copy of it, and every change is run in the browser on the oldest supported release and on UI5 2.x. Releases are tagged and listed (<a href="${DOCS}resources/changelog">Release Notes</a>); what is on its way out is announced and tracked until removal (<a href="${DOCS}resources/deprecations">Deprecations</a>).`],
-  ["Every click is a request to SAP. Is that fast enough?", `A request carries only what changed and is served by the ABAP stack that already serves everything else. For worklists, forms and cockpits it is the same round trip a SAP GUI screen makes, in a browser. It is not built for a real-time collaborative editor or an app that holds its state offline (<a href="${DOCS}configuration/performance">Performance</a>).`],
+  ["Every click is a request to SAP. Is that fast enough?", `A request carries only what changed and is served by the ABAP stack that already serves everything else. For worklists, forms and cockpits it is the same round trip a SAP GUI screen makes, in a browser. It is not built for an app that holds its state offline (<a href="${DOCS}configuration/performance">Performance</a>).`],
   ["Our clean-core guideline names RAP. Where does this leave us?", "Side by side. abap2UI5 passes the ABAP Cloud checks and modifies nothing in the standard, so it is clean core in the technical sense, but it is not SAP's programming model. The usual outcome is a scope: standard transactional screens in RAP, the tools around them in abap2UI5, both in one launchpad."],
   ["Why should we trust it over a product we pay for?", "Because you can check everything a vendor asks you to believe. The source is open, every test is public, and an app is a class in your own system that keeps running whatever happens to the project. What you give up is a contract with an SLA; what you keep is the code."],
   ["Is anybody actually running this in production?", `Two companies say so on this page, and every release is tested against Standard ABAP and ABAP Cloud, downported to NetWeaver 7.02 and run in the browser on the oldest and the newest supported UI5 release (<a href="${GITHUB}/blob/main/docs/verified-on.md">verified on</a>).`],
