@@ -1,5 +1,5 @@
 // abap2UI5 for decision makers - one static page, published by GitHub Pages at
-// https://abap2ui5.github.io/test-docs/ (.github/workflows/pages.yml).
+// https://abap2ui5.github.io/why/ (.github/workflows/pages.yml).
 //
 // Static output only: no client component, no island. The page's one script
 // is the cost calculator's public/calc.js, loaded as a file; the policy is
@@ -9,7 +9,7 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://abap2ui5.github.io",
-  base: "/test-docs/",
+  base: "/why/",
   trailingSlash: "ignore",
   build: {
     format: "directory",

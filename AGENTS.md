@@ -3,7 +3,7 @@
 abap2UI5 for decision makers: one static page that presents abap2UI5 to IT
 management and product owners - what it can build, who runs it, where it is
 the shorter path to a UI5 app on SAP and where it is not, what it costs -
-published at https://abap2ui5.github.io/test-docs/ by GitHub Pages. A
+published at https://abap2ui5.github.io/why/ by GitHub Pages. A
 standalone site — its own repository, build and deployment — and nothing in
 it depends on abap2UI5/docs or abap2UI5/playground at build time.
 
@@ -24,7 +24,7 @@ it depends on abap2UI5/docs or abap2UI5/playground at build time.
 
 ```bash
 npm ci
-npm run dev      # dev server, http://localhost:4321/test-docs/
+npm run dev      # dev server, http://localhost:4321/why/
 npm run build    # dist/
 npm test         # the tests, against dist/ - build first
 npm run check    # build + test, what CI runs
