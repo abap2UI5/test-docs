@@ -154,7 +154,7 @@ const objections = [
   ["Our clean-core guideline names RAP. Where does this leave us?", "Side by side. abap2UI5 passes the ABAP Cloud checks and modifies nothing in the standard, so it is clean core in the technical sense, but it is not SAP's programming model. The usual outcome is a scope: standard transactional screens in RAP, the tools around them in abap2UI5, both in one launchpad."],
   ["Why should we trust it over a product we pay for?", "Because you can check everything a vendor asks you to believe. The source is open, every test is public, and an app is a class in your own system that keeps running whatever happens to the project. What you do not get is an SLA in a contract; what you get is the code, and a maintainer you can reach."],
   ["Our users are fast in SAP GUI. Will they accept it?", "Users go back to SAP GUI when the Fiori app is slower than the transaction it replaced. An abap2UI5 screen makes one request per click on the same ABAP stack, so a keyboard-driven worklist stays as quick as it was. And nothing is replaced in one go: one screen at a time, the GUI stays until the last one, the logic behind both is the same code."],
-  ["Is anybody actually running this in production?", `Two companies say so on this page, and every release is tested against Standard ABAP and ABAP Cloud, downported to NetWeaver 7.02 and run in the browser on the oldest and the newest supported UI5 release (<a href="${GITHUB}/blob/main/docs/verified-on.md">verified on</a>).`],
+  ["Is anybody actually running this in production?", `Two companies say so under <a href="#who-runs-it">Who runs it</a> below, and every release is tested against Standard ABAP and ABAP Cloud, downported to NetWeaver 7.02 and run in the browser on the oldest and the newest supported UI5 release (<a href="${GITHUB}/blob/main/docs/verified-on.md">verified on</a>).`],
 ];
 
 /* Get started: one real screen, with the people who will maintain it. */
@@ -223,27 +223,7 @@ const community = [
     </div>
   </section>
 
-  <section class="section alt" id="who-runs-it" aria-labelledby="h-who">
-    <div class="wrap">
-      <p class="kicker">Who runs it</p>
-      <h2 id="h-who">In production, in the open, since 2023</h2>
-      <p class="intro">Two companies run it in production and say so here; one offers training and certification for it. We know of many more installations than this list shows, and the list is meant to grow. The project is public down to every change, so every figure below can be checked.</p>
-      <ul class="logos">
-        {companies.map(([name, href, tag, text]) => <li><a href={href}>{name}</a><small>{tag}</small><span>{text}</span></li>)}
-        <li class="join"><a href={`${GITHUB_PAGE}/edit/main/src/pages/index.astro`}>Your company here</a><small>Add a row</small><span>Running abap2UI5? Add one row by pull request, or send it to <a href={`mailto:${MAIL}`}>{MAIL}</a>. The next reader is looking for exactly your industry.</span></li>
-      </ul>
-      <ul class="facts">{facts.map(([b, t]) => <li><b>{b}</b><span>{t}</span></li>)}</ul>
-      <h3 class="refs-title">Talks, articles and videos</h3>
-      <ul class="refs">{references.map(([year, title, where, href]) => <li><time>{year}</time><a href={href}>{title}</a><small>{where}</small></li>)}</ul>
-      <details class="refs-more">
-        <summary>{moreReferences.length} more, 2023 to 2026</summary>
-        <ul class="refs">{moreReferences.map(([year, title, where, href]) => <li><time>{year}</time><a href={href}>{title}</a><small>{where}</small></li>)}</ul>
-      </details>
-      <p class="more">→ Running abap2UI5, or written about it? <a href={`${GITHUB_PAGE}/edit/main/src/pages/index.astro`}>Add your row</a>, or write to <a href={`mailto:${MAIL}`}>{MAIL}</a>. The figures: <a href={GITHUB}>the repository</a> and its <a href={`${GITHUB}/releases`}>releases</a>.</p>
-    </div>
-  </section>
-
-  <section class="section" id="when-to-use-it-and-when-not" aria-labelledby="h-fit">
+  <section class="section alt" id="when-to-use-it-and-when-not" aria-labelledby="h-fit">
     <div class="wrap">
       <p class="kicker">Compared with the market</p>
       <h2 id="h-fit">Where it is the shorter path, and where it is not</h2>
@@ -274,7 +254,7 @@ const community = [
     </div>
   </section>
 
-  <section class="section alt" id="what-you-keep" aria-labelledby="h-keep">
+  <section class="section" id="what-you-keep" aria-labelledby="h-keep">
     <div class="wrap">
       <p class="kicker">Governance and security</p>
       <h2 id="h-keep">An app is ABAP code, and is governed like it</h2>
@@ -293,7 +273,7 @@ const community = [
     </div>
   </section>
 
-  <section class="section" id="what-it-costs" aria-labelledby="h-cost">
+  <section class="section alt" id="what-it-costs" aria-labelledby="h-cost">
     <div class="wrap">
       <p class="kicker">What it costs</p>
       <h2 id="h-cost">No license fee, now or later. The bill is your developer's time.</h2>
@@ -322,7 +302,7 @@ const community = [
     </div>
   </section>
 
-  <section class="section alt" id="where-it-runs" aria-labelledby="h-runs">
+  <section class="section" id="where-it-runs" aria-labelledby="h-runs">
     <div class="wrap">
       <p class="kicker">Where it runs</p>
       <h2 id="h-runs">On the SAP system you already have, and nowhere else</h2>
@@ -350,7 +330,7 @@ const community = [
     </div>
   </section>
 
-  <section class="section" id="ai" aria-labelledby="h-ai">
+  <section class="section alt" id="ai" aria-labelledby="h-ai">
     <div class="wrap">
       <p class="kicker">AI</p>
       <h2 id="h-ai">One class is the easiest thing for an AI to write and for your team to check</h2>
@@ -363,13 +343,33 @@ const community = [
     </div>
   </section>
 
-  <section class="section alt" id="the-objections" aria-labelledby="h-obj">
+  <section class="section" id="the-objections" aria-labelledby="h-obj">
     <div class="wrap">
       <p class="kicker">FAQ</p>
       <h2 id="h-obj">What decision makers ask</h2>
       <div class="faq">
         {objections.map(([q, a], i) => <details open={i === 0}><summary>{q}</summary><p set:html={a} /></details>)}
       </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="who-runs-it" aria-labelledby="h-who">
+    <div class="wrap">
+      <p class="kicker">Who runs it</p>
+      <h2 id="h-who">In production, in the open, since 2023</h2>
+      <p class="intro">Two companies run it in production and say so here; one offers training and certification for it. We know of many more installations than this list shows, and the list is meant to grow. The project is public down to every change, so every figure below can be checked.</p>
+      <ul class="logos">
+        {companies.map(([name, href, tag, text]) => <li><a href={href}>{name}</a><small>{tag}</small><span>{text}</span></li>)}
+        <li class="join"><a href={`${GITHUB_PAGE}/edit/main/src/pages/index.astro`}>Your company here</a><small>Add a row</small><span>Running abap2UI5? Add one row by pull request, or send it to <a href={`mailto:${MAIL}`}>{MAIL}</a>. The next reader is looking for exactly your industry.</span></li>
+      </ul>
+      <ul class="facts">{facts.map(([b, t]) => <li><b>{b}</b><span>{t}</span></li>)}</ul>
+      <h3 class="refs-title">Talks, articles and videos</h3>
+      <ul class="refs">{references.map(([year, title, where, href]) => <li><time>{year}</time><a href={href}>{title}</a><small>{where}</small></li>)}</ul>
+      <details class="refs-more">
+        <summary>{moreReferences.length} more, 2023 to 2026</summary>
+        <ul class="refs">{moreReferences.map(([year, title, where, href]) => <li><time>{year}</time><a href={href}>{title}</a><small>{where}</small></li>)}</ul>
+      </details>
+      <p class="more">→ Running abap2UI5, or written about it? <a href={`${GITHUB_PAGE}/edit/main/src/pages/index.astro`}>Add your row</a>, or write to <a href={`mailto:${MAIL}`}>{MAIL}</a>. The figures: <a href={GITHUB}>the repository</a> and its <a href={`${GITHUB}/releases`}>releases</a>.</p>
     </div>
   </section>
 

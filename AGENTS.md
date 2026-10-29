@@ -53,7 +53,7 @@ npm run check    # build + test, what CI runs
   open first - anyone can open an issue or send a pull request on GitHub at any
   time - and more by mail to contact@abap2UI5.org on request; what is not on
   offer is an SLA in a contract (`SUPPORT.md` in the framework is the source).
-  Never "no support": the open channel is the support, and the better one. Proof ("Who runs it") comes before the comparison, cost before AI.
+  Never "no support": the open channel is the support, and the better one. Cost comes before AI; proof ("Who runs it") sits after the FAQ, just before Get started.
   No superlatives ("better than every", "made for"); a claim a reader cannot
   check is cut, not softened. Add-ons, Basis steps and other developer topics
   are links into the manual, not sections.
