@@ -47,7 +47,7 @@ const facts = [
   ["Since January 2023", "open source on GitHub, MIT licensed"],
   ["25+ contributors", "from several companies, every change public"],
   ["Release 1.148", "October 2026; a release most months, each one listed"],
-  ["Every release tested", "on NetWeaver 7.02, Standard ABAP and ABAP Cloud, in the browser on the oldest and the newest UI5"],
+  ["Every release tested", "on NetWeaver 7.02, Standard ABAP and ABAP Cloud, on the oldest and the newest UI5"],
 ];
 /* The references a manager will recognize first; the full list folds. */
 const references = [
@@ -81,9 +81,11 @@ const rivals = ["RAP + Fiori Elements", "Freestyle UI5 + OData", "Commercial UI5
 const compare = [
   ["License cost", "None: MIT, for any number of users, systems and apps", "Part of the SAP license", "Part of the SAP license", "Subscription or per-user fees, renewed every year"],
   ["Who builds the apps", "The ABAP team you already have", "ABAP plus CDS, RAP and annotation specialists", "JavaScript / UI5 developers", "Developers trained on the vendor's tool"],
+  ["Time to productivity", "An afternoon: an ABAP developer learns UI5's controls from the examples, not a new language", "Weeks: CDS, RAP, annotations, Business Application Studio", "Months: JavaScript, UI5 tooling, Git, npm", "The vendor's training"],
   ["First screen", "Minutes", "Days: model, service, project, deployment", "Days to weeks", "After the platform is installed and licensed"],
   ["Freedom of the UI", "Every UI5 control, any layout", "SAP's floorplans and their extension points", "Every UI5 control", "What the vendor's designer offers"],
   ["Older SAP releases", "NetWeaver 7.02 up to ABAP Cloud, one source", "7.5x and later", "Yes, with OData effort per release", "Depends on the vendor's add-on"],
+  ["What a click costs", "One plain HTTP request carrying only what changed; no app code and no logic in the browser", "OData calls with metadata, batch and draft handling, and the Fiori Elements runtime in the browser", "OData calls and an app bundle per app, logic in the browser", "The vendor's runtime in the browser"],
   ["Extra infrastructure", "None: one endpoint on your SAP system", "Fiori frontend server and deployment", "Frontend deployment (BSP, BTP or web server)", "The vendor's add-on, server or cloud tenant"],
   ["Lock-in", "None: apps are plain ABAP classes in your system", "SAP's programming model", "Low", "Apps live in the vendor's runtime and repository"],
   ["Source code", "Open, every line, on GitHub", "Closed", "UI5 open, your app yours", "Closed"],
@@ -92,14 +94,15 @@ const compare = [
   ["Support", "Slack and GitHub issues, open to anyone at any time; more by mail, planned together. No SLA in a contract", "SAP support", "SAP support for UI5; your app is yours", "The vendor's SLA, in the contract", "even"],
 ];
 const useIt = [
-  ["The team is ABAP.", "No JavaScript, no UI5 tooling, no Business Application Studio. An app is one class, written, debugged, transported and tested like every other class."],
-  ["The system is older than RAP.", "NetWeaver 7.02 to 7.4x have no RAP and a Fiori stack that is expensive to add. An app written there today moves to S/4HANA unchanged."],
-  ["The screen is yours, not SAP's.", "Tools, cockpits, monitors, admin consoles, anything that used to be a report or a module pool. Where a Fiori Elements template becomes the thing you fight, abap2UI5 is the shorter path."],
+  ["The team is ABAP.", "No JavaScript, no UI5 tooling, no training project before the S/4HANA project. An app is one class, written, debugged, transported and tested like any other. What your developers still learn: UI5's controls, from the examples, not a new language."],
+  ["The system is older than RAP.", "NetWeaver 7.02 to 7.4x have no RAP and a Fiori stack that is expensive to add. An app written there moves to S/4HANA unchanged."],
+  ["The screen is yours, not SAP's.", "Tools, cockpits, monitors, admin consoles, anything that used to be a report or a module pool. Where a Fiori Elements template becomes the thing you fight, this is the shorter path."],
+  ["It is fast where users notice.", "No frontend logic, no OData, no app bundle: the browser holds one generic shell, loaded once, and every click is one plain HTTP request with the changed data only. The work runs on the ABAP stack, next to the data."],
   ["Your Fiori apps and your logic stay.", "abap2UI5 apps are tiles in the same launchpad. A report, a BAPI, a function module: an app calls it as it is."],
 ];
 const notIt = [
   ["You want the SAP standard transactional app.", "A list report with an object page on S/4HANA, from a released CDS model: RAP and Fiori Elements are the shorter path, and the one SAP supports."],
-  ["The app must work offline.", "Every click is one request to the SAP system. A device that works without a network is not what it is for; live data on a connected screen is."],
+  ["The app must work offline.", "Every click is one request to the SAP system. A device without a network is not what it is for; live data on a connected screen is."],
   ["Your guideline mandates SAP's programming model.", "abap2UI5 is clean core in the technical sense, but it is not RAP. The usual outcome is a scope, not a replacement."],
   ["Your rules need an SLA on paper.", "Support happens in the open: anyone can write in the Slack channel or open an issue or a pull request on GitHub, at any time, and that is where answers come fastest. If you need more than that, write to the maintainers by mail and plan it together; what is not on offer is an SLA in a contract."],
 ];
@@ -110,15 +113,14 @@ const keep = [
   ["What an app is", "An ABAP class", "Entries in the tool's tables, read by its runtime"],
   ["Where a change is made", "In the development system, in the ABAP tools", "Wherever the tool's designer is open, possibly production"],
   ["How a change travels", "A transport, like any class", "The tool's own export, or a customizing transport"],
-  ["How a change is reviewed", "As a code diff, in the transport or a pull request", "In the tool's designer, if it shows a history at all"],
   ["What happens if the tool goes away", "The classes stay; they are plain ABAP in your system", "The apps go with it"],
 ];
 const governance = [
-  ["lock", "Logon is SAP's", "No user store, no token, no session of its own. A request that reaches an app has passed SAP logon."],
-  ["key", "Authorizations are SAP's", "The authorization on the service endpoint, as for any service, and the app's own checks in its code, as a transaction does them."],
-  ["db", "Data changes are your code's", "An app posts a document through the same BAPIs, function modules or RAP actions as any other program, so change documents and application logs apply unchanged."],
-  ["log", "Every request can be logged", "A monitor records, per request, the user, the app, the event, the timings and any error. Off until an installation switches it on."],
-  ["leaf", "Clean core", "Released APIs only, passes the ABAP Cloud checks, runs on S/4HANA, BTP and NetWeaver 7.02 from one source. Modifies nothing in the SAP standard."],
+  ["lock", "Logon is SAP's", "No user store, no token, no session of its own: a request that reaches an app has passed SAP logon."],
+  ["key", "Authorizations are SAP's", "The authorization on the service endpoint, and the app's own checks in its code, as a transaction does them."],
+  ["db", "Data changes are your code's", "An app posts through the same BAPIs, function modules or RAP actions as any program, so change documents and application logs apply unchanged."],
+  ["log", "Every request can be logged", "A monitor records, per request, user, app, event, timings and any error. Off until an installation switches it on."],
+  ["leaf", "Clean core", "Released APIs only, passes the ABAP Cloud checks, runs on S/4HANA, BTP and NetWeaver 7.02 from one source. Modifies nothing in the standard."],
 ];
 
 /* What it costs: the lines a commercial platform bills, and what is left. */
@@ -130,9 +132,9 @@ const cost = [
   ["Training and consulting", "Webinars, certification, app development by a consultancy, if you want them", "optional"],
 ];
 const strings = [
-  ["Nothing to sign up for", "The examples run in the browser with no account. The framework is an abapGit pull; there is no trial period and no demo to book."],
-  ["No extra platform", "No BTP subscription, no middleware, no server of its own. One service endpoint on the system you already run."],
-  ["Free to leave", "The apps stay ordinary classes. A build renamed into your own namespace is one workflow run, and the source is yours to fork."],
+  ["Nothing to sign up for", "The examples run in the browser with no account. The framework is an abapGit pull; no trial period, no demo to book."],
+  ["No extra platform", "No BTP subscription, no middleware, no server of its own: one service endpoint on your system."],
+  ["Free to leave", "The apps stay ordinary classes, and the skill your team invests in is ABAP, the one it keeps whatever the next UI technology is. A build renamed into your own namespace is one workflow run."],
   ["Built in the open", "Every issue, every release and the backlog are public on GitHub."],
 ];
 
@@ -148,29 +150,35 @@ const objections = [
   ["It is an open-source project. What if the maintainers stop?", `The installed version keeps running, the source is in your system in full, readable and changeable, and the apps stay ordinary ABAP classes. Nothing is called at runtime that is not in your system, apart from the UI5 library, which your system ships. A build renamed into your own namespace is one workflow run (<a href="${DOCS}advanced/renaming">Namespaces, Renaming</a>).`],
   ["Who do we call when something breaks?", `Your developer, for the app, as for any class in the system. For the framework, write in the <a href="${SLACK}">Slack channel</a> or open an <a href="${GITHUB}/issues">issue</a> on GitHub: anyone can, at any time, no account with the project needed, and in the open is where it gets answered fastest and where everybody sees the answer. Pull requests are welcome the same way. If your organization needs more, closer cooperation, a workshop or a support arrangement, write to <a href="mailto:${MAIL}">${MAIL}</a> and plan it together (<a href="${GITHUB}/blob/main/SUPPORT.md">Support</a>). Security reports are acknowledged within three business days (<a href="${DOCS}configuration/security">Security</a>).`],
   ["Is this another UI5 wrapper that will not survive the next UI5 release?", `The frontend is UI5 itself, not a copy of it, and every change is run in the browser on the oldest supported release and on UI5 2.x. Releases are tagged and listed (<a href="${DOCS}resources/changelog">Release Notes</a>); what is on its way out is announced and tracked until removal (<a href="${DOCS}resources/deprecations">Deprecations</a>).`],
-  ["Every click is a request to SAP. Is that fast enough?", `A request carries only what changed and is served by the ABAP stack that already serves everything else. For worklists, forms and cockpits it is the same round trip a SAP GUI screen makes, in a browser. It is not built for an app that holds its state offline (<a href="${DOCS}configuration/performance">Performance</a>).`],
+  ["Every click is a request to SAP. Is that fast enough?", `Faster than most Fiori apps, in practice: one plain HTTP request per click with the changed data only, no OData metadata, no batch, no app logic or bundle in the browser. For worklists, forms and cockpits that is the round trip a SAP GUI screen makes. It is not built for an app that holds its state offline (<a href="${DOCS}configuration/performance">Performance</a>).`],
   ["Our clean-core guideline names RAP. Where does this leave us?", "Side by side. abap2UI5 passes the ABAP Cloud checks and modifies nothing in the standard, so it is clean core in the technical sense, but it is not SAP's programming model. The usual outcome is a scope: standard transactional screens in RAP, the tools around them in abap2UI5, both in one launchpad."],
   ["Why should we trust it over a product we pay for?", "Because you can check everything a vendor asks you to believe. The source is open, every test is public, and an app is a class in your own system that keeps running whatever happens to the project. What you do not get is an SLA in a contract; what you get is the code, and a maintainer you can reach."],
-  ["Is anybody actually running this in production?", `Two companies say so on this page, and every release is tested against Standard ABAP and ABAP Cloud, downported to NetWeaver 7.02 and run in the browser on the oldest and the newest supported UI5 release (<a href="${GITHUB}/blob/main/docs/verified-on.md">verified on</a>).`],
+  ["Our users are fast in SAP GUI. Will they accept it?", "Users go back to SAP GUI when the Fiori app is slower than the transaction it replaced. An abap2UI5 screen makes one request per click on the same ABAP stack, so a keyboard-driven worklist stays as quick as it was. And nothing is replaced in one go: one screen at a time, the GUI stays until the last one, the logic behind both is the same code."],
+  ["Is anybody actually running this in production?", `Two companies say so under <a href="#who-runs-it">Who runs it</a> below, and every release is tested against Standard ABAP and ABAP Cloud, downported to NetWeaver 7.02 and run in the browser on the oldest and the newest supported UI5 release (<a href="${GITHUB}/blob/main/docs/verified-on.md">verified on</a>).`],
 ];
 
 /* Get started: one real screen, with the people who will maintain it. */
 const week = [
   ["Pick one real screen", "One your team has to build this quarter, not a demo."],
-  ["Build it in a development system", "With the people who will maintain it, in the ABAP tools they use today."],
+  ["Build it in a development system", "With the people who will maintain it, in the tools they use today."],
   ["Review it like any ABAP", "Read the class, transport it, run the code checks, check the authorizations it asks for."],
-  ["Compare and decide", "Hold the time and the systems it needed against any alternative or vendor quote. Decide from the screen, not from the slide."],
+  ["Compare and decide", "Hold the time and the systems it needed against any alternative or vendor quote."],
 ];
 const doors = [
   ["play", "Ten minutes, nothing installed", "Browse the example apps for the screen closest to yours, and change one in the playground.", `${PLAYGROUND}samples/`, "Example apps"],
   ["code", "One afternoon, one developer", "Send them the Quickstart: install, first app, transport.", `${DOCS}get_started/quickstart`, "Quickstart"],
-  ["chat", "A question, any time", "Write in the Slack channel, where the people who run it in production answer, or open a GitHub issue. Anyone can, at any time.", SLACK, "Slack"],
+  ["chat", "A question, any time", "Write in the Slack channel, where the people who run it in production answer, or open a GitHub issue. Anyone, any time.", SLACK, "Slack"],
   ["partner", "More than a question", `A workshop, closer cooperation, a support arrangement: write to ${MAIL} and plan it together.`, `mailto:${MAIL}`, "Mail"],
 ];
-const give = [
-  ["Add your company.", `One row under <a href="#who-runs-it">Who runs it</a> is what answers <i>is anybody actually running this?</i> for the next reader.`],
-  ["Report what broke.", `An <a href="${GITHUB}/issues">issue</a> with a class that reproduces the bug is half of the fix already.`],
-  ["Sponsor the work.", `<a href="${DOCS}resources/sponsor">The contributors</a>, and the open-source projects it stands on.`],
+/* The community: open source, in the open, and what a reader can give back.
+ * Every item is a thing to do, with the place to do it. */
+const community = [
+  ["Open source, and it stays that way", `MIT licensed since the first commit, every line on <a href="${GITHUB}">GitHub</a>, forks welcome. No company owns it that could close it, change the license or put the next release behind a login.`],
+  ["We help each other", `Questions go to <a href="${SLACK}">Slack</a> and <a href="${GITHUB}/issues">GitHub</a>, answers stay public. Every question makes the documentation and the examples better for the next person, so ask yours in the open.`],
+  ["Built on abapGit and abaplint", `The installation, the tests and every release stand on <a href="https://abapgit.org">abapGit</a> and <a href="https://abaplint.org">abaplint</a>. If abap2UI5 saves you money, consider <a href="https://abapgit.org/sponsor.html">supporting the people behind them</a> too.`],
+  ["Add-ons: share yours", `Selection screens, table maintenance, popups, a launchpad KPI: the building blocks live as <a href="https://github.com/abap2UI5-addons">add-ons</a> in the open. The screen you solved for your plant is probably somebody else's next week.`],
+  ["Say what you build", `A post on <a href="https://www.linkedin.com/company/abap2ui5">LinkedIn</a> with #abap2UI5, a talk at your user group, a row under <a href="#who-runs-it">Who runs it</a>: that is how the next decision maker learns it exists.`],
+  ["Sponsor the work", `Those zeros are written in somebody's evenings. <a href="${DOCS}resources/sponsor">Sponsoring the contributors</a> is the way to say the release you pull next month matters to you.`],
 ];
 ---
 <Page
@@ -186,11 +194,10 @@ const give = [
           <a class="btn btn-primary" href={`${PLAYGROUND}samples/`}>See example apps</a>
           <a class="btn btn-ghost" href="#when-to-use-it-and-when-not">Where it fits</a>
         </div>
-        <p class="note">Nothing to install, nothing to sign up for: every example runs in your browser.</p>
       </div>
       <figure class="window">
         <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>an abap2UI5 app · one ABAP class</span></div>
-        <img src={`${base}apps/z2ui5_cl_smp_app_070.webp`} alt="An abap2UI5 app: a search field above a table of products with progress indicators and row actions" width="800" height="500" fetchpriority="high">
+        <img src={`${base}apps/hero-sales-orders.webp`} alt="An abap2UI5 app: a table of sales orders with status and amount, and a panel beside it that explains the selected orders" width="1600" height="798" fetchpriority="high">
       </figure>
     </div>
   </section>
@@ -205,34 +212,17 @@ const give = [
       <div class="cards four">
         {useCases.map(([icon, h, t, cls, alt]) => (
           <div class="card shot">
-            <a class="shot-img" href={`${PLAYGROUND}samples/${cls}/`}><img src={`${base}apps/${cls}.webp`} alt={alt} width="800" height="500" loading="lazy"></a>
+            <a class="shot-img" href={`${PLAYGROUND}samples/${cls}/`}><img src={`${base}apps/${cls}.webp`} alt={alt} loading="lazy"></a>
             <Icon name={icon} /><h3>{h}</h3><p>{t}</p>
             <a class="shot-link" href={`${PLAYGROUND}samples/${cls}/`}>See the example app</a>
           </div>
         ))}
       </div>
-      <p class="more">→ Browse the <a href={`${PLAYGROUND}samples/`}>example apps</a> for the screen closest to yours, or read <a href={`${DOCS}get_started/about`}>In a Nutshell</a> for how it works.</p>
+      <p class="more">→ Browse the <a href={`${PLAYGROUND}samples/`}>example apps</a> for the screen closest to yours: 130 learning samples and 680 control examples, each running in the browser and maintained with the framework. Or read <a href={`${DOCS}get_started/about`}>In a Nutshell</a> for how it works.</p>
     </div>
   </section>
 
-  <section class="section alt" id="who-runs-it" aria-labelledby="h-who">
-    <div class="wrap">
-      <p class="kicker">Who runs it</p>
-      <h2 id="h-who">In production, in the open, since 2023</h2>
-      <p class="intro">Two companies run it in production and say so here; one offers training and certification for it. The project itself is public down to every change, so the figures below are not ours to make up.</p>
-      <ul class="logos">{companies.map(([name, href, tag, text]) => <li><a href={href}>{name}</a><small>{tag}</small><span>{text}</span></li>)}</ul>
-      <ul class="facts">{facts.map(([b, t]) => <li><b>{b}</b><span>{t}</span></li>)}</ul>
-      <h3 class="refs-title">Talks, articles and videos</h3>
-      <ul class="refs">{references.map(([year, title, where, href]) => <li><time>{year}</time><a href={href}>{title}</a><small>{where}</small></li>)}</ul>
-      <details class="refs-more">
-        <summary>{moreReferences.length} more, 2023 to 2026</summary>
-        <ul class="refs">{moreReferences.map(([year, title, where, href]) => <li><time>{year}</time><a href={href}>{title}</a><small>{where}</small></li>)}</ul>
-      </details>
-      <p class="more">→ Running abap2UI5, or written about it? <a href={`${GITHUB_PAGE}/edit/main/src/pages/index.astro`}>Add your row</a>, or write to <a href={`mailto:${MAIL}`}>{MAIL}</a>. The figures: <a href={GITHUB}>the repository</a> and its <a href={`${GITHUB}/releases`}>releases</a>.</p>
-    </div>
-  </section>
-
-  <section class="section" id="when-to-use-it-and-when-not" aria-labelledby="h-fit">
+  <section class="section alt" id="when-to-use-it-and-when-not" aria-labelledby="h-fit">
     <div class="wrap">
       <p class="kicker">Compared with the market</p>
       <h2 id="h-fit">Where it is the shorter path, and where it is not</h2>
@@ -263,11 +253,11 @@ const give = [
     </div>
   </section>
 
-  <section class="section alt" id="what-you-keep" aria-labelledby="h-keep">
+  <section class="section" id="what-you-keep" aria-labelledby="h-keep">
     <div class="wrap">
       <p class="kicker">Governance and security</p>
       <h2 id="h-keep">An app is ABAP code, and is governed like it</h2>
-      <p class="intro">One ABAP class per app, no generated artifacts, no tables that describe a screen. So every rule that already applies to ABAP, from code review to the four-eyes principle on transports, applies to an app without any change. A system closed for repository changes is closed for abap2UI5 apps.</p>
+      <p class="intro">One ABAP class per app, no generated artifacts, no tables that describe a screen. Every rule that applies to ABAP, from code review to the four-eyes principle on transports, applies to an app unchanged.</p>
       <div class="table">
         <table>
           <thead><tr><th scope="col"></th><th scope="col" class="us">abap2UI5</th><th scope="col">A tool that stores apps as configuration</th></tr></thead>
@@ -277,12 +267,12 @@ const give = [
       <div class="cards five">
         {governance.map(([icon, h, t]) => <div class="card"><Icon name={icon} /><h3>{h}</h3><p>{t}</p></div>)}
       </div>
-      <p class="callout"><b>No shadow IT.</b> There is no click-together designer that bypasses your development process: every app is a class, governed by the rules you already have.</p>
+      <p class="callout"><b>No shadow IT.</b> No click-together designer bypasses your development process: every app is a class, under the rules you already have.</p>
       <p class="more">→ <a href={`${DOCS}configuration/security`}>Security</a>, <a href={`${DOCS}configuration/authorization`}>Authorization</a>, and the <a href={`${GITHUB}/blob/main/docs/security.md`}>security model</a> a security review starts from.</p>
     </div>
   </section>
 
-  <section class="section" id="what-it-costs" aria-labelledby="h-cost">
+  <section class="section alt" id="what-it-costs" aria-labelledby="h-cost">
     <div class="wrap">
       <p class="kicker">What it costs</p>
       <h2 id="h-cost">No license fee, now or later. The bill is your developer's time.</h2>
@@ -298,7 +288,7 @@ const give = [
         </div>
         <div class="sheet">
           {cost.map(([what, note, amount]) => <div class="sheet-line"><span class="sheet-what">{what}<small>{note}</small></span><span class={amount === "0" ? "sheet-amount zero" : "sheet-amount"}>{amount}</span></div>)}
-          <p class="sheet-note">Commercial SAP app platforms charge per named user or per device, every month, often with minimum terms and setup fees. Here the only line that grows with adoption is zero.</p>
+          <p class="sheet-note">Commercial SAP app platforms charge per named user or device, monthly, often with minimum terms and setup fees. Here the one line that grows with adoption is zero.</p>
         </div>
       </div>
       <ul class="strings" id="no-strings-attached">{strings.map(([b, t]) => <li><b>{b}</b><span>{t}</span></li>)}</ul>
@@ -311,11 +301,11 @@ const give = [
     </div>
   </section>
 
-  <section class="section alt" id="where-it-runs" aria-labelledby="h-runs">
+  <section class="section" id="where-it-runs" aria-labelledby="h-runs">
     <div class="wrap">
       <p class="kicker">Where it runs</p>
       <h2 id="h-runs">On the SAP system you already have, and nowhere else</h2>
-      <p class="intro">The browser loads the standard UI5 library; everything else, the app, its logic and its data, stays on your SAP system. No middleware, no extra server, no cloud subscription, no frontend deployment.</p>
+      <p class="intro">The browser loads the standard UI5 library; the app, its logic and its data stay on your SAP system. No middleware, no extra server, no cloud subscription, no frontend deployment.</p>
       <div class="split">
         <dl class="facts-list">
           <dt>Systems</dt>
@@ -339,20 +329,20 @@ const give = [
     </div>
   </section>
 
-  <section class="section" id="ai" aria-labelledby="h-ai">
+  <section class="section alt" id="ai" aria-labelledby="h-ai">
     <div class="wrap">
       <p class="kicker">AI</p>
       <h2 id="h-ai">One class is the easiest thing for an AI to write and for your team to check</h2>
-      <p class="intro">Your developers describe the screen; the AI writes one ABAP class; your rules review and transport it like any other code. No service, frontend project and deployment to generate and keep in sync.</p>
+      <p class="intro">Your developers describe the screen; the AI writes one ABAP class; your rules review and transport it like any other code. No service, frontend project or deployment to keep in sync.</p>
       <div class="cards three">
         {ai.map(([icon, h, t]) => <div class="card"><Icon name={icon} /><h3>{h}</h3><p>{t}</p></div>)}
       </div>
-      <p class="callout"><b>No AI lock-in either.</b> Use Claude, ChatGPT, Copilot or a local model, with your own key, at your own price. The plugins and the AI Studio cost nothing.</p>
+      <p class="callout"><b>No AI lock-in either.</b> Claude, ChatGPT, Copilot or a local model, with your own key. The plugins and the AI Studio cost nothing.</p>
       <p class="more">→ Try the <a href={`${PLAYGROUND}ai/`}>AI Studio</a>, or read <a href={`${DOCS}get_started/ai`}>Developing with AI</a>.</p>
     </div>
   </section>
 
-  <section class="section alt" id="the-objections" aria-labelledby="h-obj">
+  <section class="section" id="the-objections" aria-labelledby="h-obj">
     <div class="wrap">
       <p class="kicker">FAQ</p>
       <h2 id="h-obj">What decision makers ask</h2>
@@ -362,11 +352,31 @@ const give = [
     </div>
   </section>
 
+  <section class="section alt" id="who-runs-it" aria-labelledby="h-who">
+    <div class="wrap">
+      <p class="kicker">Who runs it</p>
+      <h2 id="h-who">In production, in the open, since 2023</h2>
+      <p class="intro">Two companies run it in production and say so here; one offers training and certification for it. We know of many more installations than this list shows, and the list is meant to grow. The project is public down to every change, so every figure below can be checked.</p>
+      <ul class="logos">
+        {companies.map(([name, href, tag, text]) => <li><a href={href}>{name}</a><small>{tag}</small><span>{text}</span></li>)}
+        <li class="join"><a href={`${GITHUB_PAGE}/edit/main/src/pages/index.astro`}>Your company here</a><small>Add a row</small><span>Running abap2UI5? Add one row by pull request, or send it to <a href={`mailto:${MAIL}`}>{MAIL}</a>. The next reader is looking for exactly your industry.</span></li>
+      </ul>
+      <ul class="facts">{facts.map(([b, t]) => <li><b>{b}</b><span>{t}</span></li>)}</ul>
+      <h3 class="refs-title">Talks, articles and videos</h3>
+      <ul class="refs">{references.map(([year, title, where, href]) => <li><time>{year}</time><a href={href}>{title}</a><small>{where}</small></li>)}</ul>
+      <details class="refs-more">
+        <summary>{moreReferences.length} more, 2023 to 2026</summary>
+        <ul class="refs">{moreReferences.map(([year, title, where, href]) => <li><time>{year}</time><a href={href}>{title}</a><small>{where}</small></li>)}</ul>
+      </details>
+      <p class="more">→ Running abap2UI5, or written about it? <a href={`${GITHUB_PAGE}/edit/main/src/pages/index.astro`}>Add your row</a>, or write to <a href={`mailto:${MAIL}`}>{MAIL}</a>. The figures: <a href={GITHUB}>the repository</a> and its <a href={`${GITHUB}/releases`}>releases</a>.</p>
+    </div>
+  </section>
+
   <section class="section start" id="how-to-evaluate-it-in-a-week" aria-labelledby="h-week">
     <div class="wrap">
       <p class="kicker">Get started</p>
       <h2 id="h-week">One real screen, one week, your own team</h2>
-      <p class="intro">No pilot budget and no vendor workshop. The decision is better made from a screen your team built than from a slide.</p>
+      <p class="intro">No pilot budget, no vendor workshop: decide from a screen your team built, not from a slide.</p>
       <ol class="week">{week.map(([b, t]) => <li><b>{b}</b><span>{t}</span></li>)}</ol>
       <div class="doors">
         {doors.map(([icon, b, t, href, label]) => <a class="door" href={href}><Icon name={icon} /><b>{b}</b><span>{t}</span><small>{label}</small></a>)}
@@ -374,11 +384,12 @@ const give = [
     </div>
   </section>
 
-  <section class="section give" aria-labelledby="h-give">
+  <section class="section alt" id="community" aria-labelledby="h-community">
     <div class="wrap">
-      <h2 id="h-give" class="give-title">Free to use is not the same as free to make</h2>
-      <p class="give-text">Those zeros are written in somebody's evenings. If abap2UI5 saves your project time or money, three things pay it back:</p>
-      <ul class="give-list">{give.map(([b, t]) => <li><b>{b}</b> <span set:html={t} /></li>)}</ul>
+      <p class="kicker">Join the community</p>
+      <h2 id="h-community">Open source, in the open, and better with every question</h2>
+      <p class="intro">abap2UI5 is open source and stays open source. People help each other in public, because transparency is the best way for a project like this to grow. Here is what it runs on, and what you can give back.</p>
+      <ul class="strings community">{community.map(([b, t]) => <li><b>{b}</b><span set:html={t} /></li>)}</ul>
     </div>
   </section>
 </Page>
