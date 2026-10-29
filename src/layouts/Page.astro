@@ -2,10 +2,9 @@
 /* The document around the page: head, the header with the sections, the foot.
  *
  * THE POLICY. GitHub Pages sets no headers of ours, so the Content-Security-
- * Policy is a <meta>. The page runs one script, the cost calculator's
- * public/calc.js, as a file from this origin - script-src is 'self', no inline
- * script, no handler attribute, nothing from anywhere else - and everything
- * else is this origin too. test/site.test.mjs holds the page to it.
+ * Policy is a <meta>. The page runs no script at all - script-src is 'self',
+ * no inline script, no handler attribute - and everything it loads is this
+ * origin too. test/site.test.mjs holds the page to it.
  *
  * THE HEADER. The section links stay on every width: on a narrow screen they
  * become a second row that scrolls sideways, so a reader on a phone has a

@@ -21,13 +21,10 @@ test("the eight section ids are the addresses the redirect and the README link t
   ]) assert.match(html, new RegExp(`id="${id}"`), `#${id}`);
 });
 
-test("the page runs one script, as a file from this origin, and its policy says so", () => {
-  // the cost calculator's public/calc.js - and no inline script beside it
+test("the page runs no script, and its policy says so", () => {
+  // the FAQ and the folded references are <details>, the header is anchors
   const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
-  assert.equal(scripts.length, 1, "one <script>");
-  assert.match(scripts[0][1], /src="\/why\/calc\.js"/);
-  assert.equal(scripts[0][2].trim(), "", "the script is a file, not inline");
-  assert.ok(fs.existsSync(path.join(DIST, "calc.js")));
+  assert.equal(scripts.length, 0, "no <script>");
   assert.doesNotMatch(html, /\son[a-z]+=/i, "an inline event handler");
   assert.doesNotMatch(html, /\sstyle="/i, "an inline style the policy would refuse");
   const csp = html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/);
