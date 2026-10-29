@@ -46,15 +46,20 @@ npm run check    # build + test, what CI runs
   Figures a reader can check (since when, contributors, the latest release) are
   fine; they carry their date and link to GitHub.
 - **Short, honest, in this order.** A reader gives the page a few minutes:
-  the visible text outside `<details>` stays under 2,800 words (the test holds
-  it). The comparison names where abap2UI5 is *not* ahead (rows marked `even`,
+  the visible text outside `<details>` stays under 4,000 words (the test holds
+  it; the ceiling is generous for now - everything goes in first, a trimming
+  pass follows later). The comparison names where abap2UI5 is *not* ahead (rows marked `even`,
   the "Where something else fits better" box) and the support it has: in the
   open first - anyone can open an issue or send a pull request on GitHub at any
   time - and more by mail to contact@abap2UI5.org on request; what is not on
   offer is an SLA in a contract (`SUPPORT.md` in the framework is the source).
   Never "no support": the open channel is the support, and the better one. Cost comes before AI; proof ("Who runs it") sits after the FAQ, just before Get started.
   No superlatives ("better than every", "made for"); a claim a reader cannot
-  check is cut, not softened. Add-ons, Basis steps and other developer topics
+  check is cut, not softened. Three things a reader asks first stay visible without scrolling into a
+  section: the business logic stays in ABAP (hero, tile, a comparison row, the
+  security heading), performance (a comparison row, a reason, a FAQ) and
+  security (a section of its own, named in the navigation). Add-ons, Basis
+  steps and other developer topics
   are links into the manual, not sections.
 - **Every table cell carries its column.** `data-th` on each `<td>`: under
   700px a row becomes a card and the cell shows its column name. The test

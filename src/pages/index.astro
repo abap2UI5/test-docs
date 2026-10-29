@@ -81,10 +81,11 @@ const compare = [
   ["License cost", "None: MIT, for any number of users, systems and apps", "Part of the SAP license", "Part of the SAP license", "Subscription or per-user fees, renewed every year"],
   ["Who builds the apps", "The ABAP team you already have", "ABAP plus CDS, RAP and annotation specialists", "JavaScript / UI5 developers", "Developers trained on the vendor's tool"],
   ["Time to productivity", "An afternoon: an ABAP developer learns UI5's controls from the examples, not a new language", "Weeks: CDS, RAP, annotations, Business Application Studio", "Months: JavaScript, UI5 tooling, Git, npm", "The vendor's training"],
+  ["Where the business logic lives", "In ABAP, next to the data, as it does today", "In ABAP, behind CDS and annotations", "Split: JavaScript in the browser, a service in ABAP", "In the vendor's tool"],
   ["First screen", "Minutes", "Days: model, service, project, deployment", "Days to weeks", "After the platform is installed and licensed"],
   ["Freedom of the UI", "Every UI5 control, any layout", "SAP's floorplans and their extension points", "Every UI5 control", "What the vendor's designer offers"],
   ["Older SAP releases", "NetWeaver 7.02 up to ABAP Cloud, one source", "7.5x and later", "Yes, with OData effort per release", "Depends on the vendor's add-on"],
-  ["What a click costs", "One plain HTTP request carrying only what changed; no app code and no logic in the browser", "OData calls with metadata, batch and draft handling, and the Fiori Elements runtime in the browser", "OData calls and an app bundle per app, logic in the browser", "The vendor's runtime in the browser"],
+  ["Performance: what a click costs", "One plain HTTP request carrying only what changed; no app code and no logic in the browser", "OData calls with metadata, batch and draft handling, and the Fiori Elements runtime in the browser", "OData calls and an app bundle per app, logic in the browser", "The vendor's runtime in the browser"],
   ["Extra infrastructure", "None: one endpoint on your SAP system", "Fiori frontend server and deployment", "Frontend deployment (BSP, BTP or web server)", "The vendor's add-on, server or cloud tenant"],
   ["Lock-in", "None: apps are plain ABAP classes in your system", "SAP's programming model", "Low", "Apps live in the vendor's runtime and repository"],
   ["Source code", "Open, every line, on GitHub", "Closed", "UI5 open, your app yours", "Closed"],
@@ -93,10 +94,10 @@ const compare = [
   ["Support", "Slack and GitHub issues, open to anyone at any time; more by mail, planned together. No SLA in a contract", "SAP support", "SAP support for UI5; your app is yours", "The vendor's SLA, in the contract", "even"],
 ];
 const useIt = [
-  ["The team is ABAP.", "No JavaScript, no UI5 tooling, no training project before the S/4HANA project. An app is one class, written, debugged, transported and tested like any other. What your developers still learn: UI5's controls, from the examples, not a new language."],
+  ["The team is ABAP.", "No JavaScript, no UI5 tooling, no training project before the S/4HANA project. An app is one class in ADT or SE80: debugged, checked by ATC, transported and unit-tested like any other, nothing a developer has not done a hundred times. What they still learn: UI5's controls, from the examples, not a new language."],
   ["The system is older than RAP.", "NetWeaver 7.02 to 7.4x have no RAP and a Fiori stack that is expensive to add. An app written there moves to S/4HANA unchanged."],
   ["The screen is yours, not SAP's.", "Tools, cockpits, monitors, admin consoles, anything that used to be a report or a module pool. Where a Fiori Elements template becomes the thing you fight, this is the shorter path."],
-  ["It is fast where users notice.", "No frontend logic, no OData, no app bundle: the browser holds one generic shell, loaded once, and every click is one plain HTTP request with the changed data only. The work runs on the ABAP stack, next to the data."],
+  ["Performance where users notice it.", "No frontend logic, no OData, no app bundle: the browser holds one generic shell, loaded once, and every click is one plain HTTP request with the changed data only. The work runs on the ABAP stack, next to the data."],
   ["Your Fiori apps and your logic stay.", "abap2UI5 apps are tiles in the same launchpad. A report, a BAPI, a function module: an app calls it as it is."],
 ];
 const notIt = [
@@ -124,11 +125,11 @@ const governance = [
 
 /* What it costs: the lines a commercial platform bills, and what is left. */
 const cost = [
-  ["Framework license", "MIT, commercial use included, for any number of users, systems and apps", "0"],
+  ["Framework license", "MIT, commercial use included, any number of users, systems and apps", "0"],
   ["Platform, runtime, hosting", "One service on the SAP system you already run; the UI5 your system already ships", "0"],
   ["Support", "Slack and GitHub issues, open to anyone at any time; pull requests welcome", "0"],
   ["Developer time", "An ABAP developer writes the screen, as for any class; this is the bill", "your rate"],
-  ["Training and consulting", "Webinars, certification, app development by a consultancy, if you want them", "optional"],
+  ["Training and consulting", "Webinars, certification, app development by a consultancy, if wanted", "optional"],
 ];
 const strings = [
   ["Nothing to sign up for", "The examples run in the browser with no account. The framework is an abapGit pull; no trial period, no demo to book."],
@@ -148,10 +149,11 @@ const ai = [
 const objections = [
   ["It is an open-source project. What if the maintainers stop?", `The installed version keeps running, the source is in your system in full, readable and changeable, and the apps stay ordinary ABAP classes. Nothing is called at runtime that is not in your system, apart from the UI5 library, which your system ships. A build renamed into your own namespace is one workflow run (<a href="${DOCS}advanced/renaming">Namespaces, Renaming</a>).`],
   ["Who do we call when something breaks?", `Your developer, for the app, as for any class in the system. For the framework, write in the <a href="${SLACK}">Slack channel</a> or open an <a href="${GITHUB}/issues">issue</a> on GitHub: anyone can, at any time, no account with the project needed, and in the open is where it gets answered fastest and where everybody sees the answer. Pull requests are welcome the same way. If your organization needs more, closer cooperation, a workshop or a support arrangement, write to <a href="mailto:${MAIL}">${MAIL}</a> and plan it together (<a href="${GITHUB}/blob/main/SUPPORT.md">Support</a>). Security reports are acknowledged within three business days (<a href="${DOCS}configuration/security">Security</a>).`],
-  ["Is this another UI5 wrapper that will not survive the next UI5 release?", `The frontend is UI5 itself, not a copy of it, and every change is run in the browser on the oldest supported release and on UI5 2.x. Releases are tagged and listed (<a href="${DOCS}resources/changelog">Release Notes</a>); what is on its way out is announced and tracked until removal (<a href="${DOCS}resources/deprecations">Deprecations</a>).`],
+  ["Is this another UI5 wrapper that will not survive the next UI5 release?", `The frontend is UI5 itself, not a copy, and every change runs in the browser on the oldest supported release and on UI5 2.x. Releases are listed (<a href="${DOCS}resources/changelog">Release Notes</a>); what goes is announced and tracked until removal (<a href="${DOCS}resources/deprecations">Deprecations</a>).`],
   ["Every click is a request to SAP. Is that fast enough?", `Faster than most Fiori apps, in practice: one plain HTTP request per click with the changed data only, no OData metadata, no batch, no app logic or bundle in the browser. For worklists, forms and cockpits that is the round trip a SAP GUI screen makes. It is not built for an app that holds its state offline (<a href="${DOCS}configuration/performance">Performance</a>).`],
+  ["When abap2UI5, and when a custom SAPUI5 app, for a complex screen?", "Ask where the complexity is. If it is in the data and the rules, which is the usual case for a cockpit, a worklist or a multi-step form, abap2UI5 is the shorter path: the logic stays in ABAP next to the data, the screen is any UI5 control, and one ABAP developer owns the whole thing. If it is in the browser itself, an editor that works offline, an animation-heavy control, a client that must keep working without SAP for minutes, a custom SAPUI5 app with its own JavaScript is the right tool. Three questions decide it: does the app need to run without a connection, does it need custom JavaScript on the client, and who will maintain it in five years."],
   ["Our clean-core guideline names RAP. Where does this leave us?", "Side by side. abap2UI5 passes the ABAP Cloud checks and modifies nothing in the standard, so it is clean core in the technical sense, but it is not SAP's programming model. The usual outcome is a scope: standard transactional screens in RAP, the tools around them in abap2UI5, both in one launchpad."],
-  ["Why should we trust it over a product we pay for?", "Because you can check everything a vendor asks you to believe. The source is open, every test is public, and an app is a class in your own system that keeps running whatever happens to the project. What you do not get is an SLA in a contract; what you get is the code, and a maintainer you can reach."],
+  ["Why should we trust it over a product we pay for?", "Because you can check everything a vendor asks you to believe: the source is open, every test is public, and an app is a class in your own system that keeps running whatever happens to the project. What you do not get is an SLA in a contract; what you get is the code, and a maintainer you can reach."],
   ["Our users are fast in SAP GUI. Will they accept it?", "Users go back to SAP GUI when the Fiori app is slower than the transaction it replaced. An abap2UI5 screen makes one request per click on the same ABAP stack, so a keyboard-driven worklist stays as quick as it was. And nothing is replaced in one go: one screen at a time, the GUI stays until the last one, the logic behind both is the same code."],
   ["Is anybody actually running this in production?", `Two companies say so under <a href="#who-runs-it">Who runs it</a> below, and every release is tested against Standard ABAP and ABAP Cloud, downported to NetWeaver 7.02 and run in the browser on the oldest and the newest supported UI5 release (<a href="${GITHUB}/blob/main/docs/verified-on.md">verified on</a>).`],
 ];
@@ -172,12 +174,12 @@ const doors = [
 /* The community: open source, in the open, and what a reader can give back.
  * Every item is a thing to do, with the place to do it. */
 const community = [
-  ["Open source, and it stays that way", `MIT licensed since the first commit, every line on <a href="${GITHUB}">GitHub</a>, forks welcome. No company owns it that could close it, change the license or put the next release behind a login.`],
+  ["Open source, and it stays that way", `MIT licensed since the first commit, every line on <a href="${GITHUB}">GitHub</a>, forks welcome. No company owns it that could close it, change the license or put a release behind a login.`],
   ["We help each other", `Questions go to <a href="${SLACK}">Slack</a> and <a href="${GITHUB}/issues">GitHub</a>, answers stay public. Every question makes the documentation and the examples better for the next person, so ask yours in the open.`],
   ["Built on abapGit and abaplint", `The installation, the tests and every release stand on <a href="https://abapgit.org">abapGit</a> and <a href="https://abaplint.org">abaplint</a>. If abap2UI5 saves you money, consider <a href="https://abapgit.org/sponsor.html">supporting the people behind them</a> too.`],
-  ["Add-ons: share yours", `Selection screens, table maintenance, popups, a launchpad KPI: the building blocks live as <a href="https://github.com/abap2UI5-addons">add-ons</a> in the open. The screen you solved for your plant is probably somebody else's next week.`],
+  ["Add-ons: share yours", `Selection screens, table maintenance, popups, a launchpad KPI: the building blocks live as <a href="https://github.com/abap2UI5-addons">add-ons</a> in the open. The screen you solved for your plant is somebody else's next week.`],
   ["Say what you build", `A post on <a href="https://www.linkedin.com/company/abap2ui5">LinkedIn</a> with #abap2UI5, a talk at your user group, a row under <a href="#who-runs-it">Who runs it</a>: that is how the next decision maker learns it exists.`],
-  ["Sponsor the work", `Those zeros are written in somebody's evenings. <a href="${DOCS}resources/sponsor">Sponsoring the contributors</a> is the way to say the release you pull next month matters to you.`],
+  ["Sponsor the work", `Those zeros are written in somebody's evenings. <a href="${DOCS}resources/sponsor">Sponsoring the contributors</a> says the release you pull next month matters to you.`],
 ];
 ---
 <Page
@@ -187,8 +189,8 @@ const community = [
   <section class="hero">
     <div class="wrap">
       <div>
-        <h1>UI5 apps for SAP, built by <em>the team you already have</em></h1>
-        <p class="lede">abap2UI5 lets ABAP developers build UI5 apps as one ABAP class: <b>no JavaScript, no extra platform, no license fee.</b> Open source since 2023, in production on the desktop and on the warehouse floor.</p>
+        <h1>UI5 apps for SAP, built by <em>the ABAP team you already have</em></h1>
+        <p class="lede">An app is an ordinary ABAP class: written in ADT or SE80, checked by ATC, carried by a transport, as every ABAP developer does it today. <b>The business logic stays in ABAP, next to the data: no JavaScript, no extra platform, no license fee.</b> Open source since 2023, in production on the desktop and on the warehouse floor.</p>
         <div class="actions">
           <a class="btn btn-primary" href={`${PLAYGROUND}samples/`}>See example apps</a>
           <a class="btn btn-ghost" href="#when-to-use-it-and-when-not">Where it fits</a>
@@ -254,9 +256,9 @@ const community = [
 
   <section class="section" id="what-you-keep" aria-labelledby="h-keep">
     <div class="wrap">
-      <p class="kicker">Governance and security</p>
-      <h2 id="h-keep">An app is ABAP code, and is governed like it</h2>
-      <p class="intro">One ABAP class per app, no generated artifacts, no tables that describe a screen. Every rule that applies to ABAP, from code review to the four-eyes principle on transports, applies to an app unchanged.</p>
+      <p class="kicker">Security and governance</p>
+      <h2 id="h-keep">The logic stays in ABAP; logon, authorizations and data stay SAP's</h2>
+      <p class="intro">One ABAP class per app, the business logic in it, no generated artifacts, no tables that describe a screen. Nothing of the app runs in the browser, so there is no client logic to secure. Every rule that applies to ABAP, from code review to the four-eyes principle on transports, applies to an app unchanged.</p>
       <div class="table">
         <table>
           <thead><tr><th scope="col"></th><th scope="col" class="us">abap2UI5</th><th scope="col">A tool that stores apps as configuration</th></tr></thead>
@@ -299,7 +301,7 @@ const community = [
     <div class="wrap">
       <p class="kicker">Where it runs</p>
       <h2 id="h-runs">On the SAP system you already have, and nowhere else</h2>
-      <p class="intro">The browser loads the standard UI5 library; the app, its logic and its data stay on your SAP system. No middleware, no extra server, no cloud subscription, no frontend deployment.</p>
+      <p class="intro">The browser loads the standard UI5 library; the app, its logic and its data stay on your SAP system. No middleware, no extra server, no frontend deployment.</p>
       <div class="split">
         <dl class="facts-list">
           <dt>Systems</dt>
@@ -382,7 +384,7 @@ const community = [
     <div class="wrap">
       <p class="kicker">Join the community</p>
       <h2 id="h-community">Open source, in the open, and better with every question</h2>
-      <p class="intro">abap2UI5 is open source and stays open source. People help each other in public, because transparency is the best way for a project like this to grow. Here is what it runs on, and what you can give back.</p>
+      <p class="intro">abap2UI5 is open source and stays open source. People help each other in public, because transparency is how a project like this grows. What it runs on, and what you can give back:</p>
       <ul class="strings community">{community.map(([b, t]) => <li><b>{b}</b><span set:html={t} /></li>)}</ul>
     </div>
   </section>
