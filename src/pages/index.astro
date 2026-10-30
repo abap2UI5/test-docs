@@ -177,34 +177,24 @@ const doors = [
   ["chat", "A question, any time", "Write in the Slack channel, where the people who run it in production answer, or open a GitHub issue. Anyone, any time.", SLACK, "Slack"],
   ["partner", "More than a question", `A workshop, closer cooperation, a support arrangement: write to ${MAIL} and plan it together.`, `mailto:${MAIL}`, "Mail"],
 ];
-/* The community: open source, in the open, and what a reader can give back.
- * Every item is a thing to do, with the place to do it. */
-const community = [
-  ["Open source, and it stays that way", `MIT licensed since the first commit, every line on <a href="${GITHUB}">GitHub</a>, forks welcome. No company owns it that could close it, change the license or put a release behind a login.`],
-  ["We help each other", `Questions go to <a href="${SLACK}">Slack</a> and <a href="${GITHUB}/issues">GitHub</a>, answers stay public. Every question makes the documentation and the examples better for the next person, so ask yours in the open.`],
-  ["Built on abapGit and abaplint", `The installation, the tests and every release stand on <a href="https://abapgit.org">abapGit</a> and <a href="https://abaplint.org">abaplint</a>. If abap2UI5 saves you money, consider <a href="https://abapgit.org/sponsor.html">supporting the people behind them</a> too.`],
-  ["Add-ons: share yours", `Selection screens, table maintenance, popups, a launchpad KPI: the building blocks live as <a href="https://github.com/abap2UI5-addons">add-ons</a> in the open. The screen you solved for your plant is somebody else's next week.`],
-  ["Say what you build", `A post on <a href="https://www.linkedin.com/company/abap2ui5">LinkedIn</a> with #abap2UI5, a talk at your user group, a row under <a href="#who-runs-it">Who runs it</a>: that is how the next decision maker learns it exists.`],
-  ["Sponsor the work", `Those zeros are written in somebody's evenings. <a href="${DOCS}resources/sponsor">Sponsoring the contributors</a> says the release you pull next month matters to you.`],
-];
 ---
 <Page
+  current="home"
   title="abap2UI5 - why"
   description="abap2UI5 for decision makers: what you can build with it, who runs it, where it is the shorter path to a UI5 app on SAP and where it is not, what it costs and how to start with one real screen."
 >
   <section class="hero">
     <div class="wrap">
       <div>
-        <h1>UI5 apps for SAP, built by <em>the ABAP team you already have</em></h1>
+        <h1>UI5 apps for ABAP, built by <em>the team you already have</em></h1>
         <p class="lede">An app is an ordinary ABAP class: written in ADT or SE80, checked by ATC, carried by a transport, as every ABAP developer does it today. <b>The business logic stays in ABAP, next to the data: no JavaScript, no extra platform, no license fee.</b> Open source since 2023, in production on the desktop and on the warehouse floor.</p>
         <div class="actions">
           <a class="btn btn-primary" href={`${PLAYGROUND}samples/`}>See example apps</a>
           <a class="btn btn-ghost" href="#when-to-use-it-and-when-not">Where it fits</a>
         </div>
       </div>
-      <figure class="window">
-        <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>an abap2UI5 app · one ABAP class</span></div>
-        <img src={`${base}apps/hero-sales-orders.webp`} alt="An abap2UI5 app: a table of sales orders with status and amount, and a panel beside it that explains the selected orders" width="1600" height="798" fetchpriority="high">
+      <figure class="composite">
+        <img src={`${base}apps/hero-class-and-phone.webp`} alt="One ABAP class in the ABAP development tools, and the app it produces on a handheld: a table of sales orders with status and amount" width="1800" height="820" fetchpriority="high">
       </figure>
     </div>
   </section>
@@ -224,6 +214,13 @@ const community = [
             <a class="shot-link" href={`${PLAYGROUND}samples/${cls}/`}>See the example app</a>
           </div>
         ))}
+      </div>
+      <h3 class="sub">One app, every device: no build per device</h3>
+      <p class="intro">The same class, opened on a phone, a tablet and a desktop. It runs in the browser on iOS, Android and Windows, on rugged industrial handhelds too; nothing to install, nothing to distribute, and the layout adapts on its own.</p>
+      <div class="devices">
+        <figure class="device phone"><div class="screen"><img src={`${base}apps/device-phone.webp`} alt="The sales orders app on a phone: one order per row, region and status folded under it" loading="lazy"></div><figcaption><b>Phone and handheld scanner</b><span>Picking, counting, approving at the shelf or on the way. The scanner's input lands in the field, no tap needed.</span></figcaption></figure>
+        <figure class="device tablet"><div class="screen"><img src={`${base}apps/device-tablet.webp`} alt="The sales orders app on a tablet: the full table" loading="lazy"></div><figcaption><b>Tablet</b><span>At the machine, in the workshop, at the goods receipt: the full table, touch-sized.</span></figcaption></figure>
+        <figure class="device desktop"><div class="screen"><img src={`${base}apps/device-desktop.webp`} alt="The sales orders app on a desktop: the full table with room to spare" loading="lazy"></div><figcaption><b>Desktop</b><span>The worklist and the cockpit at the desk, keyboard-driven, in the launchpad next to the Fiori apps.</span></figcaption></figure>
       </div>
       <p class="more">→ Browse the <a href={`${PLAYGROUND}samples/`}>example apps</a> for the screen closest to yours: 130 learning samples and 680 control examples, each running in the browser and maintained with the framework. Or read <a href={`${DOCS}get_started/about`}>In a Nutshell</a> for how it works.</p>
     </div>
@@ -310,8 +307,14 @@ const community = [
       <p class="intro">The browser loads the standard UI5 library; the app, its logic and its data stay on your SAP system. No middleware, no extra server, no frontend deployment.</p>
       <div class="split">
         <dl class="facts-list">
-          <dt>Systems</dt>
-          <dd><ul class="chips"><li>S/4HANA Public Cloud</li><li>BTP ABAP Environment</li><li>S/4HANA Private Cloud &amp; on-premise</li><li>NetWeaver 7.02 or later</li></ul></dd>
+          <dt>Every SAP operating model, from one source</dt>
+          <dd>
+            <ul class="models">
+              <li><b>On-premise</b><span>S/4HANA, and NetWeaver 7.02 or later, in your own data centre or at a hoster.</span></li>
+              <li><b>Private cloud</b><span>RISE with SAP, S/4HANA Cloud Private Edition.</span></li>
+              <li class="hot"><b>Public cloud</b><span>S/4HANA Cloud Public Edition and the BTP ABAP Environment. Clean core is mandatory there, and abap2UI5 passes the ABAP Cloud checks: the same app, the same class, no rewrite on the way up.</span></li>
+            </ul>
+          </dd>
           <dt>Where an app appears</dt>
           <dd><ul class="chips"><li>Browser tab</li><li>Fiori launchpad tile</li><li>SAP Build Work Zone</li><li>Microsoft Teams</li><li>Microsoft Excel</li><li>iOS &amp; Android</li><li>Inside your own UI5 app</li></ul></dd>
           <dt>Without internet access</dt>
@@ -386,12 +389,11 @@ const community = [
     </div>
   </section>
 
-  <section class="section alt" id="community" aria-labelledby="h-community">
+  <section class="section alt about-teaser" aria-labelledby="h-about">
     <div class="wrap">
-      <p class="kicker">Join the community</p>
-      <h2 id="h-community">Open source, in the open, and better with every question</h2>
-      <p class="intro">abap2UI5 is open source and stays open source. People help each other in public, because transparency is how a project like this grows. What it runs on, and what you can give back:</p>
-      <ul class="strings community">{community.map(([b, t]) => <li><b>{b}</b><span set:html={t} /></li>)}</ul>
+      <p class="kicker">About</p>
+      <h2 id="h-about">Open source, in the open, and better with every question</h2>
+      <p class="intro">Who builds abap2UI5, what it stands on, how support works and what you can give back: on the <a href={`${base}about/`}>About page</a>.</p>
     </div>
   </section>
 </Page>

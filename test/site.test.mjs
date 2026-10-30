@@ -47,6 +47,20 @@ test("everything the page loads is in dist/, under the base it is published at",
   assert.doesNotMatch(html, /rel="stylesheet" href="https?:/);
 });
 
+test("the about page is built, carries no script, and both pages link each other", () => {
+  const about = fs.readFileSync(path.join(DIST, "about", "index.html"), "utf8");
+  assert.equal([...about.matchAll(/<script\b/gi)].length, 0, "no <script> on the about page");
+  assert.match(about, /id="support"/);
+  assert.match(about, /id="community"/);
+  assert.match(html, /href="\/why\/about\/"/, "home links to about");
+  assert.match(about, /href="\/why\/#who-runs-it"/, "about links back home");
+  for (const ref of [...about.matchAll(/\s(?:src|href)="([^"#]+)"/g)].map((m) => m[1]).filter((u) => u.startsWith("/"))) {
+    const file = path.join(DIST, ref.slice(BASE.length) || "index.html");
+    const target = fs.existsSync(file) && fs.statSync(file).isDirectory() ? path.join(file, "index.html") : file;
+    assert.ok(fs.existsSync(target), `${ref} is not in dist/`);
+  }
+});
+
 test("the canonical address is the published one", () => {
   assert.match(html, /<link rel="canonical" href="https:\/\/abap2ui5\.github\.io\/why\/">/);
 });
