@@ -12,23 +12,23 @@ const SLACK = "https://abapgit.slack.com/join/shared_invite/zt-46tqufaht-QlrxTzl
 const MAIL = "contact@abap2UI5.org";
 const base = import.meta.env.BASE_URL;
 
-/* Support: five channels, all in the open and all independent of each other,
+/* Support: four channels, all in the open and all independent of each other,
  * and then the one case where you write to us. SUPPORT.md in the framework is
  * the source. */
 const support = [
   ["GitHub issues", `A bug, a question, a wish: open an <a href="${GITHUB}/issues">issue</a>. Anyone can, at any time, no account with the project needed; the answer stays public for the next person. Security reports are the one exception: not in a public issue, see <a href="${GITHUB}/blob/main/SECURITY.md">SECURITY.md</a>, acknowledged within three business days.`],
   ["Slack channel", `The abap2UI5 channel in the abapGit <a href="${SLACK}">Slack</a>: the quick question, the screenshot, the "has anyone done this". The people who run it in production read along and answer.`],
-  ["Pull requests", `A fix, a sample, a sentence in the documentation: send it as a <a href="${GITHUB}/pulls">pull request</a>. Every one is reviewed in the open, and the next release carries it.`],
   ["Documentation", `The <a href="${DOCS}">manual</a>, from the quickstart to the reference, maintained with the framework rather than left to age; most questions have their page there already.`],
   ["Transparency: the code and the samples", `Every line of the framework is on <a href="${GITHUB}">GitHub</a>, every test is public, and the <a href="https://abap2ui5.github.io/playground/samples/">sample catalogue</a> holds 130 learning samples and 680 control examples that run in the browser. When in doubt, read what it actually does.`],
 ];
-const more = `Honestly, we hope it never comes to this. The goal is an ABAP team that is so much at home with abap2UI5 that support is as unnecessary as a support call for a selection screen or a transport into P. Most of the way there are the five channels above. But if you would feel better with somebody looking over the first screen, explaining a design or sitting next to you for a go-live, write to <a href="mailto:${MAIL}">${MAIL}</a> and we will see what makes sense. One request: do not ask for a glossy slide deck full of buzzwords. There is none here, and that is the point.`;
+const more = `Honestly, we hope it never comes to this. The goal is an ABAP team that is so much at home with abap2UI5 that support is as unnecessary as a support call for a selection screen or a transport into P. Most of the way there are the four channels above. But if you would feel better with somebody looking over the first screen, explaining a design or sitting next to you for a go-live, write to <a href="mailto:${MAIL}">${MAIL}</a> and we will see what makes sense. One request: do not ask for a glossy slide deck full of buzzwords. There is none here, and that is the point.`;
 /* The community: open source, in the open, and what a reader can give back.
  * Every item is a thing to do, with the place to do it. */
 const community = [
   ["Open source, and it stays that way", `MIT licensed since the first commit, every line on <a href="${GITHUB}">GitHub</a>, forks welcome. No company owns it that could close it, change the license or put a release behind a login.`],
   ["We help each other", `Questions go to <a href="${SLACK}">Slack</a> and <a href="${GITHUB}/issues">GitHub</a>, answers stay public. Every question makes the documentation and the examples better for the next person, so ask yours in the open.`],
   ["Built on abapGit and abaplint", `The installation, the tests and every release stand on <a href="https://abapgit.org">abapGit</a> and <a href="https://abaplint.org">abaplint</a>. If abap2UI5 saves you money, consider <a href="https://abapgit.org/sponsor.html">supporting the people behind them</a> too.`],
+  ["Send a pull request", `A fix, a sample, a sentence in the documentation: send it as a <a href="${GITHUB}/pulls">pull request</a>. Every one is reviewed in the open, and the next release carries it.`],
   ["Add-ons: share yours", `Selection screens, table maintenance, popups, a launchpad KPI: the building blocks live as <a href="https://github.com/abap2UI5-addons">add-ons</a> in the open. The screen you solved for your plant is somebody else's next week.`],
   ["Say what you build", `A post on <a href="https://www.linkedin.com/company/abap2ui5">LinkedIn</a> with #abap2UI5, a talk at your user group, a row under <a href="#who-runs-it">Who runs it</a>: that is how the next decision maker learns it exists.`],
   ["Sponsor the work", `Those zeros are written in somebody's evenings. <a href="${DOCS}resources/sponsor">Sponsoring the contributors</a> says the release you pull next month matters to you.`],
@@ -71,7 +71,7 @@ const community = [
   <section class="section alt" id="support" aria-labelledby="h-support">
     <div class="wrap">
       <p class="kicker">Support</p>
-      <h2 id="h-support">In the open, five ways, and one more if you need it</h2>
+      <h2 id="h-support">In the open, four ways, and one more if you need it</h2>
       <ul class="plain two">{support.map(([b, t]) => <li><div><b>{b}</b><span set:html={t} /></div></li>)}</ul>
       <div class="callout more-box">
         <h3>Need more? Write to us</h3>
