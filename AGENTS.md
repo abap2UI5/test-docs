@@ -11,7 +11,8 @@ it depends on abap2UI5/docs or abap2UI5/playground at build time.
 
 | Path | Purpose |
 | --- | --- |
-| `src/pages/index.astro` | The page: the text of every section, as data at the top and markup below |
+| `src/pages/index.astro` | The home page: the text of every section, as data at the top and markup below |
+| `src/pages/community.astro` | Community & Support: the open-source idea, the support ladder, what it stands on, what to give back |
 | `src/layouts/Page.astro` | The document: head, the Content-Security-Policy, the header with the section links, the foot |
 | `src/components/` | `Stats` (the headline tiles under the hero), `Icon` (inline marks) |
 | `src/styles/global.css` | The one stylesheet; light and dark follow the system |

@@ -65,7 +65,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 76px; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 120px; -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
   margin: 0; background: var(--bg); color: var(--text);
@@ -98,18 +98,15 @@ code { font-family: var(--mono); font-size: .9em; }
 .nav { display: flex; align-items: center; gap: 4px; order: 2; }
 .nav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
 .top-actions { display: flex; align-items: center; gap: 10px; order: 3; margin-left: auto; }
+/* the second row: the sections of the current page */
+.subnav { border-top: 1px solid var(--line); background: var(--bg); }
+.subnav .wrap { display: flex; flex-wrap: nowrap; gap: 2px; height: 42px; align-items: center; overflow-x: auto; scrollbar-width: none; }
+.subnav .wrap::-webkit-scrollbar { display: none; }
+.subnav a { flex: none; padding: 6px 10px; border-radius: 8px; color: var(--muted); font-size: 13.5px; font-weight: 500; text-decoration: none; white-space: nowrap; }
+.subnav a:hover { color: var(--ink); background: var(--bg-alt); }
 .icon-btn { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--muted); }
 .icon-btn:hover { color: var(--brand); border-color: var(--brand); }
 .icon-btn svg { width: 18px; height: 18px; }
-/* the sections menu: a <details>, open on click, no script */
-.menu { position: relative; }
-.menu summary { list-style: none; cursor: pointer; padding: 6px 10px; border-radius: 8px; color: var(--muted); font-size: 14px; font-weight: 500; white-space: nowrap; }
-.menu summary::-webkit-details-marker { display: none; }
-.menu summary::after { content: " ▾"; font-size: 11px; }
-.menu summary:hover, .menu[open] summary { color: var(--ink); background: var(--bg-alt); }
-.menu-panel { position: absolute; left: 0; top: calc(100% + 6px); z-index: 20; display: grid; min-width: 200px; padding: 6px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); }
-.menu-panel a { display: block; padding: 8px 12px; border-radius: 8px; color: var(--text); font-size: 14px; text-decoration: none; }
-.menu-panel a:hover { background: var(--bg-alt); color: var(--ink); }
 .nav a { padding: 6px 10px; border-radius: 8px; color: var(--muted); font-size: 14px; font-weight: 500; text-decoration: none; }
 .nav a:hover { color: var(--ink); background: var(--bg-alt); }
 .top .btn { padding: 0 14px; line-height: 36px; font-size: 14px; }
@@ -117,8 +114,7 @@ code { font-family: var(--mono); font-size: .9em; }
   .nav { order: 4; flex: 1 0 100%; margin: 0 -24px; padding: 0 20px 8px; overflow-x: auto; scrollbar-width: none; }
   .nav::-webkit-scrollbar { display: none; }
   .nav a { flex: none; }
-  .menu { display: none; } /* the sections are the page itself on a phone */
-  html { scroll-padding-top: 110px; }
+  html { scroll-padding-top: 150px; }
 }
 @media (max-width: 620px) { .nav { margin: 0 -16px; padding: 0 12px 8px; } }
 
@@ -319,8 +315,14 @@ code { font-family: var(--mono); font-size: .9em; }
 .sheet-amount.zero { color: var(--good); }
 .sheet-note { margin: 0; padding: 14px 0 12px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--muted); }
 
+/* the objections, in groups */
+.faq-group { margin-top: 36px; }
+.faq-group:first-child { margin-top: 0; }
+.faq-group h3 { margin: 0 0 6px; padding-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--brand); border-bottom: 2px solid var(--brand-soft); }
+.faq-group details:last-child { border-bottom: 0; }
+
 /* the objections */
-.faq { margin-top: 36px; border-top: 1px solid var(--line); }
+.faq { margin-top: 36px; }
 .faq details { border-bottom: 1px solid var(--line); }
 .faq summary {
   display: flex; justify-content: space-between; gap: 20px; padding: 22px 4px;
@@ -412,6 +414,13 @@ code { font-family: var(--mono); font-size: .9em; }
 .plain .icon svg { width: 18px; height: 18px; }
 .plain li > div > b { display: block; color: var(--ink); font-size: 16px; line-height: 1.35; }
 .plain li > div > span { display: block; margin-top: 4px; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+
+/* the community page: the idea, prose beside four points */
+.idea { align-items: start; }
+.idea .prose p:first-child { margin-top: 0; }
+.idea-list { margin-top: 0; grid-template-columns: minmax(0, 1fr); }
+.idea-list li { padding: 14px 0; }
+.idea-list li:first-child { padding-top: 0; }
 
 /* the about page */
 .page-head { padding-bottom: 32px; }
