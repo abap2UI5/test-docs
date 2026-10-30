@@ -318,7 +318,8 @@ code { font-family: var(--mono); font-size: .9em; }
 .faq-group details:last-child { border-bottom: 0; }
 
 /* the objections */
-.faq { margin-top: 36px; }
+.faq { margin-top: 0; }
+.faq-group { scroll-margin-top: 130px; }
 .faq details { border-bottom: 1px solid var(--line); }
 .faq summary {
   display: flex; justify-content: space-between; gap: 20px; padding: 22px 4px;
@@ -424,7 +425,7 @@ code { font-family: var(--mono); font-size: .9em; }
 .week.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 980px) { .week.four { grid-template-columns: minmax(0, 1fr); } }
 .week span a { font-weight: 600; }
-.about-teaser { padding: 64px 0; }
+.about-teaser, .faq-teaser { padding: 64px 0; }
 
 /* the hero composite: the class and the phone, on the hero wash itself */
 .composite { margin: 0; }
