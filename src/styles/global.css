@@ -407,6 +407,7 @@ code { font-family: var(--mono); font-size: .9em; }
 .plain.three { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 40px; }
 @media (max-width: 860px) { .plain.two, .plain.three { grid-template-columns: minmax(0, 1fr); gap: 0; } }
 .plain li { display: flex; gap: 14px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.plain li > div > span a { font-weight: 600; }
 .plain .icon { flex: none; width: 34px; height: 34px; border-radius: 9px; }
 .plain .icon svg { width: 18px; height: 18px; }
 .plain li > div > b { display: block; color: var(--ink); font-size: 16px; line-height: 1.35; }
@@ -418,6 +419,11 @@ code { font-family: var(--mono); font-size: .9em; }
 .idea-list { margin-top: 0; grid-template-columns: minmax(0, 1fr); }
 .idea-list li { padding: 14px 0; }
 .idea-list li:first-child { padding-top: 0; }
+
+.more-box { margin-top: 32px; }
+.more-box h3 { margin: 0 0 8px; font-size: 18px; color: var(--ink); }
+.more-box p { margin: 0; max-width: 860px; }
+.more-box a { font-weight: 600; }
 
 /* the about page */
 .page-head { padding-bottom: 32px; }

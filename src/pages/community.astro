@@ -12,14 +12,17 @@ const SLACK = "https://abapgit.slack.com/join/shared_invite/zt-46tqufaht-QlrxTzl
 const MAIL = "contact@abap2UI5.org";
 const base = import.meta.env.BASE_URL;
 
-/* Support, as a ladder: the open channel first, the maintainers by mail for
- * more. SUPPORT.md in the framework is the source. */
+/* Support: five channels, all in the open and all independent of each other,
+ * and then the one case where you write to us. SUPPORT.md in the framework is
+ * the source. */
 const support = [
-  ["Ask in the open", `Write in the <a href="${SLACK}">Slack channel</a> or open an <a href="${GITHUB}/issues">issue on GitHub</a>. Anyone can, at any time, no account with the project needed. Answers stay public, so the next person finds them, and every question makes the documentation and the examples better.`],
-  ["Send a pull request", `A fix, a sample, a sentence in the documentation: pull requests are welcome the same way, and every one is reviewed in the open on <a href="${GITHUB}/pulls">GitHub</a>.`],
-  ["Need more? Write to us", `Honestly, we hope it never comes to this. The goal is an ABAP team that is so much at home with abap2UI5 that support is as unnecessary as a support call for a selection screen or a transport into P. Most of the way there is the open channel above. But if you would feel better with somebody looking over the first screen, explaining a design or sitting next to you for a go-live, write to <a href="mailto:${MAIL}">${MAIL}</a> and we will see what makes sense. One request: do not ask for a glossy slide deck full of buzzwords. There is none here, and that is the point.`],
-  ["Security reports", `Not in a public issue. Follow <a href="${GITHUB}/blob/main/SECURITY.md">SECURITY.md</a>; a report is acknowledged within three business days.`],
+  ["GitHub issues", `A bug, a question, a wish: open an <a href="${GITHUB}/issues">issue</a>. Anyone can, at any time, no account with the project needed; the answer stays public for the next person. Security reports are the one exception: not in a public issue, see <a href="${GITHUB}/blob/main/SECURITY.md">SECURITY.md</a>, acknowledged within three business days.`],
+  ["Slack channel", `The abap2UI5 channel in the abapGit <a href="${SLACK}">Slack</a>: the quick question, the screenshot, the "has anyone done this". The people who run it in production read along and answer.`],
+  ["Pull requests", `A fix, a sample, a sentence in the documentation: send it as a <a href="${GITHUB}/pulls">pull request</a>. Every one is reviewed in the open, and the next release carries it.`],
+  ["Documentation", `The <a href="${DOCS}">manual</a>, from the quickstart to the reference, maintained with the framework rather than left to age; most questions have their page there already.`],
+  ["Transparency: the code and the samples", `Every line of the framework is on <a href="${GITHUB}">GitHub</a>, every test is public, and the <a href="https://abap2ui5.github.io/playground/samples/">sample catalogue</a> holds 130 learning samples and 680 control examples that run in the browser. When in doubt, read what it actually does.`],
 ];
+const more = `Honestly, we hope it never comes to this. The goal is an ABAP team that is so much at home with abap2UI5 that support is as unnecessary as a support call for a selection screen or a transport into P. Most of the way there are the five channels above. But if you would feel better with somebody looking over the first screen, explaining a design or sitting next to you for a go-live, write to <a href="mailto:${MAIL}">${MAIL}</a> and we will see what makes sense. One request: do not ask for a glossy slide deck full of buzzwords. There is none here, and that is the point.`;
 /* The community: open source, in the open, and what a reader can give back.
  * Every item is a thing to do, with the place to do it. */
 const community = [
@@ -68,8 +71,12 @@ const community = [
   <section class="section alt" id="support" aria-labelledby="h-support">
     <div class="wrap">
       <p class="kicker">Support</p>
-      <h2 id="h-support">In the open first, and more by mail</h2>
-      <ol class="week four">{support.map(([b, t]) => <li><b>{b}</b><span set:html={t} /></li>)}</ol>
+      <h2 id="h-support">In the open, five ways, and one more if you need it</h2>
+      <ul class="plain two">{support.map(([b, t]) => <li><div><b>{b}</b><span set:html={t} /></div></li>)}</ul>
+      <div class="callout more-box">
+        <h3>Need more? Write to us</h3>
+        <p set:html={more} />
+      </div>
       <p class="more">→ <a href={`${GITHUB}/blob/main/SUPPORT.md`}>SUPPORT.md</a> in the framework is the source for this page.</p>
     </div>
   </section>
