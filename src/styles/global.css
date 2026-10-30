@@ -144,7 +144,6 @@ code { font-family: var(--mono); font-size: .9em; }
 .hero h1 em { font-style: normal; color: var(--brand); }
 .hero .lede { margin: 22px 0 0; max-width: 720px; font-size: 19px; line-height: 1.6; color: var(--muted); }
 .hero .lede b { color: var(--ink); }
-.hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
 /* the screenshot in a window frame, tilted towards the reader */
 .window {
   margin: 0; border-radius: 14px; overflow: hidden;
@@ -159,9 +158,6 @@ code { font-family: var(--mono); font-size: .9em; }
 @media (max-width: 920px) {
   .hero { padding: 56px 0 64px; }
   .hero .wrap { gap: 32px; }
-}
-@media (max-width: 480px) {
-  .hero .actions .btn { flex: 1 1 100%; text-align: center; }
 }
 
 /* ---- the figures --------------------------------------------------------- */
@@ -468,7 +464,7 @@ code { font-family: var(--mono); font-size: .9em; }
 .foot a:hover { color: var(--brand); text-decoration: underline; }
 
 @media print {
-  .top, .skip, .hero .actions, .foot { display: none; }
+  .top, .skip, .foot { display: none; }
   .hero { background: none; color: #000; padding: 0 0 24px; }
   .hero h1, .hero .lede { color: #000; }
   .faq summary::after { display: none; }
