@@ -6,15 +6,15 @@
  * no inline script, no handler attribute - and everything it loads is this
  * origin too. test/site.test.mjs holds the page to it.
  *
- * THE HEADER. The section links stay on every width: on a narrow screen they
- * become a second row that scrolls sideways, so a reader on a phone has a
- * table of contents rather than only a button. */
+ * THE HEADER. Home, a Sections menu (a <details>, so it needs no script),
+ * About, FAQ, Support; on the right LinkedIn and the playground. On a narrow
+ * screen the links become a second row that scrolls sideways. */
 import "../styles/global.css";
 
-interface Props { title: string; description: string }
-const { title, description } = Astro.props;
+interface Props { title: string; description: string; current?: "home" | "about" }
+const { title, description, current = "home" } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const canonical = new URL(base, Astro.site).href;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const CSP = [
   "default-src 'self'",
   "script-src 'self'",
@@ -30,11 +30,14 @@ const sections = [
   ["when-to-use-it-and-when-not", "Where it fits"],
   ["what-you-keep", "Security"],
   ["what-it-costs", "Cost"],
+  ["where-it-runs", "Where it runs"],
+  ["ai", "AI"],
   ["the-objections", "FAQ"],
   ["who-runs-it", "Who runs it"],
   ["how-to-evaluate-it-in-a-week", "Get started"],
-  ["community", "Community"],
 ];
+const home = base;
+const about = `${base}about/`;
 // the build date, so a reader knows how old the figures on the page are
 const updated = new Date().toISOString().slice(0, 10);
 ---
@@ -61,11 +64,23 @@ const updated = new Date().toISOString().slice(0, 10);
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
   <div class="wrap">
-    <a class="mark" href={base}><img src={`${base}logo.png`} alt="" width="28" height="28"> abap2UI5</a>
-    <a class="btn btn-primary" href="https://abap2ui5.github.io/playground/">Try it out</a>
-    <nav class="nav" aria-label="Sections">
-      {sections.map(([id, text]) => <a href={`#${id}`}>{text}</a>)}
+    <a class="mark" href={home}><img src={`${base}logo.png`} alt="" width="28" height="28"> abap2UI5</a>
+    <nav class="nav" aria-label="Pages">
+      <a href={home} aria-current={current === "home" ? "page" : undefined}>Home</a>
+      <details class="menu">
+        <summary>Sections</summary>
+        <div class="menu-panel">
+          {sections.map(([id, text]) => <a href={`${home}#${id}`}>{text}</a>)}
+        </div>
+      </details>
+      <a href={about} aria-current={current === "about" ? "page" : undefined}>About</a>
+      <a href={`${home}#the-objections`}>FAQ</a>
+      <a href={`${about}#support`}>Support</a>
     </nav>
+    <div class="top-actions">
+      <a class="icon-btn" href="https://www.linkedin.com/company/abap2ui5" aria-label="abap2UI5 on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4z"/></svg></a>
+      <a class="btn btn-primary" href="https://abap2ui5.github.io/playground/">Try it out</a>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -80,6 +95,7 @@ const updated = new Date().toISOString().slice(0, 10);
       <a href="https://abap2ui5.github.io/playground/">Playground</a>
       <a href="https://github.com/abap2UI5/abap2UI5">GitHub</a>
       <a href="https://abapgit.slack.com/join/shared_invite/zt-46tqufaht-QlrxTzlDqlx85CWbeUnOqg#/shared-invite/email">Slack</a>
+      <a href={about}>About</a>
       <a href="https://github.com/abap2UI5/why">Edit this page</a>
     </nav>
   </div>

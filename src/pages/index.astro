@@ -177,18 +177,9 @@ const doors = [
   ["chat", "A question, any time", "Write in the Slack channel, where the people who run it in production answer, or open a GitHub issue. Anyone, any time.", SLACK, "Slack"],
   ["partner", "More than a question", `A workshop, closer cooperation, a support arrangement: write to ${MAIL} and plan it together.`, `mailto:${MAIL}`, "Mail"],
 ];
-/* The community: open source, in the open, and what a reader can give back.
- * Every item is a thing to do, with the place to do it. */
-const community = [
-  ["Open source, and it stays that way", `MIT licensed since the first commit, every line on <a href="${GITHUB}">GitHub</a>, forks welcome. No company owns it that could close it, change the license or put a release behind a login.`],
-  ["We help each other", `Questions go to <a href="${SLACK}">Slack</a> and <a href="${GITHUB}/issues">GitHub</a>, answers stay public. Every question makes the documentation and the examples better for the next person, so ask yours in the open.`],
-  ["Built on abapGit and abaplint", `The installation, the tests and every release stand on <a href="https://abapgit.org">abapGit</a> and <a href="https://abaplint.org">abaplint</a>. If abap2UI5 saves you money, consider <a href="https://abapgit.org/sponsor.html">supporting the people behind them</a> too.`],
-  ["Add-ons: share yours", `Selection screens, table maintenance, popups, a launchpad KPI: the building blocks live as <a href="https://github.com/abap2UI5-addons">add-ons</a> in the open. The screen you solved for your plant is somebody else's next week.`],
-  ["Say what you build", `A post on <a href="https://www.linkedin.com/company/abap2ui5">LinkedIn</a> with #abap2UI5, a talk at your user group, a row under <a href="#who-runs-it">Who runs it</a>: that is how the next decision maker learns it exists.`],
-  ["Sponsor the work", `Those zeros are written in somebody's evenings. <a href="${DOCS}resources/sponsor">Sponsoring the contributors</a> says the release you pull next month matters to you.`],
-];
 ---
 <Page
+  current="home"
   title="abap2UI5 - why"
   description="abap2UI5 for decision makers: what you can build with it, who runs it, where it is the shorter path to a UI5 app on SAP and where it is not, what it costs and how to start with one real screen."
 >
@@ -386,12 +377,11 @@ const community = [
     </div>
   </section>
 
-  <section class="section alt" id="community" aria-labelledby="h-community">
+  <section class="section alt about-teaser" aria-labelledby="h-about">
     <div class="wrap">
-      <p class="kicker">Join the community</p>
-      <h2 id="h-community">Open source, in the open, and better with every question</h2>
-      <p class="intro">abap2UI5 is open source and stays open source. People help each other in public, because transparency is how a project like this grows. What it runs on, and what you can give back:</p>
-      <ul class="strings community">{community.map(([b, t]) => <li><b>{b}</b><span set:html={t} /></li>)}</ul>
+      <p class="kicker">About</p>
+      <h2 id="h-about">Open source, in the open, and better with every question</h2>
+      <p class="intro">Who builds abap2UI5, what it stands on, how support works and what you can give back: on the <a href={`${base}about/`}>About page</a>.</p>
     </div>
   </section>
 </Page>

@@ -1,0 +1,63 @@
+---
+/* About abap2UI5 - the page behind "About" in the header: open source and how
+ * it stays that way, how support works (in the open first), what it stands
+ * on, and what a reader can give back. Everything that used to be the
+ * "Join the community" section of the home page lives here. */
+import Page from "../layouts/Page.astro";
+
+const DOCS = "https://abap2ui5.github.io/docs/";
+const GITHUB = "https://github.com/abap2UI5/abap2UI5";
+const SLACK = "https://abapgit.slack.com/join/shared_invite/zt-46tqufaht-QlrxTzlDqlx85CWbeUnOqg#/shared-invite/email";
+const MAIL = "contact@abap2UI5.org";
+const base = import.meta.env.BASE_URL;
+
+/* Support, as a ladder: the open channel first, the maintainers by mail for
+ * more. SUPPORT.md in the framework is the source. */
+const support = [
+  ["Ask in the open", `Write in the <a href="${SLACK}">Slack channel</a> or open an <a href="${GITHUB}/issues">issue on GitHub</a>. Anyone can, at any time, no account with the project needed. Answers stay public, so the next person finds them, and every question makes the documentation and the examples better.`],
+  ["Send a pull request", `A fix, a sample, a sentence in the documentation: pull requests are welcome the same way, and every one is reviewed in the open on <a href="${GITHUB}/pulls">GitHub</a>.`],
+  ["Need more? Write to us", `Closer cooperation, a workshop, a support arrangement for your organization: write to <a href="mailto:${MAIL}">${MAIL}</a> and plan it together. What is not on offer is an SLA in a contract; what is on offer is a maintainer you can reach.`],
+  ["Security reports", `Not in a public issue. Follow <a href="${GITHUB}/blob/main/SECURITY.md">SECURITY.md</a>; a report is acknowledged within three business days.`],
+];
+/* The community: open source, in the open, and what a reader can give back.
+ * Every item is a thing to do, with the place to do it. */
+const community = [
+  ["Open source, and it stays that way", `MIT licensed since the first commit, every line on <a href="${GITHUB}">GitHub</a>, forks welcome. No company owns it that could close it, change the license or put a release behind a login.`],
+  ["We help each other", `Questions go to <a href="${SLACK}">Slack</a> and <a href="${GITHUB}/issues">GitHub</a>, answers stay public. Every question makes the documentation and the examples better for the next person, so ask yours in the open.`],
+  ["Built on abapGit and abaplint", `The installation, the tests and every release stand on <a href="https://abapgit.org">abapGit</a> and <a href="https://abaplint.org">abaplint</a>. If abap2UI5 saves you money, consider <a href="https://abapgit.org/sponsor.html">supporting the people behind them</a> too.`],
+  ["Add-ons: share yours", `Selection screens, table maintenance, popups, a launchpad KPI: the building blocks live as <a href="https://github.com/abap2UI5-addons">add-ons</a> in the open. The screen you solved for your plant is somebody else's next week.`],
+  ["Say what you build", `A post on <a href="https://www.linkedin.com/company/abap2ui5">LinkedIn</a> with #abap2UI5, a talk at your user group, a row under <a href="#who-runs-it">Who runs it</a>: that is how the next decision maker learns it exists.`],
+  ["Sponsor the work", `Those zeros are written in somebody's evenings. <a href="${DOCS}resources/sponsor">Sponsoring the contributors</a> says the release you pull next month matters to you.`],
+];
+---
+<Page
+  current="about"
+  title="abap2UI5 - about"
+  description="About abap2UI5: open source and it stays that way, how support works in the open, what it stands on, and what you can give back."
+>
+  <section class="section page-head">
+    <div class="wrap">
+      <p class="kicker">About</p>
+      <h1>Open source, in the open, and better with every question</h1>
+      <p class="intro">abap2UI5 is open source and stays open source. People help each other in public, because transparency is how a project like this grows. What it runs on, how support works, and what you can give back.</p>
+    </div>
+  </section>
+
+  <section class="section alt" id="support" aria-labelledby="h-support">
+    <div class="wrap">
+      <p class="kicker">Support</p>
+      <h2 id="h-support">In the open first, and more by mail</h2>
+      <ol class="week four">{support.map(([b, t]) => <li><b>{b}</b><span set:html={t} /></li>)}</ol>
+      <p class="more">→ <a href={`${GITHUB}/blob/main/SUPPORT.md`}>SUPPORT.md</a> in the framework is the source for this page.</p>
+    </div>
+  </section>
+
+  <section class="section" id="community" aria-labelledby="h-community">
+    <div class="wrap">
+      <p class="kicker">Join the community</p>
+      <h2 id="h-community">What it stands on, and what you can give back</h2>
+      <ul class="strings community">{community.map(([b, t]) => <li><b>{b}</b><span set:html={t} /></li>)}</ul>
+      <p class="more">→ Back to <a href={base}>the page for decision makers</a>, or straight to <a href={`${base}#who-runs-it`}>who runs it</a>.</p>
+    </div>
+  </section>
+</Page>
