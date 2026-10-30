@@ -12,28 +12,36 @@ const SLACK = "https://abapgit.slack.com/join/shared_invite/zt-46tqufaht-QlrxTzl
 const MAIL = "contact@abap2UI5.org";
 const base = import.meta.env.BASE_URL;
 
-/* Support, as a ladder: the open channel first, the maintainers by mail for
- * more. SUPPORT.md in the framework is the source. */
+/* Support: four channels, all in the open and all independent of each other,
+ * and then the one case where you write to us. SUPPORT.md in the framework is
+ * the source. */
 const support = [
-  ["Ask in the open", `Write in the <a href="${SLACK}">Slack channel</a> or open an <a href="${GITHUB}/issues">issue on GitHub</a>. Anyone can, at any time, no account with the project needed. Answers stay public, so the next person finds them, and every question makes the documentation and the examples better.`],
-  ["Send a pull request", `A fix, a sample, a sentence in the documentation: pull requests are welcome the same way, and every one is reviewed in the open on <a href="${GITHUB}/pulls">GitHub</a>.`],
-  ["Need more? Write to us", `Closer cooperation, a workshop, a support arrangement for your organization: write to <a href="mailto:${MAIL}">${MAIL}</a> and plan it together. What is not on offer is an SLA in a contract; what is on offer is a maintainer you can reach.`],
-  ["Security reports", `Not in a public issue. Follow <a href="${GITHUB}/blob/main/SECURITY.md">SECURITY.md</a>; a report is acknowledged within three business days.`],
+  ["GitHub issues", `A bug, a question, a wish: open an <a href="${GITHUB}/issues">issue</a>. Anyone can, at any time, no account with the project needed; the answer stays public for the next person. Security reports are the one exception: not in a public issue, see <a href="${GITHUB}/blob/main/SECURITY.md">SECURITY.md</a>, acknowledged within three business days.`],
+  ["Slack channel", `The abap2UI5 channel in the abapGit <a href="${SLACK}">Slack</a>: the quick question, the screenshot, the "has anyone done this". The people who run it in production read along and answer.`],
+  ["Documentation", `The <a href="${DOCS}">manual</a>, from the quickstart to the reference, maintained with the framework rather than left to age; most questions have their page there already.`],
+  ["Transparency: the code and the samples", `Every line of the framework is on <a href="${GITHUB}">GitHub</a>, every test is public, and the <a href="https://abap2ui5.github.io/playground/samples/">sample catalogue</a> holds 130 learning samples and 680 control examples that run in the browser. When in doubt, read what it actually does.`],
 ];
-/* The community: open source, in the open, and what a reader can give back.
- * Every item is a thing to do, with the place to do it. */
-const community = [
+const more = `Honestly, we hope it never comes to this. The goal is an ABAP team that is so much at home with abap2UI5 that support is as unnecessary as a support call for a selection screen or a transport into P. Most of the way there are the four channels above. But if you would feel better with somebody looking over the first screen, explaining a design or sitting next to you for a go-live, write to <a href="mailto:${MAIL}">${MAIL}</a> and we will see what makes sense. One request: do not ask for a glossy slide deck full of buzzwords. There is none here, and that is the point.`;
+/* What it stands on: the open-source foundations a reader can check. */
+const stands = [
   ["Open source, and it stays that way", `MIT licensed since the first commit, every line on <a href="${GITHUB}">GitHub</a>, forks welcome. No company owns it that could close it, change the license or put a release behind a login.`],
-  ["We help each other", `Questions go to <a href="${SLACK}">Slack</a> and <a href="${GITHUB}/issues">GitHub</a>, answers stay public. Every question makes the documentation and the examples better for the next person, so ask yours in the open.`],
   ["Built on abapGit and abaplint", `The installation, the tests and every release stand on <a href="https://abapgit.org">abapGit</a> and <a href="https://abaplint.org">abaplint</a>. If abap2UI5 saves you money, consider <a href="https://abapgit.org/sponsor.html">supporting the people behind them</a> too.`],
+  ["UI5 itself in the browser", `The frontend is SAP's own UI5 library, not a copy of it: every control, every theme, every accessibility feature SAP ships, on the oldest supported release and on UI5 2.x alike.`],
+  ["A public test on every claim", `Every release runs against Standard ABAP and ABAP Cloud, is downported to NetWeaver 7.02 and opened in the browser on both ends of the UI5 range. The tests are in the repository; <a href="${GITHUB}/blob/main/docs/verified-on.md">verified on</a> lists what each one holds.`],
+];
+/* What you can give back: every item is a thing to do, with the place to do it. */
+const give = [
+  ["Send a pull request", `A fix, a sample, a sentence in the documentation: send it as a <a href="${GITHUB}/pulls">pull request</a>. Every one is reviewed in the open, and the next release carries it.`],
+  ["Answer somebody", `One reply under an <a href="${GITHUB}/issues">issue</a> or in <a href="${SLACK}">Slack</a> saves somebody else an afternoon, and the answer stays public for the next person.`],
   ["Add-ons: share yours", `Selection screens, table maintenance, popups, a launchpad KPI: the building blocks live as <a href="https://github.com/abap2UI5-addons">add-ons</a> in the open. The screen you solved for your plant is somebody else's next week.`],
   ["Say what you build", `A post on <a href="https://www.linkedin.com/company/abap2ui5">LinkedIn</a> with #abap2UI5, a talk at your user group, a row under <a href="#who-runs-it">Who runs it</a>: that is how the next decision maker learns it exists.`],
-  ["Sponsor the work", `Those zeros are written in somebody's evenings. <a href="${DOCS}resources/sponsor">Sponsoring the contributors</a> says the release you pull next month matters to you.`],
+  ["Add your company", `One row under <a href="${base}#who-runs-it">Who runs it</a> is what answers <i>is anybody actually running this?</i> for the next decision maker.`],
+  ["Sponsor the work", `<a href="${DOCS}resources/sponsor">Sponsoring the contributors</a> says the release you pull next month matters to you.`],
 ];
 ---
 <Page
   current="community"
-  subnav={[["idea", "The idea"], ["support", "Support"], ["community", "Give back"]]}
+  subnav={[["idea", "The idea"], ["support", "Support"], ["stands-on", "What it stands on"], ["community", "Give back"]]}
   title="abap2UI5 - community & support"
   description="abap2UI5 community and support: why it is open source and stays so, how support works in the open, what it stands on, and what you can give back."
 >
@@ -68,17 +76,30 @@ const community = [
   <section class="section alt" id="support" aria-labelledby="h-support">
     <div class="wrap">
       <p class="kicker">Support</p>
-      <h2 id="h-support">In the open first, and more by mail</h2>
-      <ol class="week four">{support.map(([b, t]) => <li><b>{b}</b><span set:html={t} /></li>)}</ol>
+      <h2 id="h-support">In the open, four ways, and one more if you need it</h2>
+      <ul class="plain two">{support.map(([b, t]) => <li><div><b>{b}</b><span set:html={t} /></div></li>)}</ul>
+      <div class="callout more-box">
+        <h3>Need more? Write to us</h3>
+        <p set:html={more} />
+      </div>
       <p class="more">→ <a href={`${GITHUB}/blob/main/SUPPORT.md`}>SUPPORT.md</a> in the framework is the source for this page.</p>
     </div>
   </section>
 
-  <section class="section" id="community" aria-labelledby="h-community">
+  <section class="section" id="stands-on" aria-labelledby="h-stands">
     <div class="wrap">
-      <p class="kicker">Join the community</p>
-      <h2 id="h-community">What it stands on, and what you can give back</h2>
-      <ul class="strings community">{community.map(([b, t]) => <li><b>{b}</b><span set:html={t} /></li>)}</ul>
+      <p class="kicker">What it stands on</p>
+      <h2 id="h-stands">Open foundations, all the way down</h2>
+      <ul class="strings community">{stands.map(([b, t]) => <li><b>{b}</b><span set:html={t} /></li>)}</ul>
+    </div>
+  </section>
+
+  <section class="section alt" id="community" aria-labelledby="h-community">
+    <div class="wrap">
+      <p class="kicker">What you can give back</p>
+      <h2 id="h-community">Free to use is not the same as free to make</h2>
+      <p class="intro">Those zeros on the cost page are written in somebody's evenings. If abap2UI5 saves your project time or money, any of these pays it back, and none of them costs a budget line.</p>
+      <ul class="strings community">{give.map(([b, t]) => <li><b>{b}</b><span set:html={t} /></li>)}</ul>
       <p class="more">→ Back to <a href={base}>the page for decision makers</a>, or straight to <a href={`${base}#who-runs-it`}>who runs it</a>.</p>
     </div>
   </section>
