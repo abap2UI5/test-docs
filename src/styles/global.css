@@ -143,10 +143,10 @@ code { font-family: var(--mono); font-size: .9em; }
   color: var(--text);
   padding: 88px 0 104px;
 }
-.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 56px; align-items: center; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; }
 .hero h1 { margin: 0; color: var(--ink); font-size: clamp(36px, 5vw, 58px); font-weight: 750; letter-spacing: -.035em; }
 .hero h1 em { font-style: normal; color: var(--brand); }
-.hero .lede { margin: 22px 0 0; max-width: 560px; font-size: 19px; line-height: 1.6; color: var(--muted); }
+.hero .lede { margin: 22px 0 0; max-width: 720px; font-size: 19px; line-height: 1.6; color: var(--muted); }
 .hero .lede b { color: var(--ink); }
 .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
 /* the screenshot in a window frame, tilted towards the reader */
@@ -162,7 +162,7 @@ code { font-family: var(--mono); font-size: .9em; }
 .window img { display: block; width: 100%; }
 @media (max-width: 920px) {
   .hero { padding: 56px 0 64px; }
-  .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .hero .wrap { gap: 32px; }
 }
 @media (max-width: 480px) {
   .hero .actions .btn { flex: 1 1 100%; text-align: center; }
@@ -423,7 +423,7 @@ code { font-family: var(--mono); font-size: .9em; }
 
 /* the hero composite: the class and the phone, on the hero wash itself */
 .composite { margin: 0; }
-.composite img { display: block; width: 100%; height: auto; }
+.composite img { display: block; width: 100%; height: auto; border-radius: 20px; box-shadow: 0 30px 70px rgba(15, 23, 42, .12); }
 
 /* one app, every device: three frames drawn in CSS around real screenshots */
 .sub { margin: 56px 0 0; font-size: 22px; color: var(--ink); }
