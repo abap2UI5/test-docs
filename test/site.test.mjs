@@ -62,6 +62,15 @@ test("the community page is built, carries no script, and both pages link each o
   }
 });
 
+test("the FAQ page is built, carries no script, and the home page points at it", () => {
+  const faq = fs.readFileSync(path.join(DIST, "faq", "index.html"), "utf8");
+  assert.equal([...faq.matchAll(/<script\b/gi)].length, 0, "no <script> on the FAQ page");
+  assert.ok((faq.match(/<details/g) || []).length >= 12, "the questions are on the FAQ page");
+  assert.doesNotMatch(html, /class="faq"/, "no question list on the home page");
+  assert.match(html, /href="\/why\/faq\/"/, "home links to the FAQ");
+  assert.doesNotMatch(faq, /evaluat|problem/i);
+});
+
 test("the canonical address is the published one", () => {
   assert.match(html, /<link rel="canonical" href="https:\/\/abap2ui5\.github\.io\/why\/">/);
 });

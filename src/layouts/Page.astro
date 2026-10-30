@@ -11,7 +11,7 @@
  * that scrolls sideways on a narrow screen. No script anywhere. */
 import "../styles/global.css";
 
-interface Props { title: string; description: string; current?: "home" | "community"; subnav?: [string, string][] }
+interface Props { title: string; description: string; current?: "home" | "community" | "faq"; subnav?: [string, string][] }
 const { title, description, current = "home", subnav } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -33,13 +33,13 @@ export const sections: [string, string][] = [
   ["what-it-costs", "Cost"],
   ["where-it-runs", "Where it runs"],
   ["ai", "AI"],
-  ["the-objections", "FAQ"],
   ["who-runs-it", "Who runs it"],
   ["how-to-evaluate-it-in-a-week", "Get started"],
 ];
 const row = subnav ?? (current === "home" ? sections : []);
 const home = base;
 const community = `${base}community/`;
+const faq = `${base}faq/`;
 // the build date, so a reader knows how old the figures on the page are
 const updated = new Date().toISOString().slice(0, 10);
 ---
@@ -69,7 +69,7 @@ const updated = new Date().toISOString().slice(0, 10);
     <a class="mark" href={home}><img src={`${base}logo.png`} alt="" width="28" height="28"> abap2UI5</a>
     <nav class="nav" aria-label="Pages">
       <a href={home} aria-current={current === "home" ? "page" : undefined}>Home</a>
-      <a href={`${home}#the-objections`}>FAQ</a>
+      <a href={faq} aria-current={current === "faq" ? "page" : undefined}>FAQ</a>
       <a href={community} aria-current={current === "community" ? "page" : undefined}>Community &amp; Support</a>
     </nav>
     <div class="top-actions">
@@ -97,6 +97,7 @@ const updated = new Date().toISOString().slice(0, 10);
       <a href="https://abap2ui5.github.io/playground/">Playground</a>
       <a href="https://github.com/abap2UI5/abap2UI5">GitHub</a>
       <a href="https://abapgit.slack.com/join/shared_invite/zt-46tqufaht-QlrxTzlDqlx85CWbeUnOqg#/shared-invite/email">Slack</a>
+      <a href={faq}>FAQ</a>
       <a href={community}>Community &amp; Support</a>
       <a href="https://github.com/abap2UI5/why">Edit this page</a>
     </nav>
