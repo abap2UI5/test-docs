@@ -143,7 +143,7 @@ code { font-family: var(--mono); font-size: .9em; }
   color: var(--text);
   padding: 88px 0 104px;
 }
-.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 56px; align-items: center; }
 .hero h1 { margin: 0; color: var(--ink); font-size: clamp(36px, 5vw, 58px); font-weight: 750; letter-spacing: -.035em; }
 .hero h1 em { font-style: normal; color: var(--brand); }
 .hero .lede { margin: 22px 0 0; max-width: 560px; font-size: 19px; line-height: 1.6; color: var(--muted); }
@@ -420,6 +420,36 @@ code { font-family: var(--mono); font-size: .9em; }
 @media (max-width: 980px) { .week.four { grid-template-columns: minmax(0, 1fr); } }
 .week span a { font-weight: 600; }
 .about-teaser { padding: 64px 0; }
+
+/* the hero composite: the class and the phone, on the hero wash itself */
+.composite { margin: 0; }
+.composite img { display: block; width: 100%; height: auto; }
+
+/* one app, every device: three frames drawn in CSS around real screenshots */
+.sub { margin: 56px 0 0; font-size: 22px; color: var(--ink); }
+.devices { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr) minmax(0, 1.6fr); gap: 28px; align-items: end; margin-top: 32px; }
+@media (max-width: 1000px) { .devices { grid-template-columns: minmax(0, 1fr); gap: 36px; } }
+.device { margin: 0; }
+.device .screen { overflow: hidden; background: #fff; }
+.device .screen img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.device figcaption { margin-top: 16px; }
+.device figcaption b { display: block; color: var(--ink); font-size: 16px; }
+.device figcaption span { display: block; margin-top: 4px; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+.device.phone .screen { aspect-ratio: 444 / 457; padding: 14px; border-radius: 28px; background: #0b1220; box-shadow: inset 0 0 0 3px #2b3650, var(--shadow); }
+.device.phone .screen img { border-radius: 16px; }
+.device.tablet .screen { aspect-ratio: 873 / 550; padding: 14px; border-radius: 22px; background: #0b1220; box-shadow: inset 0 0 0 3px #2b3650, var(--shadow); }
+.device.tablet .screen img { border-radius: 10px; }
+.device.desktop .screen { aspect-ratio: 1600 / 880; border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+@media (max-width: 1000px) { .device.phone { max-width: 360px; } }
+
+/* the operating models under Where it runs */
+.models { display: grid; gap: 10px; margin: 12px 0 0; padding: 0; list-style: none; }
+.models li { padding: 14px 18px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); }
+.models li b { display: block; color: var(--ink); font-size: 15.5px; }
+.models li span { display: block; margin-top: 3px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.models li.hot { border-color: var(--brand); background: var(--brand-soft); }
+.models li.hot b { color: var(--brand); }
+.models li.hot span { color: var(--ink); }
 
 /* the foot */
 .foot { padding: 36px 0 44px; background: var(--bg-alt); color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }

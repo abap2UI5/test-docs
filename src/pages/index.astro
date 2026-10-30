@@ -193,9 +193,8 @@ const doors = [
           <a class="btn btn-ghost" href="#when-to-use-it-and-when-not">Where it fits</a>
         </div>
       </div>
-      <figure class="window">
-        <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>an abap2UI5 app · one ABAP class</span></div>
-        <img src={`${base}apps/hero-sales-orders.webp`} alt="An abap2UI5 app: a table of sales orders with status and amount, and a panel beside it that explains the selected orders" width="1600" height="798" fetchpriority="high">
+      <figure class="composite">
+        <img src={`${base}apps/hero-class-and-phone.webp`} alt="One ABAP class, and the app it produces on a phone: a table of sales orders with status and amount" width="1600" height="998" fetchpriority="high">
       </figure>
     </div>
   </section>
@@ -215,6 +214,13 @@ const doors = [
             <a class="shot-link" href={`${PLAYGROUND}samples/${cls}/`}>See the example app</a>
           </div>
         ))}
+      </div>
+      <h3 class="sub">One app, every device: no build per device</h3>
+      <p class="intro">The same class, opened on a phone, a tablet and a desktop. It runs in the browser on iOS, Android and Windows, on rugged industrial handhelds too; nothing to install, nothing to distribute, and the layout adapts on its own.</p>
+      <div class="devices">
+        <figure class="device phone"><div class="screen"><img src={`${base}apps/device-phone.webp`} alt="The sales orders app on a phone: one order per row, region and status folded under it" loading="lazy"></div><figcaption><b>Phone and handheld scanner</b><span>Picking, counting, approving at the shelf or on the way. The scanner's input lands in the field, no tap needed.</span></figcaption></figure>
+        <figure class="device tablet"><div class="screen"><img src={`${base}apps/device-tablet.webp`} alt="The sales orders app on a tablet: the full table" loading="lazy"></div><figcaption><b>Tablet</b><span>At the machine, in the workshop, at the goods receipt: the full table, touch-sized.</span></figcaption></figure>
+        <figure class="device desktop"><div class="screen"><img src={`${base}apps/device-desktop.webp`} alt="The sales orders app on a desktop: the full table with room to spare" loading="lazy"></div><figcaption><b>Desktop</b><span>The worklist and the cockpit at the desk, keyboard-driven, in the launchpad next to the Fiori apps.</span></figcaption></figure>
       </div>
       <p class="more">→ Browse the <a href={`${PLAYGROUND}samples/`}>example apps</a> for the screen closest to yours: 130 learning samples and 680 control examples, each running in the browser and maintained with the framework. Or read <a href={`${DOCS}get_started/about`}>In a Nutshell</a> for how it works.</p>
     </div>
@@ -301,8 +307,14 @@ const doors = [
       <p class="intro">The browser loads the standard UI5 library; the app, its logic and its data stay on your SAP system. No middleware, no extra server, no frontend deployment.</p>
       <div class="split">
         <dl class="facts-list">
-          <dt>Systems</dt>
-          <dd><ul class="chips"><li>S/4HANA Public Cloud</li><li>BTP ABAP Environment</li><li>S/4HANA Private Cloud &amp; on-premise</li><li>NetWeaver 7.02 or later</li></ul></dd>
+          <dt>Every SAP operating model, from one source</dt>
+          <dd>
+            <ul class="models">
+              <li><b>On-premise</b><span>S/4HANA, and NetWeaver 7.02 or later, in your own data centre or at a hoster.</span></li>
+              <li><b>Private cloud</b><span>RISE with SAP, S/4HANA Cloud Private Edition.</span></li>
+              <li class="hot"><b>Public cloud</b><span>S/4HANA Cloud Public Edition and the BTP ABAP Environment. Clean core is mandatory there, and abap2UI5 passes the ABAP Cloud checks: the same app, the same class, no rewrite on the way up.</span></li>
+            </ul>
+          </dd>
           <dt>Where an app appears</dt>
           <dd><ul class="chips"><li>Browser tab</li><li>Fiori launchpad tile</li><li>SAP Build Work Zone</li><li>Microsoft Teams</li><li>Microsoft Excel</li><li>iOS &amp; Android</li><li>Inside your own UI5 app</li></ul></dd>
           <dt>Without internet access</dt>
