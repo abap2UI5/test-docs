@@ -1,8 +1,9 @@
 ---
-/* About abap2UI5 - the page behind "About" in the header: open source and how
- * it stays that way, how support works (in the open first), what it stands
- * on, and what a reader can give back. Everything that used to be the
- * "Join the community" section of the home page lives here. */
+/* Community & Support - the page behind that entry in the header: the
+ * open-source idea and why it is the right model for a framework on SAP, how
+ * support works (in the open first), what it stands on, and what a reader can
+ * give back. Everything that used to be the "Join the community" section of
+ * the home page lives here. */
 import Page from "../layouts/Page.astro";
 
 const DOCS = "https://abap2ui5.github.io/docs/";
@@ -31,15 +32,36 @@ const community = [
 ];
 ---
 <Page
-  current="about"
-  title="abap2UI5 - about"
-  description="About abap2UI5: open source and it stays that way, how support works in the open, what it stands on, and what you can give back."
+  current="community"
+  subnav={[["idea", "The idea"], ["support", "Support"], ["community", "Give back"]]}
+  title="abap2UI5 - community & support"
+  description="abap2UI5 community and support: why it is open source and stays so, how support works in the open, what it stands on, and what you can give back."
 >
   <section class="section page-head">
     <div class="wrap">
-      <p class="kicker">About</p>
+      <p class="kicker">Community &amp; support</p>
       <h1>Open source, in the open, and better with every question</h1>
-      <p class="intro">abap2UI5 is open source and stays open source. People help each other in public, because transparency is how a project like this grows. What it runs on, how support works, and what you can give back.</p>
+      <p class="intro">abap2UI5 is open source and stays open source. People help each other in public, because transparency is how a project like this grows. Why that is the right model for a framework on SAP, how support works, what it stands on, and what you can give back.</p>
+    </div>
+  </section>
+
+  <section class="section" id="idea" aria-labelledby="h-idea">
+    <div class="wrap">
+      <p class="kicker">The idea</p>
+      <h2 id="h-idea">Why open source is the right model for a framework on SAP</h2>
+      <div class="split idea">
+        <div class="prose">
+          <p>A UI framework sits under every screen you build on it. Whoever owns it owns a piece of your landscape: the license, the roadmap, the release cycle, the day it is discontinued. SAP customers know that dependency from both sides, and a second vendor on top of SAP doubles it.</p>
+          <p>Open source removes the owner. abap2UI5 is MIT licensed, every line is on GitHub, and the apps built with it are plain ABAP classes in your own system. Nothing can be withdrawn, re-priced or put behind a login, because there is nobody who could. If the project stopped tomorrow, your system would not notice.</p>
+          <p>It also changes how the framework gets better. Every question is asked in public and answered in public, so the answer serves the next reader too. Every bug report comes with a class that reproduces it. Every release is tested in the open, on NetWeaver 7.02 and on ABAP Cloud, and anyone can read the test. A vendor asks you to trust; this asks you to look.</p>
+        </div>
+        <ul class="plain idea-list">
+          <li><div><b>No owner, no lock-in</b><span>MIT since the first commit. Forks welcome. The apps stay yours, as classes in your system, whatever happens to the project.</span></div></li>
+          <li><div><b>Transparent by construction</b><span>Issues, pull requests, releases, the backlog and every test are public on GitHub. Nothing is decided in a room you cannot see.</span></div></li>
+          <li><div><b>Built with its users</b><span>The people who run it in production ask, answer and contribute. The question you ask today improves the documentation for the next company.</span></div></li>
+          <li><div><b>Standing on open shoulders</b><span>abapGit for installation and versioning, abaplint for every check, UI5 itself for the frontend: open projects all the way down, each with people worth supporting.</span></div></li>
+        </ul>
+      </div>
     </div>
   </section>
 
