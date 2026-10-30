@@ -60,7 +60,7 @@ npm run check    # build + test, what CI runs
   check is cut, not softened. Three things a reader asks first stay visible without scrolling into a
   section: the business logic stays in ABAP (hero, tile, a comparison row, the
   security heading), performance (a comparison row, a reason, a FAQ) and
-  security (a section of its own, named in the navigation). Add-ons, Basis
+  enterprise readiness (a section of its own at `#what-you-keep`, named in the navigation, with the review pack linked). Add-ons, Basis
   steps and other developer topics
   are links into the manual, not sections.
 - **Every table cell carries its column.** `data-th` on each `<td>`: under

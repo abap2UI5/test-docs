@@ -120,6 +120,9 @@ const governance = [
   ["key", "Authorizations are SAP's", "The authorization on the service endpoint, and the app's own checks in its code, as a transaction does them."],
   ["db", "Data changes are your code's", "An app posts through the same BAPIs, function modules or RAP actions as any program, so change documents and application logs apply unchanged."],
   ["log", "Every request can be logged", "A monitor records, per request, user, app, event, timings and any error. Off until an installation switches it on."],
+  ["check", "Tested on every release", "Every change runs against Standard ABAP and ABAP Cloud, is downported to NetWeaver 7.02 and opened in the browser on UI5 1.71 and the current release. An upgrade of the system or of UI5 does not break an app."],
+  ["form", "Security reviewed in the open", "A strict Content Security Policy without unsafe-eval or inline script, CodeQL and a weekly dependency audit, an SBOM with every release, and a published security model a review starts from."],
+  ["monitor", "Accessible", "Views are standard UI5 views, so every control is as accessible as UI5 makes it. Focus survives a roundtrip, a change can be announced to a screen reader, a high-contrast theme is one switch away."],
   ["leaf", "Clean core", "Released APIs only, passes the ABAP Cloud checks, runs on S/4HANA, BTP and NetWeaver 7.02 from one source. Modifies nothing in the standard."],
 ];
 
@@ -238,9 +241,9 @@ const doors = [
 
   <section class="section" id="what-you-keep" aria-labelledby="h-keep">
     <div class="wrap">
-      <p class="kicker">Security and governance</p>
-      <h2 id="h-keep">The logic stays in ABAP; logon, authorizations and data stay SAP's</h2>
-      <p class="intro">One ABAP class per app, the business logic in it, no generated artifacts, no tables that describe a screen. Nothing of the app runs in the browser, so there is no client logic to secure. Every rule that applies to ABAP, from code review to the four-eyes principle on transports, applies to an app unchanged.</p>
+      <p class="kicker">Enterprise readiness</p>
+      <h2 id="h-keep">Ready for your enterprise: inside the security, the process and the release cycle you already have</h2>
+      <p class="intro">The logic stays in ABAP; logon, authorizations and data stay SAP's. One ABAP class per app, the business logic in it, no generated artifacts, no tables that describe a screen. Nothing of the app runs in the browser, so there is no client logic to secure. Every rule that applies to ABAP, from code review to the four-eyes principle on transports, applies to an app unchanged.</p>
       <div class="table">
         <table>
           <thead><tr><th scope="col"></th><th scope="col" class="us">abap2UI5</th><th scope="col">A tool that stores apps as configuration</th></tr></thead>
@@ -251,7 +254,7 @@ const doors = [
         {governance.map(([icon, h, t]) => <li><Icon name={icon} /><div><b>{h}</b><span>{t}</span></div></li>)}
       </ul>
       <p class="callout"><b>No shadow IT.</b> No click-together designer bypasses your development process: every app is a class, under the rules you already have.</p>
-      <p class="more">→ <a href={`${DOCS}configuration/security`}>Security</a>, <a href={`${DOCS}configuration/authorization`}>Authorization</a>, and the <a href={`${GITHUB}/blob/main/docs/security.md`}>security model</a> a security review starts from.</p>
+      <p class="more">→ <a href={`${GITHUB}/blob/main/docs/review.md`}>The review pack</a>: everything a review board asks for, in one list, each line with the place that proves it. And in detail: <a href={`${DOCS}configuration/security`}>Security</a>, <a href={`${DOCS}configuration/authorization`}>Authorization</a>, the <a href={`${GITHUB}/blob/main/docs/security.md`}>security model</a>, <a href={`${GITHUB}/blob/main/docs/accessibility.md`}>Accessibility</a> and <a href={`${GITHUB}/blob/main/docs/verified-on.md`}>Verified on</a>.</p>
     </div>
   </section>
 
