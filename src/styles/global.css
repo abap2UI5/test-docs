@@ -453,9 +453,14 @@ code { font-family: var(--mono); font-size: .9em; }
 .models li { padding: 14px 18px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); }
 .models li b { display: block; color: var(--ink); font-size: 15.5px; }
 .models li span { display: block; margin-top: 3px; font-size: 14px; line-height: 1.5; color: var(--muted); }
-.models li.hot { border-color: var(--brand); background: var(--brand-soft); }
-.models li.hot b { color: var(--brand); }
-.models li.hot span { color: var(--ink); }
+.models-group { margin-top: 14px; padding: 14px 16px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--bg-alt); }
+.models-group:first-child { margin-top: 12px; }
+.models-group h4 { margin: 0 0 10px; font-size: 15px; color: var(--ink); }
+.models-group h4 small { display: block; margin-top: 2px; font-size: 13px; font-weight: 500; color: var(--muted); }
+.models-group .models { margin-top: 0; }
+.models-group.hot { border-color: var(--brand); background: var(--brand-soft); }
+.models-group.hot h4 { color: var(--brand); }
+.models-group.hot h4 small { color: var(--ink); }
 
 /* the foot */
 .foot { padding: 36px 0 44px; background: var(--bg-alt); color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }

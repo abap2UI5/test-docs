@@ -288,10 +288,28 @@ const doors = [
         <dl class="facts-list">
           <dt>Every SAP operating model, from one source</dt>
           <dd>
+            <div class="models-group hot">
+              <h4>ABAP Cloud <small>clean core, released APIs only: abap2UI5 passes the checks</small></h4>
+              <ul class="models">
+                <li><b>SAP S/4HANA Cloud Public Edition</b><span>Clean core is mandatory; the same class runs, no rewrite on the way up.</span></li>
+                <li><b>SAP BTP ABAP Environment</b><span>The standalone ABAP system on BTP: for apps beside the core, or as the side-by-side system below.</span></li>
+                <li><b>S/4HANA Private Cloud and on-premise, in ABAP Cloud</b><span>Developing in the ABAP Cloud language version on a RISE or on-premise system: abap2UI5 fits the clean-core tier there too.</span></li>
+              </ul>
+            </div>
+            <div class="models-group">
+              <h4>Standard ABAP <small>the classic language version, every release</small></h4>
+              <ul class="models">
+                <li><b>SAP S/4HANA Cloud Private Edition</b><span>RISE with SAP, in SAP's or a hyperscaler's data centre.</span></li>
+                <li><b>SAP S/4HANA on-premise</b><span>In your own data centre or at a hoster.</span></li>
+                <li><b>SAP ECC and NetWeaver 7.02 to 7.5x</b><span>Where RAP and a Fiori stack are out of reach, and an app written today moves to S/4HANA unchanged.</span></li>
+              </ul>
+            </div>
+          </dd>
+          <dt>Two ways to deploy</dt>
+          <dd>
             <ul class="models">
-              <li><b>On-premise</b><span>S/4HANA, and NetWeaver 7.02 or later, in your own data centre or at a hoster.</span></li>
-              <li><b>Private cloud</b><span>RISE with SAP, S/4HANA Cloud Private Edition.</span></li>
-              <li class="hot"><b>Public cloud</b><span>S/4HANA Cloud Public Edition and the BTP ABAP Environment. Clean core is mandatory there, and abap2UI5 passes the ABAP Cloud checks: the same app, the same class, no rewrite on the way up.</span></li>
+              <li><b>On-stack</b><span>abap2UI5 on the system where the data and the logic live. An app calls BAPIs, function modules or RAP actions directly, as any program there does. The usual setup, one abapGit pull.</span></li>
+              <li><b>Side-by-side</b><span>abap2UI5 on a separate ABAP system, the BTP ABAP Environment or a hub, and the apps reach the core over RFC or HTTP. For a core kept clean of custom UI, or one UI layer in front of several systems.</span></li>
             </ul>
           </dd>
           <dt>Where an app appears</dt>
