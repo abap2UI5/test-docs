@@ -80,14 +80,14 @@ const rivals = ["RAP + Fiori Elements", "Freestyle UI5 + OData", "Commercial UI5
 const compare = [
   ["License cost", "None: MIT, for any number of users, systems and apps", "Part of the SAP license", "Part of the SAP license", "Subscription or per-user fees, renewed every year"],
   ["Who builds the apps", "The ABAP team you already have", "ABAP plus CDS, RAP and annotation specialists", "JavaScript / UI5 developers", "Developers trained on the vendor's tool"],
-  ["Time to productivity", "Minutes to the first screen, hours to the first app: an ABAP developer learns UI5's controls from the examples, not a new language", "Weeks: CDS, RAP, annotations, Business Application Studio", "Months: JavaScript, UI5 tooling, Git, npm", "The vendor's training"],
+  ["Time to productivity", "Minutes to the first screen, hours to the first app: an ABAP developer learns UI5's controls from the examples, not a new language", "A CDS, RAP and annotation skill set, and Business Application Studio", "A JavaScript and UI5 tool chain: UI5 tooling, Git, npm", "The vendor's training"],
   ["Where the business logic lives", "In ABAP, next to the data, as it does today", "In ABAP, behind CDS and annotations", "Split: JavaScript in the browser, a service in ABAP", "In the vendor's tool"],
-  ["First screen", "Minutes", "Days: model, service, project, deployment", "Days to weeks", "After the platform is installed and licensed"],
+  ["First screen", "Minutes", "After the model, the service, the project and a deployment", "After the project setup and a deployment", "After the platform is installed and licensed"],
   ["Freedom of the UI", "Every UI5 control, any layout", "SAP's floorplans and their extension points", "Every UI5 control", "What the vendor's designer offers"],
   ["Older SAP releases", "NetWeaver 7.02 up to ABAP Cloud, one source", "7.5x and later", "Yes, with OData effort per release", "Depends on the vendor's add-on"],
   ["Performance: what a click costs", "One plain HTTP request carrying only what changed; no app code and no logic in the browser", "OData calls with metadata, batch and draft handling, and the Fiori Elements runtime in the browser", "OData calls and an app bundle per app, logic in the browser", "The vendor's runtime in the browser"],
   ["Extra infrastructure", "None: one endpoint on your SAP system", "Fiori frontend server and deployment", "Frontend deployment (BSP, BTP or web server)", "The vendor's add-on, server or cloud tenant"],
-  ["Lock-in", "None: apps are plain ABAP classes in your system", "SAP's programming model", "Low", "Apps live in the vendor's runtime and repository"],
+  ["Lock-in", "Low: apps are plain ABAP classes written against one interface, and the framework stays in your system", "SAP's programming model", "Low", "Apps live in the vendor's runtime and repository"],
   ["Source code", "Open, every line, on GitHub", "Closed", "UI5 open, your app yours", "Closed"],
   ["Standard transactional apps", "Possible, but hand-built; the standard route is RAP", "Its home ground: list report and object page from annotations", "Hand-built", "From the vendor's templates", "even"],
   ["Offline", "Not built for it: an app needs its connection to SAP", "Offline with extra tooling", "Possible, with effort", "Depends on the vendor", "even"],
@@ -104,6 +104,7 @@ const notIt = [
   ["You want the SAP standard transactional app.", "A list report with an object page on S/4HANA, from a released CDS model: RAP and Fiori Elements are the shorter path, and the one SAP supports."],
   ["The app must work offline.", "Every click is one request to the SAP system. A device without a network is not what it is for; live data on a connected screen is."],
   ["Your guideline mandates SAP's programming model.", "abap2UI5 is clean core in the technical sense, but it is not RAP. The usual outcome is a scope, not a replacement."],
+  ["You want the transaction as it is, in a browser.", "SAP GUI for HTML and Screen Personas keep the transaction and change how it looks; abap2UI5 is a new screen on the same logic, built one at a time. If the screen itself may stay, SAP's own route is the shorter one."],
   ["Your rules need an SLA on paper.", "Support happens in the open: anyone can write in the Slack channel or open an issue or a pull request on GitHub, at any time, and that is where answers come fastest. If you need more than that, write to the maintainers by mail and plan it together; what is not on offer is an SLA in a contract."],
 ];
 
@@ -119,7 +120,8 @@ const governance = [
   ["lock", "Logon is SAP's", "No user store, no token, no session of its own: a request that reaches an app has passed SAP logon."],
   ["key", "Authorizations are SAP's", "The authorization on the service endpoint, and the app's own checks in its code, as a transaction does them."],
   ["db", "Data changes are your code's", "An app posts through the same BAPIs, function modules or RAP actions as any program, so change documents and application logs apply unchanged."],
-  ["log", "Every request can be logged", "A monitor records, per request, user, app, event, timings and any error. Off until an installation switches it on."],
+  ["db", "Data stays on your system", "The app's data never leaves the SAP system. What the framework stores between two clicks is the app instance, in one table on that system, deleted after four hours by default; the browser holds only the screen it shows and the id of that row."],
+  ["log", "Every request can be logged", "A monitor records, per request, user, app, event, timings and any error. Off by default, until an installation switches it on in the user exit."],
   ["check", "Tested on every release", "Every change runs against Standard ABAP and ABAP Cloud, is downported to NetWeaver 7.02 and opened in the browser on UI5 1.71 and the current release. An upgrade of the system or of UI5 does not break an app."],
   ["form", "Security reviewed in the open", "A strict Content Security Policy without unsafe-eval or inline script, CodeQL and a weekly dependency audit, an SBOM with every release, and a published security model a review starts from."],
   ["monitor", "Accessible", "Views are standard UI5 views, so every control is as accessible as UI5 makes it. Focus survives a roundtrip, a change can be announced to a screen reader, a high-contrast theme is one switch away."],
@@ -318,7 +320,7 @@ const doors = [
           <dt>Where an app appears</dt>
           <dd><ul class="chips"><li>Browser tab</li><li>Fiori launchpad tile</li><li>SAP Build Work Zone</li><li>Microsoft Teams</li><li>Microsoft Excel</li><li>iOS &amp; Android</li><li>Inside your own UI5 app</li></ul></dd>
           <dt>Without internet access</dt>
-          <dd>A productive installation serves UI5 from the system itself, so nothing is loaded from outside.</dd>
+          <dd>A productive installation serves UI5 from the system itself, so nothing is loaded from outside. Whether a productive on-premise system may load UI5 from SAP's public CDN is SAP's rule, not the project's (SAP Note 2943781); serving it from the system settles the question.</dd>
         </dl>
         <div class="card">
           <h3 class="first">What installation takes</h3>
@@ -351,7 +353,7 @@ const doors = [
     <div class="wrap">
       <p class="kicker">FAQ</p>
       <h2 id="h-obj">What decision makers ask</h2>
-      <p class="intro">What if the maintainers stop, who do we call, will an upgrade break it, do we need BTP, when abap2UI5 and when a custom SAPUI5 app, will our users accept it: fifteen questions, answered on the <a href={`${base}faq/`}>FAQ page</a>.</p>
+      <p class="intro">What if the maintainers stop, who do we call, will an upgrade break it, do we need BTP, when abap2UI5 and when a custom SAPUI5 app, will our users accept it: twenty questions, answered on the <a href={`${base}faq/`}>FAQ page</a>.</p>
     </div>
   </section>
 
