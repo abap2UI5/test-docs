@@ -158,7 +158,7 @@ const week = [
   ["Compare and decide", "Hold the time and the systems it needed against any alternative or vendor quote."],
 ];
 const doors = [
-  ["play", "Ten minutes, nothing installed", "Browse the example apps for the screen closest to yours, and change one in the playground.", `${PLAYGROUND}samples/`, "Example apps"],
+  ["play", "Ten minutes, nothing installed", "Browse the example apps for the screen closest to yours, and change one in the playground.", "https://abap2ui5.github.io/samples-site/", "Example apps"],
   ["code", "Minutes to install, hours to a first app", "Send a developer the Quickstart: pull, one endpoint, first screen; by the evening a first real app.", `${DOCS}get_started/quickstart`, "Quickstart"],
   ["chat", "A question, any time", "Write in the Slack channel, where the people who run it in production answer, or open a GitHub issue. Anyone, any time.", SLACK, "Slack"],
   ["partner", "More than a question", `A workshop, closer cooperation, a support arrangement: write to ${MAIL} and plan it together.`, `mailto:${MAIL}`, "Mail"],
@@ -191,9 +191,9 @@ const doors = [
       <div class="cards four">
         {useCases.map(([icon, h, t, cls, alt]) => (
           <div class="card shot">
-            <a class="shot-img" href={`${PLAYGROUND}samples/${cls}/`}><img src={`${base}apps/${cls}.webp`} alt={alt} loading="lazy"></a>
+            <a class="shot-img" href={`https://abap2ui5.github.io/samples-site/sample/${cls}/`}><img src={`${base}apps/${cls}.webp`} alt={alt} loading="lazy"></a>
             <Icon name={icon} /><h3>{h}</h3><p>{t}</p>
-            <a class="shot-link" href={`${PLAYGROUND}samples/${cls}/`}>See the example app</a>
+            <a class="shot-link" href={`https://abap2ui5.github.io/samples-site/sample/${cls}/`}>See the example app</a>
           </div>
         ))}
       </div>
@@ -204,7 +204,7 @@ const doors = [
         <figure class="device tablet"><div class="screen"><img src={`${base}apps/device-tablet.webp`} alt="The sales orders app on a tablet: the full table" loading="lazy"></div><figcaption><b>Tablet</b><span>At the machine, in the workshop, at the goods receipt: the full table, touch-sized.</span></figcaption></figure>
         <figure class="device desktop"><div class="screen"><img src={`${base}apps/device-desktop.webp`} alt="The sales orders app on a desktop: the full table with room to spare" loading="lazy"></div><figcaption><b>Desktop</b><span>The worklist and the cockpit at the desk, keyboard-driven, in the launchpad next to the Fiori apps.</span></figcaption></figure>
       </div>
-      <p class="more">→ Browse the <a href={`${PLAYGROUND}samples/`}>example apps</a> for the screen closest to yours: 130 learning samples and 680 control examples, each running in the browser and maintained with the framework. Or read <a href={`${DOCS}get_started/about`}>In a Nutshell</a> for how it works.</p>
+      <p class="more">→ Browse the <a href="https://abap2ui5.github.io/samples-site/">example apps</a> for the screen closest to yours: hundreds of them, each running in the browser and maintained with the framework. Or read <a href={`${DOCS}get_started/about`}>In a Nutshell</a> for how it works.</p>
     </div>
   </section>
 
