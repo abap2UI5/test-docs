@@ -114,6 +114,8 @@ code { font-family: var(--mono); font-size: .9em; }
 .top .btn { padding: 0 14px; line-height: 36px; font-size: 14px; }
 @media (max-width: 1060px) {
   .nav { order: 4; flex: 1 0 100%; margin: 0 -24px; padding: 0 20px 8px; overflow-x: auto; scrollbar-width: none; }
+  /* the family's line wraps rather than scrolls: five names a thumb should see at once */
+  .nav.sites { flex-wrap: wrap; overflow: visible; row-gap: 0; }
   .nav::-webkit-scrollbar { display: none; }
   .nav a { flex: none; }
   html { scroll-padding-top: 150px; }
