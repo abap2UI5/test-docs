@@ -145,7 +145,7 @@ const strings = [
  * read whole. Every claim is in the framework README's "Build with AI". */
 const ai = [
   ["spark", "One app, one file", "An AI writes the whole app as one ABAP class. No service, no frontend project, no deployment to generate and keep in sync."],
-  ["code", "In the tools your team uses", "Plugins for Claude Code and GitHub Copilot, skills for any agent, and an AI Studio in the browser that builds an app from a description."],
+  ["code", "In the tools your team uses", "Plugins for Claude Code and GitHub Copilot, skills for any agent, and an AI App Builder in the browser that builds an app from a description."],
   ["check", "Checked before anyone looks", "The abap2UI5 linter tests every class the AI writes, and the AI fixes what it broke before a developer reviews it."],
 ];
 
@@ -342,8 +342,8 @@ const doors = [
       <ul class="plain three">
         {ai.map(([icon, h, t]) => <li><Icon name={icon} /><div><b>{h}</b><span>{t}</span></div></li>)}
       </ul>
-      <p class="callout"><b>No AI lock-in either.</b> Claude, ChatGPT, Copilot or a local model, with your own key. The plugins and the AI Studio cost nothing.</p>
-      <p class="more">→ Try the <a href={`${PLAYGROUND}ai/`}>AI Studio</a>, or read <a href={`${DOCS}get_started/ai`}>Developing with AI</a>.</p>
+      <p class="callout"><b>No AI lock-in either.</b> Claude, ChatGPT, Copilot or a local model, with your own key. The plugins and the AI App Builder cost nothing.</p>
+      <p class="more">→ Try the <a href={`${PLAYGROUND}ai/`}>AI App Builder</a>, or read <a href={`${DOCS}get_started/ai`}>Developing with AI</a>.</p>
     </div>
   </section>
 
