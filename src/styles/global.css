@@ -102,6 +102,8 @@ code { font-family: var(--mono); font-size: .9em; }
 .subnav { border-top: 1px solid var(--line); background: var(--bg); }
 .subnav .wrap { display: flex; flex-wrap: nowrap; gap: 2px; height: 42px; align-items: center; overflow-x: auto; scrollbar-width: none; }
 .subnav .wrap::-webkit-scrollbar { display: none; }
+.subnav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+.subnav .sep { flex: none; width: 1px; height: 18px; margin: 0 6px; background: var(--line); }
 .subnav a { flex: none; padding: 6px 10px; border-radius: 8px; color: var(--muted); font-size: 13.5px; font-weight: 500; text-decoration: none; white-space: nowrap; }
 .subnav a:hover { color: var(--ink); background: var(--bg-alt); }
 .icon-btn { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--muted); }
