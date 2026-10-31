@@ -103,3 +103,51 @@ test("the comparison names where abap2UI5 is not ahead, and the support it has",
 test("every cell of a comparison names its column, for the one-card-per-row layout", () => {
   for (const m of html.matchAll(/<td(?![^>]*data-th=)[^>]*>/g)) assert.fail(`a <td> without data-th: ${m[0]}`);
 });
+
+test("every in-page link on every page lands on an id of that same page", () => {
+  // the FAQ once linked #who-runs-it "below" - a section of another page
+  for (const page of ["index.html", "faq/index.html", "community/index.html"]) {
+    const doc = fs.readFileSync(path.join(DIST, page), "utf8");
+    const ids = new Set([...doc.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
+    for (const m of doc.matchAll(/\shref="#([^"]+)"/g)) assert.ok(ids.has(m[1]), `${page}: href="#${m[1]}" has no id on that page`);
+  }
+});
+
+test("the FAQ teaser counts the questions the FAQ page holds", () => {
+  const faq = fs.readFileSync(path.join(DIST, "faq", "index.html"), "utf8");
+  const count = (faq.match(/<details/g) || []).length;
+  const teaser = html.match(/id="the-objections"[\s\S]*?<\/section>/)[0].replace(/<[^>]+>/g, " ");
+  const m = teaser.match(/\b([a-z]+(?:-[a-z]+)?) questions\b/);
+  assert.ok(m, "the teaser names a number of questions");
+  const ones = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
+  const tens = { twenty: 20, thirty: 30, forty: 40 };
+  const [a, b] = m[1].split("-");
+  const n = ones.includes(a) ? ones.indexOf(a) : tens[a] + (b ? ones.indexOf(b) : 0);
+  assert.equal(n, count, `the teaser says ${m[1]}, the FAQ page holds ${count} questions`);
+});
+
+test("the release the page names is the newest release of the framework", async (t) => {
+  // "Release 1.148" under Who runs it is a fact about another repository and
+  // moves there. The newest release is fetched from GitHub, as the manual's
+  // check-version does; the framework publishes each release twice (1.148.0
+  // and the 7.02 downport 1.148.0-702), so the suffix is dropped. Offline, or
+  // rate-limited, the test skips and says so rather than fails: an unreachable
+  // API is not a defect of the page.
+  const named = visible.match(/Release (\d+\.\d+)/);
+  assert.ok(named, "the page names a release");
+  let tag;
+  try {
+    const token = process.env.GITHUB_TOKEN;
+    const res = await fetch("https://api.github.com/repos/abap2UI5/abap2UI5/releases/latest", {
+      headers: { accept: "application/vnd.github+json", "user-agent": "abap2ui5-why-site-test", ...(token ? { authorization: `Bearer ${token}` } : {}) },
+      signal: AbortSignal.timeout(15000),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    tag = (await res.json()).tag_name;
+  } catch (err) {
+    t.skip(`could not reach the GitHub release API (${err.message}); whether ${named[1]} is the newest release is unverified`);
+    return;
+  }
+  const latest = tag.replace(/-\w+$/, "").replace(/\.\d+$/, "");
+  assert.equal(named[1], latest, `the page says Release ${named[1]}, the newest release is ${tag}`);
+});
